@@ -29,5 +29,5 @@ make -j$CPU_COUNT
 make install
 
 pushd $PREFIX
-rm -rf lib/libpoppler*.la lib/libpoppler*.a share/gtk-doc share/man
+rm -rf lib/libpoppler*.la lib/libpoppler*.a share/gtk-doc
 popd
