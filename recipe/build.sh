@@ -13,6 +13,7 @@ export LDFLAGS="$LDFLAGS -L$PREFIX/lib"
 configure_args=(
     --prefix=$PREFIX
     --disable-dependency-tracking
+    --enable-xpdf-headers
     --enable-libcurl
     --enable-introspection=auto
     --disable-gtk-doc
