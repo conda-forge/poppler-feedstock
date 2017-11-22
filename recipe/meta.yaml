@@ -11,7 +11,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 3
+  number: 4
   detect_binary_files_with_prefix: true
   skip: true  # [win or not py36]
 
@@ -29,7 +29,7 @@ requirements:
     - jpeg 9*
     - libpng >=1.6.22,<1.6.31
     - libtiff >=4.0.3,<4.0.8
-    - openjpeg 2.1.*
+    - openjpeg 2.3.*
     - zlib 1.2.11
   run:
     - poppler-data
@@ -40,7 +40,7 @@ requirements:
     - jpeg 9*
     - libpng >=1.6.22,<1.6.31
     - libtiff >=4.0.3,<4.0.8
-    - openjpeg 2.1.*
+    - openjpeg 2.3.*
     - zlib 1.2.11
 
 test:
