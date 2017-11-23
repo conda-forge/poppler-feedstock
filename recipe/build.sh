@@ -1,34 +1,31 @@
 #! /bin/bash
 
 set -e
-IFS=$' \t\n' # workaround for conda 4.2.13+toolchain bug
 
-export PKG_CONFIG_LIBDIR=$PREFIX/lib/pkgconfig:$PREFIX/share/pkgconfig
-
-# Poppler's zlib check doesn't let you specify its install prefix so we have
+# The zlib check does not let you specify its install prefix so we have
 # to go global.
-export CPPFLAGS="$CPPFLAGS -I$PREFIX/include"
-export LDFLAGS="$LDFLAGS -L$PREFIX/lib"
-
-configure_args=(
-    --prefix=$PREFIX
-    --disable-dependency-tracking
-    --enable-xpdf-headers
-    --enable-libcurl
-    --enable-introspection=auto
-    --disable-gtk-doc
-    --disable-gtk-test
-)
-
-if [ $(uname) = Darwin ] ; then
-    export LDFLAGS="$LDFLAGS -Wl,-rpath,$PREFIX/lib"
+export CFLAGS="${CFLAGS} -I${PREFIX}/include"
+export CPPFLAGS="${CPPFLAGS} -I${PREFIX}/include"
+export LDFLAGS="${LDFLAGS} -L${PREFIX}/lib"
+if [[ ${HOST} =~ .*darwin.* ]] ; then
+    export LDFLAGS="${LDFLAGS} -Wl,-rpath,${PREFIX}/lib"
 fi
 
-./configure "${configure_args[@]}" || { cat config.log ; exit 1 ; }
-make -j$CPU_COUNT
-# make check requires a big data download
-make install
+mkdir build && cd build
 
-pushd $PREFIX
-rm -rf lib/libpoppler*.la lib/libpoppler*.a share/gtk-doc
+cmake -G "$CMAKE_GENERATOR" \
+      -D CMAKE_PREFIX_PATH=$PREFIX \
+      -D CMAKE_INSTALL_LIBDIR:PATH=$PREFIX/lib \
+      -D CMAKE_INSTALL_PREFIX=$PREFIX \
+      -D ENABLE_XPDF_HEADERS=True \
+      -D ENABLE_LIBCURL=True \
+      -D ENABLE_LIBOPENJPEG=openjpeg2 \
+       $SRC_DIR
+
+make -j$CPU_COUNT
+# ctest  # no tests were found :-/
+make install -j$CPU_COUNT
+
+pushd ${PREFIX}
+  rm -rf lib/libpoppler*.la lib/libpoppler*.a share/gtk-doc
 popd

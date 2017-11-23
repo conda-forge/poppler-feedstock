@@ -1,6 +1,6 @@
 {% set name = "poppler" %}
-{% set version = "0.52.0" %}
-{% set sha256 = "528b661738839f9a25f6e580fcd2d5db007e0a1948580c6489f0062798ca1992" %}
+{% set version = "0.61.1" %}
+{% set sha256 = "1266096343f5163c1a585124e9a6d44474e1345de5cdfe55dc7b47357bcfcda9" %}
 
 package:
   name: {{ name|lower }}
@@ -11,13 +11,14 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 4
+  number: 0
   detect_binary_files_with_prefix: true
   skip: true  # [win or not py36]
 
 requirements:
   build:
     - pkg-config  # [not win]
+    - cmake 3.9.6
     - toolchain
     - python
     - perl 5.22.2.1
@@ -60,3 +61,4 @@ about:
 extra:
   recipe-maintainers:
     - pkgw
+    - ocefpaf
