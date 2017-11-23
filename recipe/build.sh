@@ -1,33 +1,23 @@
 #! /bin/bash
 
-set -e
-IFS=$' \t\n' # workaround for conda 4.2.13+toolchain bug
+# if [ $(uname) = Darwin ] ; then
+#     export LDFLAGS="$LDFLAGS -Wl,-rpath,$PREFIX/lib"
+# fi
+# export CPPFLAGS="$CPPFLAGS -I$PREFIX/include"
+# export LDFLAGS="$LDFLAGS -L$PREFIX/lib"
 
-export PKG_CONFIG_LIBDIR=$PREFIX/lib/pkgconfig:$PREFIX/share/pkgconfig
+mkdir build && cd build
 
-# Poppler's zlib check doesn't let you specify its install prefix so we have
-# to go global.
-export CPPFLAGS="$CPPFLAGS -I$PREFIX/include"
-export LDFLAGS="$LDFLAGS -L$PREFIX/lib"
+cmake  -D CMAKE_BUILD_TYPE=Release \
+       -D CMAKE_INSTALL_PREFIX=$PREFIX \
+       -D CMAKE_INSTALL_LIBDIR:PATH=$PREFIX/lib \
+       -D TESTDATADIR=$PWD/testfiles \
+       -D ENABLE_XPDF_HEADERS=ON \
+       $SRC_DIR
 
-configure_args=(
-    --prefix=$PREFIX
-    --disable-dependency-tracking
-    --enable-xpdf-headers
-    --enable-libcurl
-    --enable-introspection=auto
-    --disable-gtk-doc
-    --disable-gtk-test
-)
-
-if [ $(uname) = Darwin ] ; then
-    export LDFLAGS="$LDFLAGS -Wl,-rpath,$PREFIX/lib"
-fi
-
-./configure "${configure_args[@]}" || { cat config.log ; exit 1 ; }
 make -j$CPU_COUNT
-# make check requires a big data download
-make install
+# ctest  # no tests were found :-/
+make install -j$CPU_COUNT
 
 pushd $PREFIX
 rm -rf lib/libpoppler*.la lib/libpoppler*.a share/gtk-doc
