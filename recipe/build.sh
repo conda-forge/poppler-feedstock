@@ -14,11 +14,12 @@ fi
 mkdir build && cd build
 
 cmake -G "$CMAKE_GENERATOR" \
-      -DCMAKE_PREFIX_PATH=$PREFIX \
-      -DCMAKE_INSTALL_PREFIX=$PREFIX \
-      -DENABLE_XPDF_HEADERS=True \
-      -DENABLE_LIBCURL=True \
-      -DENABLE_LIBOPENJPEG=openjpeg2 \
+      -D CMAKE_PREFIX_PATH=$PREFIX \
+      -D CMAKE_INSTALL_LIBDIR:PATH=$PREFIX/lib \
+      -D CMAKE_INSTALL_PREFIX=$PREFIX \
+      -D ENABLE_XPDF_HEADERS=True \
+      -D ENABLE_LIBCURL=True \
+      -D ENABLE_LIBOPENJPEG=openjpeg2 \
        $SRC_DIR
 
 make -j$CPU_COUNT
