@@ -1,8 +1,8 @@
 #! /bin/bash
 
-# if [ $(uname) = Darwin ] ; then
-#     export LDFLAGS="$LDFLAGS -Wl,-rpath,$PREFIX/lib"
-# fi
+if [ $(uname) = Darwin ] ; then
+    export LDFLAGS="$LDFLAGS -Wl,-rpath,$PREFIX/lib"
+fi
 # export CPPFLAGS="$CPPFLAGS -I$PREFIX/include"
 # export LDFLAGS="$LDFLAGS -L$PREFIX/lib"
 
