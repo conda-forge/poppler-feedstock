@@ -1,6 +1,6 @@
 {% set name = "poppler" %}
-{% set version = "0.64.0" %}
-{% set sha256 = "b21df92ca99f78067785cf2dc8e06deb04726b62389c0ee1f5d8b103c77f64b1" %}
+{% set version = "0.65.0" %}
+{% set sha256 = "89c8cf73f83efda78c5a9bd37c28f4593ad0e8a51556dbe39ed81e1ae2dd8f07" %}
 
 package:
   name: {{ name|lower }}
