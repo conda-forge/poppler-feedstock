@@ -11,7 +11,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 0
+  number: 1
   detect_binary_files_with_prefix: true
   skip: true  # [win or not py36]
 
@@ -19,30 +19,32 @@ requirements:
   build:
     - pkg-config  # [not win]
     - cmake 3.9.6
-    - toolchain
-    - python
     - perl 5.22.2.1
-    - cairo 1.14.*
-    - curl >=7.44.0,<8
-    - freetype 2.8.*
-    - glib 2.55.*
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+  host:
+    - python
+    - cairo
+    - curl
+    - freetype
+    - glib
     - gobject-introspection 1.55.*
-    - jpeg 9*
-    - libpng >=1.6.32,<1.6.35
-    - libtiff >=4.0.8,<4.0.10
-    - openjpeg 2.3.*
-    - zlib 1.2.11
+    - jpeg
+    - libpng
+    - libtiff
+    - openjpeg
+    - zlib
   run:
     - poppler-data
-    - cairo 1.14.*
-    - curl >=7.44.0,<8
-    - freetype 2.8.*
-    - glib 2.55.*
-    - jpeg 9*
-    - libpng >=1.6.32,<1.6.35
-    - libtiff >=4.0.8,<4.0.10
-    - openjpeg 2.3.*
-    - zlib 1.2.11
+    - cairo
+    - curl
+    - freetype
+    - glib
+    - jpeg
+    - libpng
+    - libtiff
+    - openjpeg
+    - zlib
 
 test:
   commands:
