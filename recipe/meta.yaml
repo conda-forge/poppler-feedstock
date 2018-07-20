@@ -1,6 +1,6 @@
 {% set name = "poppler" %}
-{% set version = "0.66.0" %}
-{% set sha256 = "2c096431adfb74bc2f53be466889b7646e1b599f28fa036094f3f7235cc9eae7" %}
+{% set version = "0.67.0" %}
+{% set sha256 = "a34a4f1a0f5b610c584c65824e92e3ba3e08a89d8ab4622aee11b8ceea5366f9" %}
 
 package:
   name: {{ name|lower }}
@@ -11,7 +11,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1
+  number: 0
   detect_binary_files_with_prefix: true
   skip: true  # [win or not py36]
 
