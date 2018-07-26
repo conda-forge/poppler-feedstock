@@ -24,6 +24,8 @@ macos_min_version:
 - '10.9'
 openjpeg:
 - '2.3'
+perl:
+- '5.26'
 pin_run_as_build:
   cairo:
     max_pin: x.x
@@ -41,9 +43,11 @@ pin_run_as_build:
     max_pin: x
   openjpeg:
     max_pin: x.x
+  perl:
+    max_pin: x.x.x
   python:
-    min_pin: x.x
     max_pin: x.x
+    min_pin: x.x
   zlib:
     max_pin: x.x
 python:

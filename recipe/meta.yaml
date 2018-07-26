@@ -11,7 +11,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 0
+  number: 1
   detect_binary_files_with_prefix: true
   skip: true  # [win or not py36]
 
@@ -19,7 +19,7 @@ requirements:
   build:
     - pkg-config  # [not win]
     - cmake 3.9.6
-    - perl 5.22.2.1
+    - perl
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
   host:
