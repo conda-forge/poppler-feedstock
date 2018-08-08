@@ -7,7 +7,7 @@ curl:
 cxx_compiler:
 - toolchain_cxx
 freetype:
-- 2.8.1
+- 2.9.1
 glib:
 - '2.55'
 jpeg:
@@ -26,7 +26,7 @@ pin_run_as_build:
   curl:
     max_pin: x
   freetype:
-    max_pin: x.x
+    max_pin: x
   glib:
     max_pin: x.x
   jpeg:
@@ -40,8 +40,8 @@ pin_run_as_build:
   perl:
     max_pin: x.x.x
   python:
-    max_pin: x.x
     min_pin: x.x
+    max_pin: x.x
   zlib:
     max_pin: x.x
 python:
