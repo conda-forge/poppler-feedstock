@@ -1,4 +1,4 @@
-{% set version = "0.67.0" %}
+{% set version = "0.61.1" %}
 
 package:
   name: poppler
@@ -6,10 +6,10 @@ package:
 
 source:
   url: https://poppler.freedesktop.org/poppler-{{ version }}.tar.xz
-  sha256: a34a4f1a0f5b610c584c65824e92e3ba3e08a89d8ab4622aee11b8ceea5366f9
+  sha256: 1266096343f5163c1a585124e9a6d44474e1345de5cdfe55dc7b47357bcfcda9
 
 build:
-  number: 3
+  number: 4
   detect_binary_files_with_prefix: true
   skip: true  # [win or not py36]
 
