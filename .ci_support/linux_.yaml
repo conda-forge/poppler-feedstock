@@ -1,5 +1,3 @@
-MACOSX_DEPLOYMENT_TARGET:
-- '10.9'
 c_compiler:
 - toolchain_c
 cairo:
@@ -18,10 +16,6 @@ libpng:
 - 1.6.34
 libtiff:
 - 4.0.9
-macos_machine:
-- x86_64-apple-darwin13.4.0
-macos_min_version:
-- '10.9'
 openjpeg:
 - '2.3'
 perl:
@@ -45,12 +39,7 @@ pin_run_as_build:
     max_pin: x.x
   perl:
     max_pin: x.x.x
-  python:
-    min_pin: x.x
-    max_pin: x.x
   zlib:
     max_pin: x.x
-python:
-- '3.6'
 zlib:
 - '1.2'

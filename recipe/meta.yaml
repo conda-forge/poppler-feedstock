@@ -1,29 +1,27 @@
-{% set name = "poppler" %}
 {% set version = "0.67.0" %}
-{% set sha256 = "a34a4f1a0f5b610c584c65824e92e3ba3e08a89d8ab4622aee11b8ceea5366f9" %}
 
 package:
-  name: {{ name|lower }}
+  name: poppler
   version: {{ version }}
 
 source:
-  url: https://poppler.freedesktop.org/{{ name }}-{{ version }}.tar.xz
-  sha256: {{ sha256 }}
+  url: https://poppler.freedesktop.org/poppler-{{ version }}.tar.xz
+  sha256: a34a4f1a0f5b610c584c65824e92e3ba3e08a89d8ab4622aee11b8ceea5366f9
 
 build:
-  number: 2
+  number: 3
   detect_binary_files_with_prefix: true
   skip: true  # [win or not py36]
 
 requirements:
   build:
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
     - pkg-config  # [not win]
     - cmake 3.9.6
     - perl
-    - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
   host:
-    - python
+    - python 3.6
     - cairo
     - curl
     - freetype
