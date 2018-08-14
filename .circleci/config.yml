@@ -1,11 +1,11 @@
 version: 2
 
 jobs:
-  build_linux_python3.6:
+  build_linux_:
     working_directory: ~/test
     machine: true
     environment:
-      - CONFIG: "linux_python3.6"
+      - CONFIG: "linux_"
     steps:
       - checkout
       - run:
@@ -23,4 +23,4 @@ workflows:
   version: 2
   build_and_test:
     jobs:
-      - build_linux_python3.6
+      - build_linux_
