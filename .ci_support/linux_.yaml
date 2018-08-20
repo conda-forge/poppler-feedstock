@@ -2,10 +2,16 @@ c_compiler:
 - toolchain_c
 cairo:
 - '1.14'
+channel_sources:
+- conda-forge,defaults
+channel_targets:
+- conda-forge main
 curl:
 - '7.59'
 cxx_compiler:
 - toolchain_cxx
+docker_image:
+- condaforge/linux-anvil
 freetype:
 - 2.9.1
 glib:
