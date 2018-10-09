@@ -9,7 +9,7 @@ source:
   sha256: a34a4f1a0f5b610c584c65824e92e3ba3e08a89d8ab4622aee11b8ceea5366f9
 
 build:
-  number: 3
+  number: 1003
   detect_binary_files_with_prefix: true
   skip: true  # [win or not py36]
 
