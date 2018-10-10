@@ -9,6 +9,8 @@ export CPPFLAGS="${CPPFLAGS} -I${PREFIX}/include"
 export LDFLAGS="${LDFLAGS} -L${PREFIX}/lib"
 if [[ ${HOST} =~ .*darwin.* ]] ; then
     export LDFLAGS="${LDFLAGS} -Wl,-rpath,${PREFIX}/lib"
+else
+    export LDFLAGS="${LDFLAGS} -Wl,-rpath-link,${PREFIX}/lib"
 fi
 
 mkdir build && cd build
@@ -22,7 +24,7 @@ cmake -G "$CMAKE_GENERATOR" \
       -D ENABLE_LIBOPENJPEG=openjpeg2 \
        $SRC_DIR
 
-make -j$CPU_COUNT
+make -j$CPU_COUNT V=1
 # ctest  # no tests were found :-/
 make install -j$CPU_COUNT
 

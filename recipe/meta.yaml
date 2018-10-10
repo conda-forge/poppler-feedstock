@@ -7,6 +7,8 @@ package:
 source:
   url: https://poppler.freedesktop.org/poppler-{{ version }}.tar.xz
   sha256: 637ff943f805f304ff1da77ba2e7f1cbd675f474941fd8ae1e0fc01a5b45a3f9
+  patches:
+    - g-ir-scanner-libpath.patch
 
 build:
   number: 1000
