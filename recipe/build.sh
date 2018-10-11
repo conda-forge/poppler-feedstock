@@ -7,7 +7,8 @@ set -e
 export CFLAGS="${CFLAGS} -I${PREFIX}/include"
 export CPPFLAGS="${CPPFLAGS} -I${PREFIX}/include"
 export LDFLAGS="${LDFLAGS} -L${PREFIX}/lib"
-if [[ ${HOST} =~ .*darwin.* ]] ; then
+
+if [ -n "$OSX_ARCH" ] ; then
     export LDFLAGS="${LDFLAGS} -Wl,-rpath,${PREFIX}/lib"
 else
     export LDFLAGS="${LDFLAGS} -Wl,-rpath-link,${PREFIX}/lib"
