@@ -1,15 +1,23 @@
+build_number_decrement:
+- '0'
 c_compiler:
-- toolchain_c
+- gcc
 cairo:
 - '1.14'
+channel_sources:
+- conda-forge/label/gcc7,defaults
+channel_targets:
+- conda-forge gcc7
 curl:
 - '7.59'
 cxx_compiler:
-- toolchain_cxx
+- gxx
+docker_image:
+- conda/c3i-linux-64
 freetype:
 - 2.9.1
 glib:
-- '2.55'
+- '2.56'
 jpeg:
 - '9'
 libpng:
@@ -41,5 +49,12 @@ pin_run_as_build:
     max_pin: x.x.x
   zlib:
     max_pin: x.x
+zip_keys:
+- - c_compiler
+  - cxx_compiler
+  - channel_sources
+  - channel_targets
+  - docker_image
+  - build_number_decrement
 zlib:
 - '1.2'

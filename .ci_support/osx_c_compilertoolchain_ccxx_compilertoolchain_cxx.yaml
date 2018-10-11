@@ -1,9 +1,15 @@
 MACOSX_DEPLOYMENT_TARGET:
 - '10.9'
+build_number_decrement:
+- '1000'
 c_compiler:
 - toolchain_c
 cairo:
 - '1.14'
+channel_sources:
+- conda-forge,defaults
+channel_targets:
+- conda-forge main
 curl:
 - '7.59'
 cxx_compiler:
@@ -11,7 +17,7 @@ cxx_compiler:
 freetype:
 - 2.9.1
 glib:
-- '2.55'
+- '2.56'
 jpeg:
 - '9'
 libpng:
@@ -47,5 +53,11 @@ pin_run_as_build:
     max_pin: x.x.x
   zlib:
     max_pin: x.x
+zip_keys:
+- - c_compiler
+  - cxx_compiler
+  - channel_sources
+  - channel_targets
+  - build_number_decrement
 zlib:
 - '1.2'
