@@ -13,7 +13,7 @@ source:
 build:
   number: 1000
   detect_binary_files_with_prefix: true
-  skip: true  # [win or not py36]
+  skip: true  # [win or (linux and cxx_compiler == 'toolchain_cxx')]
 
 requirements:
   build:
