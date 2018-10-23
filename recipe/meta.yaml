@@ -11,9 +11,9 @@ source:
     - g-ir-scanner-libpath.patch
 
 build:
-  number: 1000
+  number: 1001
   detect_binary_files_with_prefix: true
-  skip: true  # [win or (linux and cxx_compiler == 'toolchain_cxx')]
+  skip: true  # [win or (cxx_compiler == 'toolchain_cxx')]
 
 requirements:
   build:
