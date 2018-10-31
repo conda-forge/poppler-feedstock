@@ -1,4 +1,4 @@
-{% set version = "0.70.1" %}
+{% set version = "0.71.0" %}
 
 package:
   name: poppler
@@ -6,12 +6,12 @@ package:
 
 source:
   url: https://poppler.freedesktop.org/poppler-{{ version }}.tar.xz
-  sha256: 66972047d9ef8162cc8c389d7e7698291dfc9f2b3e4ea9a9f08ae604107451bd
+  sha256: badbecd2dddf63352fd85ec08a9c2ed122fdadacf2a34fcb4cc227c4d01f2cf9
   patches:
     - g-ir-scanner-libpath.patch
 
 build:
-  number: 1001
+  number: 1000
   detect_binary_files_with_prefix: true
   skip: true  # [win or (cxx_compiler == 'toolchain_cxx')]
 
