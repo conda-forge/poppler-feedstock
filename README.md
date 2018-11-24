@@ -3,11 +3,11 @@ About poppler
 
 Home: https://poppler.freedesktop.org/
 
-Package license: GPLv2
+Package license: GPL-2.0
 
 Feedstock license: BSD 3-Clause
 
-Summary: The Poppler PDF manipulation library.
+Summary: The Poppler PDF manipulation library
 
 
 
