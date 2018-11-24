@@ -1,4 +1,4 @@
-{% set version = "0.71.0" %}
+{% set version = "0.67.0" %}
 
 package:
   name: poppler
@@ -6,14 +6,14 @@ package:
 
 source:
   url: https://poppler.freedesktop.org/poppler-{{ version }}.tar.xz
-  sha256: badbecd2dddf63352fd85ec08a9c2ed122fdadacf2a34fcb4cc227c4d01f2cf9
+  sha256: a34a4f1a0f5b610c584c65824e92e3ba3e08a89d8ab4622aee11b8ceea5366f9
   patches:
     - g-ir-scanner-libpath.patch
 
 build:
-  number: 1000
+  number: 1002
   detect_binary_files_with_prefix: true
-  skip: true  # [win or (cxx_compiler == 'toolchain_cxx')]
+  skip: true  # [win]
 
 requirements:
   build:
@@ -50,15 +50,13 @@ test:
   commands:
     - pdfunite --help
     - pdftocairo --help
-    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
-    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]
 
 about:
   home: https://poppler.freedesktop.org/
-  license: GPLv2
+  license: GPL-2.0
   license_family: GPL
   license_file: COPYING
-  summary: 'The Poppler PDF manipulation library.'
+  summary: 'The Poppler PDF manipulation library'
 
 extra:
   recipe-maintainers:
