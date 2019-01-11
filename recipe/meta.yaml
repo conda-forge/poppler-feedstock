@@ -9,11 +9,13 @@ source:
   sha256: e44b5543903128884ba4538c2a97d3bcc8889e97ffacc4636112101f0238db03
   patches:
     - g-ir-scanner-libpath.patch
+    - cmake_pkg_config_bat.patch  # [win]
+    - poppler_data_location.patch  # [win]
 
 build:
-  number: 1000
+  number: 1001
   detect_binary_files_with_prefix: true
-  skip: true  # [win or (cxx_compiler == 'toolchain_cxx')]
+  skip: true  # [(cxx_compiler == 'toolchain_cxx')]
 
 requirements:
   build:
@@ -24,11 +26,11 @@ requirements:
     - perl
   host:
     - python 3.6
-    - cairo
+    - cairo  # [not win]
     - curl
     - freetype
     - glib
-    - gobject-introspection 1.*
+    - gobject-introspection 1.*  # [not win]
     - jpeg
     - libpng
     - libtiff
@@ -36,7 +38,7 @@ requirements:
     - zlib
   run:
     - poppler-data
-    - cairo
+    - cairo  # [not win]
     - curl
     - freetype
     - glib
@@ -49,7 +51,7 @@ requirements:
 test:
   commands:
     - pdfunite --help
-    - pdftocairo --help
+    - pdftocairo --help  # [not win]
     - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
     - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]
 
