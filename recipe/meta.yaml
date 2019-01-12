@@ -15,7 +15,7 @@ source:
 build:
   number: 1001
   detect_binary_files_with_prefix: true
-  skip: true  # [unix and (cxx_compiler == 'toolchain_cxx')]
+  skip: true  # [(unix and (cxx_compiler == 'toolchain_cxx')) or (win and py27)]
 
 requirements:
   build:
