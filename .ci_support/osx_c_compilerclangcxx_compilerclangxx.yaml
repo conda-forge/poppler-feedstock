@@ -5,7 +5,7 @@ build_number_decrement:
 c_compiler:
 - clang
 cairo:
-- '1.14'
+- '1.16'
 channel_sources:
 - conda-forge/label/gcc7,defaults
 channel_targets:
@@ -17,7 +17,7 @@ cxx_compiler:
 freetype:
 - 2.9.1
 glib:
-- '2.56'
+- '2.58'
 jpeg:
 - '9'
 libpng:
