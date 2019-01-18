@@ -11,6 +11,8 @@ source:
     - g-ir-scanner-libpath.patch
     - cmake_pkg_config_bat.patch  # [win]
     - poppler_data_location.patch  # [win]
+    # system headers must be included before jpeg on Windows
+    - includesystembeforejpeg.patch  # [win]
 
 build:
   number: 1001
