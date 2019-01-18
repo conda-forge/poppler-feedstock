@@ -1,0 +1,13 @@
+--- CMakeLists.txt.orig	2019-01-02 10:49:28.341516200 +1000
++++ CMakeLists.txt	2019-01-02 12:10:42.254193100 +1000
+@@ -670,6 +670,10 @@
+ 
+ set(PKG_CONFIG_VERSION_0_18 TRUE)
+ if(PKG_CONFIG_EXECUTABLE)
++  if(WIN32)
++    # need to run the copy with .bat on the end
++    STRING(CONCAT PKG_CONFIG_EXECUTABLE ${PKG_CONFIG_EXECUTABLE} ".bat")
++  endif()
+   exec_program(${PKG_CONFIG_EXECUTABLE} ARGS --version RETURN_VALUE _return_VALUE OUTPUT_VARIABLE _output_VAR)
+   macro_ensure_version("0.18" "${_output_VAR}" PKG_CONFIG_VERSION_0_18)
+ endif()
