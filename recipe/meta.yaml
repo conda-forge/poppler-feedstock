@@ -1,4 +1,4 @@
-{% set version = "0.73.0" %}
+{% set version = "0.67.0" %}
 
 package:
   name: poppler
@@ -6,18 +6,14 @@ package:
 
 source:
   url: https://poppler.freedesktop.org/poppler-{{ version }}.tar.xz
-  sha256: e44b5543903128884ba4538c2a97d3bcc8889e97ffacc4636112101f0238db03
+  sha256: a34a4f1a0f5b610c584c65824e92e3ba3e08a89d8ab4622aee11b8ceea5366f9
   patches:
     - g-ir-scanner-libpath.patch
-    - cmake_pkg_config_bat.patch  # [win]
-    - poppler_data_location.patch  # [win]
-    # system headers must be included before jpeg on Windows
-    - includesystembeforejpeg.patch  # [win]
 
 build:
-  number: 1001
+  number: 4
   detect_binary_files_with_prefix: true
-  skip: true  # [(unix and (cxx_compiler == 'toolchain_cxx')) or (win and py27)]
+  skip: true  # [win]
 
 requirements:
   build:
@@ -54,15 +50,13 @@ test:
   commands:
     - pdfunite --help
     - pdftocairo --help  # [not win]
-    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
-    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]
 
 about:
   home: https://poppler.freedesktop.org/
-  license: GPLv2
+  license: GPL-2.0
   license_family: GPL
   license_file: COPYING
-  summary: 'The Poppler PDF manipulation library.'
+  summary: 'The Poppler PDF manipulation library'
 
 extra:
   recipe-maintainers:
