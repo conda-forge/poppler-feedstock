@@ -7,11 +7,11 @@ About poppler
 
 Home: https://poppler.freedesktop.org/
 
-Package license: GPLv2
+Package license: GPL-2.0
 
 Feedstock license: BSD 3-Clause
 
-Summary: The Poppler PDF manipulation library.
+Summary: The Poppler PDF manipulation library
 
 
 
@@ -20,7 +20,7 @@ Current build status
 
 [![Linux](https://img.shields.io/circleci/project/github/conda-forge/poppler-feedstock/master.svg?label=Linux)](https://circleci.com/gh/conda-forge/poppler-feedstock)
 [![OSX](https://img.shields.io/travis/conda-forge/poppler-feedstock/master.svg?label=macOS)](https://travis-ci.org/conda-forge/poppler-feedstock)
-[![Windows](https://img.shields.io/appveyor/ci/conda-forge/poppler-feedstock/master.svg?label=Windows)](https://ci.appveyor.com/project/conda-forge/poppler-feedstock/branch/master)
+![Windows disabled](https://img.shields.io/badge/Windows-disabled-lightgrey.svg)
 
 Current release info
 ====================
