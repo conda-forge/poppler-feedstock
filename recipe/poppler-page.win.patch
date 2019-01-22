@@ -1,0 +1,25 @@
+--- "cpp\\poppler-page.h.orig"	2019-01-22 10:33:46.530076500 +1000
++++ "cpp\\poppler-page.h"	2019-01-22 10:33:53.862314000 +1000
+@@ -34,8 +34,8 @@
+ {
+     friend class page;
+ public:
+-    text_box(text_box&&) = default;
+-    text_box& operator=(text_box&&) = default;
++    text_box(text_box&&);
++    text_box& operator=(text_box&&);
+ 
+     ~text_box();
+ 
+--- "cpp\\poppler-page.cpp.orig"	2019-01-22 10:38:51.271795100 +1000
++++ "cpp\\poppler-page.cpp"	2019-01-22 10:39:35.409310500 +1000
+@@ -295,6 +295,9 @@
+ 
+ text_box::~text_box() = default;
+ 
++text_box& text_box::operator=(text_box&& a) = default;
++text_box::text_box(text_box&& a) = default;
++
+ text_box::text_box(text_box_data *data) : m_data{data}
+ {
+ }
