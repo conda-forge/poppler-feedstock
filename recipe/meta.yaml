@@ -9,11 +9,14 @@ source:
   sha256: a34a4f1a0f5b610c584c65824e92e3ba3e08a89d8ab4622aee11b8ceea5366f9
   patches:
     - g-ir-scanner-libpath.patch
+    - cmakelists.win.patch  # [win]
+    # see https://gitlab.freedesktop.org/poppler/poppler/commit/06106d930b18a34c18e32734b73c212b852161a5
+    - poppler-page.win.patch  # [win]
 
 build:
-  number: 4
+  number: 5
   detect_binary_files_with_prefix: true
-  skip: true  # [win]
+  skip: True  # [win and py27]
 
 requirements:
   build:
