@@ -14,7 +14,7 @@ source:
     - poppler-page.win.patch  # [win]
 
 build:
-  number: 5
+  number: 6
   detect_binary_files_with_prefix: true
   skip: True  # [win and py27]
 
