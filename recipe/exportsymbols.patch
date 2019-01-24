@@ -1,0 +1,33 @@
+--- "poppler\\GlobalParams.h.old"	2019-01-24 15:16:18.390103900 +1000
++++ "poppler\\GlobalParams.h"	2019-01-24 15:16:32.992981800 +1000
+@@ -70,7 +70,13 @@
+ //------------------------------------------------------------------------
+ 
+ // The global parameters object.
+-extern GlobalParams *globalParams;
++#ifdef _COMPILING_POPPLER
++// cmake's WINDOWS_EXPORT_ALL_SYMBOLS doesn't extend to data unfortunately
++// so we must to this by hand
++extern __declspec(dllexport) GlobalParams *globalParams;
++#else
++extern __declspec(dllimport) GlobalParams *globalParams;
++#endif
+ 
+ //------------------------------------------------------------------------
+ 
+--- "poppler\\PDFDocEncoding.h.old"	2019-01-24 15:14:52.477686900 +1000
++++ "poppler\\PDFDocEncoding.h"	2019-01-24 15:15:01.447670700 +1000
+@@ -27,8 +27,11 @@
+ 
+ class GooString;
+ 
+-extern Unicode pdfDocEncoding[256];
+-
++#ifdef _COMPILING_POPPLER
++extern __declspec(dllexport) Unicode pdfDocEncoding[256];
++#else
++extern __declspec(dllimport) Unicode pdfDocEncoding[256];
++#endif
+ char* pdfDocEncodingToUTF16 (const GooString* orig, int* length);
+ 
+ #endif
