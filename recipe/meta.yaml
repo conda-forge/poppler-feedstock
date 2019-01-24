@@ -12,6 +12,7 @@ source:
     - cmakelists.win.patch  # [win]
     # see https://gitlab.freedesktop.org/poppler/poppler/commit/06106d930b18a34c18e32734b73c212b852161a5
     - poppler-page.win.patch  # [win]
+    - exportsymbols.patch  # [win]
 
 build:
   number: 6
