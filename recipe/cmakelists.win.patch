@@ -1,5 +1,5 @@
 --- CMakeLists.txt.old	2019-01-22 09:40:00.632449800 +1000
-+++ CMakeLists.txt	2019-01-24 13:03:53.804403100 +1000
++++ CMakeLists.txt	2019-01-24 14:16:20.054376800 +1000
 @@ -201,11 +201,18 @@
  endif()
  set(WITH_OPENJPEG FALSE)
@@ -47,17 +47,18 @@
  
  if(EXTRA_WARN)
    set(CMAKE_C_FLAGS "-Wall ${CMAKE_C_FLAGS}")
-@@ -486,7 +482,8 @@
+@@ -485,8 +481,8 @@
+ 
  if(MSVC)
  add_definitions(-D_CRT_SECURE_NO_WARNINGS)
- set(CMAKE_CXX_FLAGS "/Zc:wchar_t- ${CMAKE_CXX_FLAGS}")
+-set(CMAKE_CXX_FLAGS "/Zc:wchar_t- ${CMAKE_CXX_FLAGS}")
 -add_library(poppler STATIC ${poppler_SRCS})
 +add_library(poppler SHARED ${poppler_SRCS})
 +set_target_properties(poppler PROPERTIES WINDOWS_EXPORT_ALL_SYMBOLS true)
  else()
  add_library(poppler ${poppler_SRCS})
  endif()
-@@ -676,6 +673,10 @@
+@@ -676,6 +672,10 @@
  
  set(PKG_CONFIG_VERSION_0_18 TRUE)
  if(PKG_CONFIG_EXECUTABLE)
