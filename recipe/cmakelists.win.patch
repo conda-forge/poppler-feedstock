@@ -1,0 +1,51 @@
+--- CMakeLists.txt.orig	2019-01-08 07:15:12.000000000 +1000
++++ CMakeLists.txt	2019-01-25 15:00:29.539724700 +1000
+@@ -285,21 +285,10 @@
+   include_directories(${LCMS2_INCLUDE_DIR})
+ endif()
+ 
+-# Recent versions of poppler-data install a .pc file.
+-# Use it to determine the encoding data path, if available.
+-# Default to the same prefix otherwise.
+-pkg_check_modules(POPPLER_DATA poppler-data)
+-if(POPPLER_DATA_FOUND)
+-  execute_process(COMMAND "${PKG_CONFIG_EXECUTABLE}" --variable=poppler_datadir poppler-data
+-                  RESULT_VARIABLE _result_var
+-                  OUTPUT_VARIABLE _output_var OUTPUT_STRIP_TRAILING_WHITESPACE)
+-  if(_result_var STREQUAL "0" AND NOT _output_var STREQUAL "")
+-    set(POPPLER_DATADIR "${_output_var}")
+-  endif()
+-endif()
+-if(NOT DEFINED POPPLER_DATADIR)
+-  set(POPPLER_DATADIR "${CMAKE_INSTALL_PREFIX}/share/poppler")
+-endif()
++# poppler-data is a noarch package that installs in %PREFIX%
++# rather than %LIBRARY_PREFIX% so won't be found. Hardcode
++# location for now
++set(POPPLER_DATADIR "$ENV{PREFIX}/share/poppler")
+ 
+ if(EXTRA_WARN)
+   set(CMAKE_C_FLAGS "-Wall ${CMAKE_C_FLAGS}")
+@@ -481,7 +470,10 @@
+ 
+ if(MSVC)
+ add_definitions(-D_CRT_SECURE_NO_WARNINGS)
+-add_library(poppler STATIC ${poppler_SRCS})
++add_library(poppler SHARED ${poppler_SRCS})
++# so we can determine if to import/export symbols
++target_compile_definitions(poppler PRIVATE _COMPILING_POPPLER=1)
++set_target_properties(poppler PROPERTIES WINDOWS_EXPORT_ALL_SYMBOLS true)
+ else()
+ add_library(poppler ${poppler_SRCS})
+ endif()
+@@ -671,6 +663,10 @@
+ 
+ set(PKG_CONFIG_VERSION_0_18 TRUE)
+ if(PKG_CONFIG_EXECUTABLE)
++  if(WIN32)
++    # need to run the copy with .bat on the end
++    STRING(CONCAT PKG_CONFIG_EXECUTABLE ${PKG_CONFIG_EXECUTABLE} ".bat")
++  endif()
+   exec_program(${PKG_CONFIG_EXECUTABLE} ARGS --version RETURN_VALUE _return_VALUE OUTPUT_VARIABLE _output_VAR)
+   macro_ensure_version("0.18" "${_output_VAR}" PKG_CONFIG_VERSION_0_18)
+ endif()
