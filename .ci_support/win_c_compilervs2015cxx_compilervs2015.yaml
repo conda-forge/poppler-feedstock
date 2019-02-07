@@ -27,8 +27,6 @@ pin_run_as_build:
     max_pin: x
   freetype:
     max_pin: x
-  glib:
-    max_pin: x.x
   jpeg:
     max_pin: x
   libpng:
