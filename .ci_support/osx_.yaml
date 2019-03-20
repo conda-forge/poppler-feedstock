@@ -2,6 +2,8 @@ MACOSX_DEPLOYMENT_TARGET:
 - '10.9'
 c_compiler:
 - clang
+c_compiler_version:
+- '4'
 cairo:
 - '1.16'
 channel_sources:
@@ -9,9 +11,11 @@ channel_sources:
 channel_targets:
 - conda-forge main
 curl:
-- '7.59'
+- '7.64'
 cxx_compiler:
 - clangxx
+cxx_compiler_version:
+- '4'
 freetype:
 - 2.9.1
 glib:
