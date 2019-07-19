@@ -1,5 +1,7 @@
 c_compiler:
 - gcc
+c_compiler_version:
+- '7'
 cairo:
 - '1.16'
 channel_sources:
@@ -7,9 +9,11 @@ channel_sources:
 channel_targets:
 - conda-forge main
 curl:
-- '7.59'
+- '7.64'
 cxx_compiler:
 - gxx
+cxx_compiler_version:
+- '7'
 docker_image:
 - condaforge/linux-anvil-comp7
 freetype:
@@ -25,7 +29,7 @@ libtiff:
 openjpeg:
 - '2.3'
 perl:
-- '5.26'
+- 5.26.2
 pin_run_as_build:
   cairo:
     max_pin: x.x
@@ -33,8 +37,6 @@ pin_run_as_build:
     max_pin: x
   freetype:
     max_pin: x
-  glib:
-    max_pin: x.x
   jpeg:
     max_pin: x
   libpng:
