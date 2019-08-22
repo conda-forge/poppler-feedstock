@@ -23,13 +23,13 @@ glib:
 jpeg:
 - '9'
 libpng:
-- 1.6.35
+- '1.6'
 libtiff:
-- 4.0.9
+- 4.0.10
 openjpeg:
 - '2.3'
 perl:
-- '5.26'
+- 5.26.2
 pin_run_as_build:
   cairo:
     max_pin: x.x
