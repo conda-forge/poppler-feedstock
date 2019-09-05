@@ -26,6 +26,7 @@ requirements:
     - {{ compiler('cxx') }}
     - pkg-config  # [not win]
     - cmake
+    - make
     - perl
   host:
     - python 3.6
