@@ -14,6 +14,10 @@ jobs:
         CONFIG: linux_
         UPLOAD_PACKAGES: True
         DOCKER_IMAGE: condaforge/linux-anvil-comp7
+      linux_aarch64_:
+        CONFIG: linux_aarch64_
+        UPLOAD_PACKAGES: True
+        DOCKER_IMAGE: condaforge/linux-anvil-aarch64
   steps:
   # configure qemu binfmt-misc running.  This allows us to run docker containers
   # embedded qemu-static
@@ -25,6 +29,7 @@ jobs:
 
   - script: |
         export CI=azure
+        export GIT_BRANCH=$BUILD_SOURCEBRANCHNAME
         .azure-pipelines/run_docker_build.sh
     displayName: Run docker build
     env:
