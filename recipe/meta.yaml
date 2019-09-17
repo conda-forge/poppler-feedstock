@@ -1,24 +1,29 @@
-{% set version = "0.80.0" %}
+{% set name = "poppler" %}
+{% set version = "0.65.0" %}
+{% set sha256 = "89c8cf73f83efda78c5a9bd37c28f4593ad0e8a51556dbe39ed81e1ae2dd8f07" %}
 
+# {% set version = "0.80.0" %}
+# {% set sha256 = "4d3ca6b79bc13b8e24092e34f83ef5f387f3bb0bbd7359a6c078e09c696d104f" %}
 package:
   name: poppler
   version: {{ version }}
 
 source:
   url: https://poppler.freedesktop.org/poppler-{{ version }}.tar.xz
-  sha256: 4d3ca6b79bc13b8e24092e34f83ef5f387f3bb0bbd7359a6c078e09c696d104f
-  patches:
-    - g-ir-scanner-libpath.patch
-    - cmakelists.win.patch  # [win]
-    - exportsymbols.patch  # [win]
+  sha256: {{ sha256 }}
+  # No patches needed for version 0.65
+  # patches:
+    # - g-ir-scanner-libpath.patch
+    # - cmakelists.win.patch  # [win]
+    # - exportsymbols.patch  # [win]
     # system headers must be included before jpeg on Windows
-    - includesystembeforejpeg.patch  # [win]
-    - vs2015-no-for-loop-constexpr.win.patch  # [win]
+    # - includesystembeforejpeg.patch  # [win]
+    # - vs2015-no-for-loop-constexpr.win.patch  # [win]
 
 build:
   number: 0
   detect_binary_files_with_prefix: true
-  skip: true  # [(unix and (cxx_compiler == 'toolchain_cxx')) or (win and py27)]
+  skip: true  # [win and py27]
 
 requirements:
   build:
