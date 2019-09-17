@@ -13,7 +13,7 @@ jobs:
       win_c_compilervs2015cxx_compilervs2015:
         CONFIG: win_c_compilervs2015cxx_compilervs2015
         CONDA_BLD_PATH: D:\\bld\\
-        UPLOAD_PACKAGES: False
+        UPLOAD_PACKAGES: True
   steps:
     # TODO: Fast finish on azure pipelines?
     - script: |
