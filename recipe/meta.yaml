@@ -1,4 +1,4 @@
-{% set version = "0.81.0" %}
+{% set version = "0.82.0" %}
 
 package:
   name: poppler
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://poppler.freedesktop.org/poppler-{{ version }}.tar.xz
-  sha256: 212d020b035b67b36c9666bd08ac778dff3222d85c01c338787d546f0f9bfe02
+  sha256: 234f8e573ea57fb6a008e7c1e56bfae1af5d1adf0e65f47555e1ae103874e4df
   patches:
     - g-ir-scanner-libpath.patch
     - cmakelists.win.patch  # [win]
@@ -29,7 +29,7 @@ requirements:
     - make
     - perl
   host:
-    - python 3.6
+    - python 3.7
     - cairo  # [not win]
     - curl
     - freetype
@@ -56,8 +56,6 @@ test:
   commands:
     - pdfunite --help
     - pdftocairo --help  # [not win]
-    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
-    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]
 
 about:
   home: https://poppler.freedesktop.org/

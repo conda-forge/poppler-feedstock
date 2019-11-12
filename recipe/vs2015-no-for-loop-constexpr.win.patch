@@ -7,10 +7,10 @@ Date:   Wed May 1 11:45:44 2019 -0400
     This reverts commit e0ef346c0f669140076c4cf443f07ea0770996da.
 
 diff --git a/poppler/Decrypt.cc b/poppler/Decrypt.cc
-index 16476f4f..3e573757 100644
+index 5794577..f506292 100644
 --- a/poppler/Decrypt.cc
 +++ b/poppler/Decrypt.cc
-@@ -762,119 +762,55 @@ static inline void invShiftRows(unsigned char *state) {
+@@ -763,119 +763,55 @@ static inline void invShiftRows(unsigned char *state) {
  }
  
  // {02} \cdot s
