@@ -1,5 +1,7 @@
---- "goo\\JpegWriter.cc.old"	2019-01-18 15:50:10.935396400 +1000
-+++ "goo\\JpegWriter.cc"	2019-01-18 15:50:37.074211500 +1000
+diff --git a/goo/JpegWriter.cc b/goo/JpegWriter.cc
+index 26fa77a..ebeb04b 100644
+--- a/goo/JpegWriter.cc
++++ b/goo/JpegWriter.cc
 @@ -19,12 +19,12 @@
  
  #ifdef ENABLE_LIBJPEG
