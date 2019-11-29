@@ -29,7 +29,6 @@ requirements:
     - make
     - perl
   host:
-    - python 3.7
     - cairo  # [not win]
     - curl
     - freetype
