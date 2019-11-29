@@ -1,18 +1,18 @@
 diff --git a/poppler/GlobalParams.h b/poppler/GlobalParams.h
-index 25ad68d..9a9fb5f 100644
+index c782452..fb9e6cd 100644
 --- a/poppler/GlobalParams.h
 +++ b/poppler/GlobalParams.h
-@@ -63,7 +63,13 @@ class SysFontList;
+@@ -64,7 +64,13 @@ class SysFontList;
  //------------------------------------------------------------------------
  
  // The global parameters object.
--extern GlobalParams *globalParams;
+-extern std::unique_ptr<GlobalParams> globalParams;
 +#ifdef _COMPILING_POPPLER
 +// cmake's WINDOWS_EXPORT_ALL_SYMBOLS doesn't extend to data unfortunately
 +// so we must to this by hand
-+extern __declspec(dllexport) GlobalParams *globalParams;
++extern __declspec(dllexport) std::unique_ptr<GlobalParams> globalParams;
 +#else
-+extern __declspec(dllimport) GlobalParams *globalParams;
++extern __declspec(dllimport) std::unique_ptr<GlobalParams> globalParams;
 +#endif
  
  //------------------------------------------------------------------------
