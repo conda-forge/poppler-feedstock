@@ -17,7 +17,7 @@ cmake -G "NMake Makefiles" ^
        %SRC_DIR%
 if errorlevel 1 exit 1	   
 
-nmake
+nmake VERBOSE=1
 if errorlevel 1 exit 1
 
 nmake install
