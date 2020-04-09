@@ -27,6 +27,7 @@ requirements:
     - pkg-config  # [not win]
     - cmake
     - make
+    - ninja  # [win]
     - perl
   host:
     - cairo  # [not win]
