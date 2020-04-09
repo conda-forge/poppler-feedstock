@@ -5,7 +5,7 @@ cd build
 :: cmake 'export all symbols' functionality
 set "CXXFLAGS= -MD"
 
-cmake -G "%CMAKE_GENERATOR%" ^
+cmake -G "Ninja" ^
       -D CMAKE_BUILD_TYPE=Release ^
       -D CMAKE_PREFIX_PATH=%LIBRARY_PREFIX% ^
       -D CMAKE_INSTALL_LIBDIR:PATH=%LIBRARY_LIB% ^
