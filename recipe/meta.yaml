@@ -58,7 +58,7 @@ test:
 
 about:
   home: https://poppler.freedesktop.org/
-  license: GPLv2
+  license: GPL-2.0-only
   license_family: GPL
   license_file: COPYING
   summary: The Poppler PDF manipulation library.
