@@ -5,7 +5,7 @@ cd build
 :: cmake 'export all symbols' functionality
 set "CXXFLAGS= -MD"
 
-cmake -G "NMake Makefiles" ^
+cmake -G "Ninja" ^
       -D CMAKE_BUILD_TYPE=Release ^
       -D CMAKE_PREFIX_PATH=%LIBRARY_PREFIX% ^
       -D CMAKE_INSTALL_LIBDIR:PATH=%LIBRARY_LIB% ^
@@ -17,8 +17,5 @@ cmake -G "NMake Makefiles" ^
        %SRC_DIR%
 if errorlevel 1 exit 1	   
 
-nmake
-if errorlevel 1 exit 1
-
-nmake install
+cmake --build . --config Release --target install
 if errorlevel 1 exit 1
