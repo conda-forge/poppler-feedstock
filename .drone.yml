@@ -13,7 +13,7 @@ steps:
     CONFIG: linux_aarch64_
     UPLOAD_PACKAGES: True
     PLATFORM: linux-aarch64
-    BINSTAR_TOKEN: 
+    BINSTAR_TOKEN:
       from_secret: BINSTAR_TOKEN
   commands:
     - export FEEDSTOCK_ROOT="$DRONE_WORKSPACE"
