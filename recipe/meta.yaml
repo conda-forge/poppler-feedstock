@@ -1,4 +1,4 @@
-{% set version = "0.87.0" %}
+{% set version = "0.88.0" %}
 
 package:
   name: poppler
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://poppler.freedesktop.org/poppler-{{ version }}.tar.xz
-  sha256: 6f602b9c24c2d05780be93e7306201012e41459f289b8279a27a79431ad4150e
+  sha256: b4453804e9a5a519e6ceee0ac8f5efc229e3b0bf70419263c239124474d256c7
   patches:
     - g-ir-scanner-libpath.patch
     - cmakelists.win.patch  # [win]
@@ -16,7 +16,7 @@ source:
     - vs2015-no-for-loop-constexpr.win.patch  # [win]
 
 build:
-  number: 1
+  number: 0
   detect_binary_files_with_prefix: true
   skip: true  # [(unix and (cxx_compiler == 'toolchain_cxx')) or (win and py27)]
 
