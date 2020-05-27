@@ -6,20 +6,17 @@ jobs:
 - job: win
   pool:
     vmImage: vs2017-win2016
-  timeoutInMinutes: 360
   strategy:
-    maxParallel: 4
     matrix:
       win_:
         CONFIG: win_
-        CONDA_BLD_PATH: D:\\bld\\
-        UPLOAD_PACKAGES: True
-  steps:
-    # TODO: Fast finish on azure pipelines?
-    - script: |
-        ECHO ON
-        
+        UPLOAD_PACKAGES: 'True'
+    maxParallel: 4
+  timeoutInMinutes: 360
+  variables:
+    CONDA_BLD_PATH: D:\\bld\\
 
+  steps:
     - script: |
         choco install vcpython27 -fdv -y --debug
       condition: contains(variables['CONFIG'], 'vs2008')
@@ -95,12 +92,18 @@ jobs:
       env:
         PYTHONUNBUFFERED: 1
       condition: not(contains(variables['CONFIG'], 'vs2008'))
+    - script: |
+        call activate base
+        validate_recipe_outputs "poppler-feedstock"
+      displayName: Validate Recipe Outputs
 
     - script: |
         set "GIT_BRANCH=%BUILD_SOURCEBRANCHNAME%"
         call activate base
-        upload_package  .\ ".\recipe" .ci_support\%CONFIG%.yaml
+        upload_package --validate --feedstock-name="poppler-feedstock" .\ ".\recipe" .ci_support\%CONFIG%.yaml
       displayName: Upload package
       env:
         BINSTAR_TOKEN: $(BINSTAR_TOKEN)
+        FEEDSTOCK_TOKEN: $(FEEDSTOCK_TOKEN)
+        STAGING_BINSTAR_TOKEN: $(STAGING_BINSTAR_TOKEN)
       condition: and(succeeded(), not(eq(variables['UPLOAD_PACKAGES'], 'False')))

@@ -15,6 +15,10 @@ steps:
     PLATFORM: linux-aarch64
     BINSTAR_TOKEN:
       from_secret: BINSTAR_TOKEN
+    FEEDSTOCK_TOKEN:
+      from_secret: FEEDSTOCK_TOKEN
+    STAGING_BINSTAR_TOKEN:
+      from_secret: STAGING_BINSTAR_TOKEN
   commands:
     - export FEEDSTOCK_ROOT="$DRONE_WORKSPACE"
     - export RECIPE_ROOT="$FEEDSTOCK_ROOT/recipe"
