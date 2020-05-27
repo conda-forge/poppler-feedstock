@@ -1,4 +1,4 @@
-{% set version = "0.88.0" %}
+{% set version = "0.89.0" %}
 
 package:
   name: poppler
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://poppler.freedesktop.org/poppler-{{ version }}.tar.xz
-  sha256: b4453804e9a5a519e6ceee0ac8f5efc229e3b0bf70419263c239124474d256c7
+  sha256: fba230364537782cc5d43b08d693ef69c36586286349683c7b127156a8ef9b5c
   patches:
     - g-ir-scanner-libpath.patch
     - cmakelists.win.patch  # [win]
