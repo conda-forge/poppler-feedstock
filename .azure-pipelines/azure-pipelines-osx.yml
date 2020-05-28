@@ -6,13 +6,13 @@ jobs:
 - job: osx
   pool:
     vmImage: macOS-10.14
-  timeoutInMinutes: 360
   strategy:
-    maxParallel: 8
     matrix:
       osx_:
         CONFIG: osx_
-        UPLOAD_PACKAGES: True
+        UPLOAD_PACKAGES: 'True'
+    maxParallel: 8
+  timeoutInMinutes: 360
 
   steps:
   # TODO: Fast finish on azure pipelines?
@@ -24,3 +24,5 @@ jobs:
     displayName: Run OSX build
     env:
       BINSTAR_TOKEN: $(BINSTAR_TOKEN)
+      FEEDSTOCK_TOKEN: $(FEEDSTOCK_TOKEN)
+      STAGING_BINSTAR_TOKEN: $(STAGING_BINSTAR_TOKEN)
