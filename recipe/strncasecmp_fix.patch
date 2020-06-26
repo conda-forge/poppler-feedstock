@@ -1,0 +1,14 @@
+--- a/utils/pdftocairo.cc
++++ b/utils/pdftocairo_new.cc
+@@ -42,6 +42,11 @@
+ //
+ //========================================================================
+ 
++#ifdef _MSC_VER 
++#define strncasecmp _strnicmp
++#define strcasecmp _stricmp
++#endif
++
+ #include "config.h"
+ #include <poppler-config.h>
+ #include <cstdint>
