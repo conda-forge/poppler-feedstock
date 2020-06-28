@@ -1,5 +1,7 @@
 c_compiler:
 - vs2017
+cairo:
+- '1.16'
 channel_sources:
 - conda-forge,defaults
 channel_targets:
@@ -23,6 +25,8 @@ openjpeg:
 perl:
 - 5.26.2
 pin_run_as_build:
+  cairo:
+    max_pin: x.x
   curl:
     max_pin: x
   freetype:

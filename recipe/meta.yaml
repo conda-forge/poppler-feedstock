@@ -14,9 +14,10 @@ source:
     # system headers must be included before jpeg on Windows
     - includesystembeforejpeg.patch  # [win]
     - vs2015-no-for-loop-constexpr.win.patch  # [win]
+    - strncasecmp_fix.patch  # [win]
 
 build:
-  number: 0
+  number: 1
   detect_binary_files_with_prefix: true
   skip: true  # [(unix and (cxx_compiler == 'toolchain_cxx')) or (win and py27)]
 
@@ -30,7 +31,7 @@ requirements:
     - ninja  # [win]
     - perl
   host:
-    - cairo  # [not win]
+    - cairo
     - curl
     - freetype
     - glib
@@ -42,7 +43,7 @@ requirements:
     - zlib
   run:
     - poppler-data
-    - cairo  # [not win]
+    - cairo
     - curl
     - freetype
     - glib
@@ -55,7 +56,7 @@ requirements:
 test:
   commands:
     - pdfunite --help
-    - pdftocairo --help  # [not win]
+    - pdftocairo --help
 
 about:
   home: https://poppler.freedesktop.org/
