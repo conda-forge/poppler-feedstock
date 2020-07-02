@@ -1,4 +1,4 @@
-{% set version = "0.89.0" %}
+{% set version = "0.90.0" %}
 
 package:
   name: poppler
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://poppler.freedesktop.org/poppler-{{ version }}.tar.xz
-  sha256: fba230364537782cc5d43b08d693ef69c36586286349683c7b127156a8ef9b5c
+  sha256: 94edb0ad3330b74d22caac807aa501e9cc61cbf45a8010625670428b51989685
   patches:
     - g-ir-scanner-libpath.patch
     - cmakelists.win.patch  # [win]
@@ -17,7 +17,7 @@ source:
     - strncasecmp_fix.patch  # [win]
 
 build:
-  number: 1
+  number: 0
   detect_binary_files_with_prefix: true
   skip: true  # [(unix and (cxx_compiler == 'toolchain_cxx')) or (win and py27)]
 
