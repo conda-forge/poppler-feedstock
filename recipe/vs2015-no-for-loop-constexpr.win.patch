@@ -1,3 +1,11 @@
+Author: Peter Williams <peter@newton.cx>
+Created: Wed May 1 11:45:44 2019 -0400
+
+Effectively reverts Poppler commit e0ef346c0f669140076c4cf443f07ea0770996da,
+"Make the mul tables be calculated at compile time with constexpr". Patch
+updated to track whitespace reformatting in the codebase. VS2015 can't handle
+for loops in constexprs.
+
 diff --git a/poppler/Decrypt.cc b/poppler/Decrypt.cc
 index 5f9c46d..aa98b4a 100644
 --- a/poppler/Decrypt.cc
