@@ -49,5 +49,7 @@ pin_run_as_build:
     max_pin: x.x.x
   zlib:
     max_pin: x.x
+target_platform:
+- linux-ppc64le
 zlib:
 - '1.2'

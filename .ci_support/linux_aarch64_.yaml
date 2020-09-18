@@ -3,7 +3,7 @@ BUILD:
 c_compiler:
 - gcc
 c_compiler_version:
-- '7'
+- '7.5'
 cairo:
 - '1.16'
 cdt_arch:
@@ -19,7 +19,7 @@ curl:
 cxx_compiler:
 - gxx
 cxx_compiler_version:
-- '7'
+- '7.5'
 docker_image:
 - condaforge/linux-anvil-aarch64
 freetype:
@@ -55,5 +55,7 @@ pin_run_as_build:
     max_pin: x.x.x
   zlib:
     max_pin: x.x
+target_platform:
+- linux-aarch64
 zlib:
 - '1.2'

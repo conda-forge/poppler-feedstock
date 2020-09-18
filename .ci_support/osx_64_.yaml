@@ -1,7 +1,9 @@
+MACOSX_DEPLOYMENT_TARGET:
+- '10.9'
 c_compiler:
-- gcc
+- clang
 c_compiler_version:
-- '7'
+- '10'
 cairo:
 - '1.16'
 channel_sources:
@@ -11,11 +13,9 @@ channel_targets:
 curl:
 - '7'
 cxx_compiler:
-- gxx
+- clangxx
 cxx_compiler_version:
-- '7'
-docker_image:
-- condaforge/linux-anvil-comp7
+- '10'
 freetype:
 - 2.9.1
 glib:
@@ -26,6 +26,8 @@ libpng:
 - '1.6'
 libtiff:
 - 4.1.0
+macos_machine:
+- x86_64-apple-darwin13.4.0
 openjpeg:
 - '2.3'
 perl:
@@ -49,5 +51,7 @@ pin_run_as_build:
     max_pin: x.x.x
   zlib:
     max_pin: x.x
+target_platform:
+- osx-64
 zlib:
 - '1.2'
