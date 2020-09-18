@@ -1,4 +1,4 @@
-{% set version = "0.90.1" %}
+{% set version = "20.09.0" %}
 
 package:
   name: poppler
