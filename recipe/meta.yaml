@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://poppler.freedesktop.org/poppler-{{ version }}.tar.xz
-  sha256: 984d82e72e91418d280885298c8bdc855a2fd92665fd52a1345b27235e0c71c4
+  sha256: 4ed6eb5ddc4c37f2435c9d78ff9c7c4036455aea3507d1ce8400070aab745363
   patches:
     - g-ir-scanner-libpath.patch
     - cmakelists.win.patch  # [win]
