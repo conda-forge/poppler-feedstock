@@ -1,4 +1,6 @@
-{% set version = "0.90.1" %}
+{% set version = "20.09.0" %}
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
 
 package:
   name: poppler
@@ -6,7 +8,7 @@ package:
 
 source:
   url: https://poppler.freedesktop.org/poppler-{{ version }}.tar.xz
-  sha256: 984d82e72e91418d280885298c8bdc855a2fd92665fd52a1345b27235e0c71c4
+  sha256: 4ed6eb5ddc4c37f2435c9d78ff9c7c4036455aea3507d1ce8400070aab745363
   patches:
     - g-ir-scanner-libpath.patch
     - cmakelists.win.patch  # [win]
@@ -25,10 +27,12 @@ requirements:
   build:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - pkg-config  # [not win]
+    - m2-msys2-runtime  # [win]
+    - {{ native }}pkg-config
     - cmake
     - make
     - ninja  # [win]
+    - {{ posix }}patch
     - perl
   host:
     - cairo
