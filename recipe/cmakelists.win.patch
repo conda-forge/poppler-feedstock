@@ -40,14 +40,32 @@ index 36f6587..83470e9 100644
  else()
  add_library(poppler ${poppler_SRCS})
  endif()
-@@ -688,6 +680,10 @@ endif()
+
+diff --git a/glib/CMakeLists.txt b/glib/CMakeLists.txt
+index 75402cc..374ce69 100644
+--- a/glib/CMakeLists.txt
++++ b/glib/CMakeLists.txt
+@@ -43,9 +43,9 @@ find_program(GLIB2_MKENUMS glib-mkenums)
  
- set(PKG_CONFIG_VERSION_0_18 TRUE)
- if(PKG_CONFIG_EXECUTABLE)
-+  if(WIN32)
-+    # need to run the copy with .bat on the end
-+    STRING(CONCAT PKG_CONFIG_EXECUTABLE ${PKG_CONFIG_EXECUTABLE} ".bat")
-+  endif()
-   exec_program(${PKG_CONFIG_EXECUTABLE} ARGS --version RETURN_VALUE _return_VALUE OUTPUT_VARIABLE _output_VAR)
-   macro_ensure_version("0.18" "${_output_VAR}" PKG_CONFIG_VERSION_0_18)
- endif()
+ add_custom_command(
+   OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/poppler-enums.h
+-  COMMAND ${GLIB2_MKENUMS}
++  COMMAND $ENV{PREFIX}/python.exe
+   ARGS
+-    --template poppler-enums.h.template
++    ${GLIB2_MKENUMS} --template poppler-enums.h.template
+     ${poppler_glib_public_headers} > ${CMAKE_CURRENT_BINARY_DIR}/poppler-enums.h
+   WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+   DEPENDS ${poppler_glib_public_headers}
+@@ -54,9 +54,9 @@ add_custom_command(
+ 
+ add_custom_command(
+   OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/poppler-enums.c
+-  COMMAND ${GLIB2_MKENUMS}
++  COMMAND $ENV{PREFIX}/python.exe
+   ARGS
+-    --template poppler-enums.c.template
++    ${GLIB2_MKENUMS} --template poppler-enums.c.template
+     ${poppler_glib_public_headers} > ${CMAKE_CURRENT_BINARY_DIR}/poppler-enums.c
+   WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+   DEPENDS ${poppler_glib_public_headers} ${CMAKE_CURRENT_BINARY_DIR}/poppler-enums.h
