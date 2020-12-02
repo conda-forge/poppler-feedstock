@@ -1,4 +1,4 @@
-{% set version = "20.11.0" %}
+{% set version = "20.12.0" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://poppler.freedesktop.org/poppler-{{ version }}.tar.xz
-  sha256: 021557074516492375c2bb4226a413aad431159e9177f9f14dff4159d2723b14
+  sha256: a3907525c32e7ff395eaf8cf83efa8d4f522b911281b80828586fa832feef824
   patches:
     - g-ir-scanner-libpath.patch
     - cmakelists.win.patch  # [win]

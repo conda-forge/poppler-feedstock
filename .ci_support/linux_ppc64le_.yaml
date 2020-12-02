@@ -1,7 +1,7 @@
 c_compiler:
 - gcc
 c_compiler_version:
-- '8'
+- '9'
 cairo:
 - '1.16'
 cdt_name:
@@ -15,11 +15,11 @@ curl:
 cxx_compiler:
 - gxx
 cxx_compiler_version:
-- '8'
+- '9'
 docker_image:
-- condaforge/linux-anvil-ppc64le
+- quay.io/condaforge/linux-anvil-ppc64le
 freetype:
-- 2.9.1
+- '2'
 glib:
 - '2.58'
 jpeg:
