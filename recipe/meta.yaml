@@ -17,6 +17,7 @@ source:
     - includesystembeforejpeg.patch  # [win]
     - vs2015-no-for-loop-constexpr.win.patch  # [win]
     - strncasecmp_fix.patch  # [win]
+    - windows-data.patch  # [win]
 
 build:
   number: 0
@@ -59,6 +60,7 @@ requirements:
 
 test:
   commands:
+    - pdfinfo -listenc
     - pdfunite --help
     - pdftocairo --help
 
