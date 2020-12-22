@@ -20,7 +20,7 @@ source:
     - windows-data.patch  # [win]
 
 build:
-  number: 0
+  number: 1
   detect_binary_files_with_prefix: true
   skip: true  # [(unix and (cxx_compiler == 'toolchain_cxx')) or (win and py27)]
 
