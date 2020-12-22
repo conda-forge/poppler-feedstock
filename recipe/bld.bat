@@ -13,7 +13,6 @@ cmake -G "Ninja" ^
       -D ENABLE_UNSTABLE_API_ABI_HEADERS=True ^
       -D ENABLE_LIBCURL=True ^
       -D ENABLE_LIBOPENJPEG=openjpeg2 ^
-      -D ENABLE_RELOCATABLE=OFF ^
        %SRC_DIR%
 if errorlevel 1 exit 1	   
 

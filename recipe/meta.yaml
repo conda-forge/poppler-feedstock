@@ -17,9 +17,10 @@ source:
     - includesystembeforejpeg.patch  # [win]
     - vs2015-no-for-loop-constexpr.win.patch  # [win]
     - strncasecmp_fix.patch  # [win]
+    - windows-data.patch  # [win]
 
 build:
-  number: 0
+  number: 1
   detect_binary_files_with_prefix: true
   skip: true  # [(unix and (cxx_compiler == 'toolchain_cxx')) or (win and py27)]
 
@@ -59,6 +60,7 @@ requirements:
 
 test:
   commands:
+    - pdfinfo -listenc
     - pdfunite --help
     - pdftocairo --help
 
