@@ -29,7 +29,7 @@ libtiff:
 macos_machine:
 - x86_64-apple-darwin13.4.0
 openjpeg:
-- '2.3'
+- '2.4'
 perl:
 - 5.26.2
 pin_run_as_build:
