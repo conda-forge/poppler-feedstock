@@ -24,7 +24,7 @@ fi
 
 mkdir build && cd build
 
-cmake -G "$CMAKE_GENERATOR" \
+cmake ${CMAKE_ARGS} -G "$CMAKE_GENERATOR" \
       -D CMAKE_PREFIX_PATH=$PREFIX \
       -D CMAKE_INSTALL_LIBDIR:PATH=$PREFIX/lib \
       -D CMAKE_INSTALL_PREFIX=$PREFIX \
