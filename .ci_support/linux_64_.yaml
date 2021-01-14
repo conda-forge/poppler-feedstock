@@ -18,37 +18,45 @@ cxx_compiler_version:
 - '9'
 docker_image:
 - quay.io/condaforge/linux-anvil-comp7
+fontconfig:
+- '2.13'
 freetype:
 - '2'
 glib:
 - '2.66'
 jpeg:
 - '9'
+libcurl:
+- '7'
+libiconv:
+- '1.16'
 libpng:
 - '1.6'
 libtiff:
 - 4.1.0
 openjpeg:
 - '2.4'
-perl:
-- 5.26.2
 pin_run_as_build:
   cairo:
     max_pin: x.x
   curl:
     max_pin: x
+  fontconfig:
+    max_pin: x
   freetype:
     max_pin: x
   jpeg:
     max_pin: x
+  libcurl:
+    max_pin: x
+  libiconv:
+    max_pin: x.x
   libpng:
     max_pin: x.x
   libtiff:
     max_pin: x
   openjpeg:
     max_pin: x.x
-  perl:
-    max_pin: x.x.x
   zlib:
     max_pin: x.x
 target_platform:
@@ -56,5 +64,7 @@ target_platform:
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
+- - cdt_name
+  - docker_image
 zlib:
 - '1.2'
