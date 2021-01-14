@@ -34,6 +34,20 @@ requirements:
     - ninja
     - {{ posix }}patch
     - perl 5
+    - gobject-introspection 1.*  # [not win]
+    - cairo       # [build_platform != target_platform]
+    - curl        # [build_platform != target_platform]
+    - fontconfig  # [build_platform != target_platform]
+    - freetype    # [build_platform != target_platform]
+    - gettext     # [build_platform != target_platform]
+    - glib        # [build_platform != target_platform]
+    - jpeg        # [build_platform != target_platform]
+    - libcurl     # [build_platform != target_platform]
+    - libiconv    # [build_platform != target_platform]
+    - libpng      # [build_platform != target_platform]
+    - libtiff     # [build_platform != target_platform]
+    - openjpeg    # [build_platform != target_platform]
+    - zlib        # [build_platform != target_platform]
   host:
     - cairo
     - curl
@@ -41,7 +55,6 @@ requirements:
     - freetype
     - gettext
     - glib
-    - gobject-introspection 1.*  # [not win]
     - jpeg
     - libcurl
     - libiconv
