@@ -1,27 +1,16 @@
 {% set name = "poppler" %}
 {% set version = "0.65.0" %}
-{% set sha256 = "89c8cf73f83efda78c5a9bd37c28f4593ad0e8a51556dbe39ed81e1ae2dd8f07" %}
 
-# {% set version = "0.80.0" %}
-# {% set sha256 = "4d3ca6b79bc13b8e24092e34f83ef5f387f3bb0bbd7359a6c078e09c696d104f" %}
 package:
   name: poppler
   version: {{ version }}
 
 source:
   url: https://poppler.freedesktop.org/poppler-{{ version }}.tar.xz
-  sha256: {{ sha256 }}
-  # No patches needed for version 0.65
-  # patches:
-    # - g-ir-scanner-libpath.patch
-    # - cmakelists.win.patch  # [win]
-    # - exportsymbols.patch  # [win]
-    # system headers must be included before jpeg on Windows
-    # - includesystembeforejpeg.patch  # [win]
-    # - vs2015-no-for-loop-constexpr.win.patch  # [win]
+  sha256: 89c8cf73f83efda78c5a9bd37c28f4593ad0e8a51556dbe39ed81e1ae2dd8f07
 
 build:
-  number: 0
+  number: 1
   detect_binary_files_with_prefix: true
   skip: true  # [win]
 
@@ -32,37 +21,42 @@ requirements:
     - pkg-config  # [not win]
     - cmake
     - make
-    - perl
+    - perl 5
+    - gobject-introspection 1.*  # [not win]
+    - cairo       # [build_platform != target_platform]
+    - curl        # [build_platform != target_platform]
+    - fontconfig  # [build_platform != target_platform]
+    - freetype    # [build_platform != target_platform]
+    - gettext     # [build_platform != target_platform]
+    - glib        # [build_platform != target_platform]
+    - jpeg        # [build_platform != target_platform]
+    - libcurl     # [build_platform != target_platform]
+    - libiconv    # [build_platform != target_platform]
+    - libpng      # [build_platform != target_platform]
+    - libtiff     # [build_platform != target_platform]
+    - openjpeg    # [build_platform != target_platform]
+    - zlib        # [build_platform != target_platform]
   host:
-    - python 3.6
     - cairo  # [not win]
     - curl
+    - fontconfig
     - freetype
+    - gettext
     - glib
-    - gobject-introspection 1.*  # [not win]
     - jpeg
+    - libcurl
+    - libiconv
     - libpng
     - libtiff
     - openjpeg
     - zlib
   run:
     - poppler-data
-    - cairo  # [not win]
-    - curl
-    - freetype
-    - glib
-    - jpeg
-    - libpng
-    - libtiff
-    - openjpeg
-    - zlib
 
 test:
   commands:
     - pdfunite --help
     - pdftocairo --help  # [not win]
-    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
-    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]
 
 about:
   home: https://poppler.freedesktop.org/
