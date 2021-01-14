@@ -12,14 +12,21 @@ from argparse import ArgumentParser
 def setup_environment(ns):
     os.environ["CONFIG"] = ns.config
     os.environ["UPLOAD_PACKAGES"] = "False"
+    if ns.debug:
+        os.environ["BUILD_WITH_CONDA_DEBUG"] = "1"
+        if ns.output_id:
+            os.environ["BUILD_OUTPUT_ID"] = ns.output_id
 
 
 def run_docker_build(ns):
-    script = glob.glob(".*/run_docker_build.sh")[0]
-    subprocess.check_call(script)
+    script = ".scripts/run_docker_build.sh"
+    subprocess.check_call([script])
+
 
 def verify_config(ns):
-    valid_configs = {os.path.basename(f)[:-5] for f in glob.glob(".ci_support/*.yaml")}
+    valid_configs = {
+        os.path.basename(f)[:-5] for f in glob.glob(".ci_support/*.yaml")
+    }
     print(f"valid configs are {valid_configs}")
     if ns.config in valid_configs:
         print("Using " + ns.config + " configuration")
@@ -39,13 +46,23 @@ def verify_config(ns):
     else:
         raise ValueError("config " + ns.config + " is not valid")
     # Remove the following, as implemented
-    if not ns.config.startswith('linux'):
-        raise ValueError(f"only Linux configs currently supported, got {ns.config}")
+    if not ns.config.startswith("linux"):
+        raise ValueError(
+            f"only Linux configs currently supported, got {ns.config}"
+        )
 
 
 def main(args=None):
     p = ArgumentParser("build-locally")
     p.add_argument("config", default=None, nargs="?")
+    p.add_argument(
+        "--debug",
+        action="store_true",
+        help="Setup debug environment using `conda debug`",
+    )
+    p.add_argument(
+        "--output-id", help="If running debug, specify the output to setup."
+    )
 
     ns = p.parse_args(args=args)
     verify_config(ns)
