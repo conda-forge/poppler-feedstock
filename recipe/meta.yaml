@@ -10,7 +10,7 @@ source:
   sha256: 89c8cf73f83efda78c5a9bd37c28f4593ad0e8a51556dbe39ed81e1ae2dd8f07
 
 build:
-  number: 1
+  number: 2
   detect_binary_files_with_prefix: true
   skip: true  # [win]
 
@@ -60,7 +60,7 @@ test:
 
 about:
   home: https://poppler.freedesktop.org/
-  license: GPLv2
+  license: GPL-2.0-only
   license_family: GPL
   license_file: COPYING
   summary: 'The Poppler PDF manipulation library.'
@@ -69,3 +69,4 @@ extra:
   recipe-maintainers:
     - pkgw
     - ocefpaf
+    - xhochy

@@ -3,7 +3,7 @@ About poppler
 
 Home: https://poppler.freedesktop.org/
 
-Package license: GPLv2
+Package license: GPL-2.0-only
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/poppler-feedstock/blob/master/LICENSE.txt)
 
@@ -177,4 +177,5 @@ Feedstock Maintainers
 
 * [@ocefpaf](https://github.com/ocefpaf/)
 * [@pkgw](https://github.com/pkgw/)
+* [@xhochy](https://github.com/xhochy/)
 
