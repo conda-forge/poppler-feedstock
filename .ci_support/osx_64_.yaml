@@ -3,7 +3,7 @@ MACOSX_DEPLOYMENT_TARGET:
 c_compiler:
 - clang
 c_compiler_version:
-- '4'
+- '11'
 cairo:
 - '1.16'
 channel_sources:
@@ -11,13 +11,13 @@ channel_sources:
 channel_targets:
 - conda-forge main
 curl:
-- '7.64'
+- '7'
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
-- '4'
+- '11'
 freetype:
-- 2.9.1
+- '2'
 glib:
 - '2.58'
 jpeg:
@@ -25,13 +25,11 @@ jpeg:
 libpng:
 - '1.6'
 libtiff:
-- 4.0.10
+- 4.1.0
 macos_machine:
 - x86_64-apple-darwin13.4.0
-macos_min_version:
-- '10.9'
 openjpeg:
-- '2.3'
+- '2.4'
 perl:
 - 5.26.2
 pin_run_as_build:
@@ -53,5 +51,10 @@ pin_run_as_build:
     max_pin: x.x.x
   zlib:
     max_pin: x.x
+target_platform:
+- osx-64
+zip_keys:
+- - c_compiler_version
+  - cxx_compiler_version
 zlib:
 - '1.2'
