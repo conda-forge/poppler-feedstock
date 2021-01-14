@@ -22,7 +22,6 @@ source:
 build:
   number: 3
   detect_binary_files_with_prefix: true
-  skip: true  # [(unix and (cxx_compiler == 'toolchain_cxx')) or (win and py27)]
 
 requirements:
   build:
@@ -32,31 +31,26 @@ requirements:
     - {{ native }}pkg-config
     - cmake
     - make
-    - ninja  # [win]
+    - ninja
     - {{ posix }}patch
-    - perl
+    - perl 5
   host:
     - cairo
     - curl
+    - fontconfig
     - freetype
+    - gettext
     - glib
     - gobject-introspection 1.*  # [not win]
     - jpeg
+    - libcurl
+    - libiconv
     - libpng
     - libtiff
     - openjpeg
     - zlib
   run:
     - poppler-data
-    - cairo
-    - curl
-    - freetype
-    - glib
-    - jpeg
-    - libpng
-    - libtiff
-    - openjpeg
-    - zlib
 
 test:
   commands:

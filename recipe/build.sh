@@ -24,18 +24,19 @@ fi
 
 mkdir build && cd build
 
-cmake ${CMAKE_ARGS} -G "$CMAKE_GENERATOR" \
-      -D CMAKE_PREFIX_PATH=$PREFIX \
-      -D CMAKE_INSTALL_LIBDIR:PATH=$PREFIX/lib \
-      -D CMAKE_INSTALL_PREFIX=$PREFIX \
-      -D ENABLE_UNSTABLE_API_ABI_HEADERS=True \
-      -D ENABLE_LIBCURL=True \
-      -D ENABLE_LIBOPENJPEG=openjpeg2 \
-       $SRC_DIR
+cmake ${CMAKE_ARGS} \
+    -GNinja \
+    -DCMAKE_PREFIX_PATH=$PREFIX \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DCMAKE_INSTALL_PREFIX=$PREFIX \
+    -DENABLE_UNSTABLE_API_ABI_HEADERS=ON \
+    -DENABLE_LIBCURL=ON \
+    -DENABLE_LIBOPENJPEG=openjpeg2 \
+    $SRC_DIR
 
-make -j$CPU_COUNT V=1
+ninja
 # ctest  # no tests were found :-/
-make install -j$CPU_COUNT
+ninja install
 
 pushd ${PREFIX}
   rm -rf lib/libpoppler*.la lib/libpoppler*.a share/gtk-doc

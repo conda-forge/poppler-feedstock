@@ -16,12 +16,18 @@ cxx_compiler:
 - clangxx
 cxx_compiler_version:
 - '11'
+fontconfig:
+- '2.13'
 freetype:
 - '2'
 glib:
 - '2.66'
 jpeg:
 - '9'
+libcurl:
+- '7'
+libiconv:
+- '1.16'
 libpng:
 - '1.6'
 libtiff:
@@ -30,25 +36,27 @@ macos_machine:
 - arm64-apple-darwin20.0.0
 openjpeg:
 - '2.4'
-perl:
-- 5.26.2
 pin_run_as_build:
   cairo:
     max_pin: x.x
   curl:
     max_pin: x
+  fontconfig:
+    max_pin: x
   freetype:
     max_pin: x
   jpeg:
     max_pin: x
+  libcurl:
+    max_pin: x
+  libiconv:
+    max_pin: x.x
   libpng:
     max_pin: x.x
   libtiff:
     max_pin: x
   openjpeg:
     max_pin: x.x
-  perl:
-    max_pin: x.x.x
   zlib:
     max_pin: x.x
 target_platform:
