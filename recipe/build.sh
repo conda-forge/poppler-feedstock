@@ -51,14 +51,15 @@ export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:$BUILD_PREFIX/lib/pkgconfig"
 
 mkdir build && cd build
 
-if [[ "${target_platform}" == linux-* ]]; then
-    export LDFLAGS="${LDFLAGS} -Wl,-rpath-link,${PREFIX}/lib"
-fi
-
 cmake ${CMAKE_ARGS} \
       -DCMAKE_PREFIX_PATH=$PREFIX \
       -DCMAKE_INSTALL_PREFIX=$PREFIX \
       ${EXTRA_CMAKE_ARGS}
+
+if [[ "${target_platform}" == linux-* ]]; then
+    make -j${CPU_COUNT} poppler
+    cp libpoppler.so.76 $PREFIX/lib
+fi
 
 make -j$CPU_COUNT V=1
 # ctest  # no tests were found :-/
