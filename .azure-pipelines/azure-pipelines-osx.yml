@@ -5,13 +5,15 @@
 jobs:
 - job: osx
   pool:
-    vmImage: macOS-10.14
+    vmImage: macOS-10.15
   strategy:
     matrix:
-      osx_:
-        CONFIG: osx_
+      osx_64_:
+        CONFIG: osx_64_
         UPLOAD_PACKAGES: 'True'
-    maxParallel: 8
+      osx_arm64_:
+        CONFIG: osx_arm64_
+        UPLOAD_PACKAGES: 'True'
   timeoutInMinutes: 360
 
   steps:
@@ -20,6 +22,7 @@ jobs:
       export CI=azure
       export OSX_FORCE_SDK_DOWNLOAD="1"
       export GIT_BRANCH=$BUILD_SOURCEBRANCHNAME
+      export FEEDSTOCK_NAME=$(basename ${BUILD_REPOSITORY_NAME})
       ./.scripts/run_osx_build.sh
     displayName: Run OSX build
     env:

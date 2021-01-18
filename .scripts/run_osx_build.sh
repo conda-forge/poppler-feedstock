@@ -23,7 +23,7 @@ source ${HOME}/miniforge3/etc/profile.d/conda.sh
 conda activate base
 
 echo -e "\n\nInstalling conda-forge-ci-setup=3 and conda-build."
-conda install -n base --quiet --yes conda-forge-ci-setup=3 conda-build pip
+conda install -n base --quiet --yes "conda-forge-ci-setup=3" conda-build pip
 
 
 
@@ -47,10 +47,15 @@ set -e
 
 echo -e "\n\nMaking the build clobber file and running the build."
 make_build_number ./ ./recipe ./.ci_support/${CONFIG}.yaml
-conda build ./recipe -m ./.ci_support/${CONFIG}.yaml --clobber-file ./.ci_support/clobber_${CONFIG}.yaml
-validate_recipe_outputs "poppler-feedstock"
+
+if [[ "${HOST_PLATFORM}" != "${BUILD_PLATFORM}" ]]; then
+    EXTRA_CB_OPTIONS="${EXTRA_CB_OPTIONS:-} --no-test"
+fi
+
+conda build ./recipe -m ./.ci_support/${CONFIG}.yaml --suppress-variables --clobber-file ./.ci_support/clobber_${CONFIG}.yaml ${EXTRA_CB_OPTIONS:-}
+validate_recipe_outputs "${FEEDSTOCK_NAME}"
 
 if [[ "${UPLOAD_PACKAGES}" != "False" ]]; then
   echo -e "\n\nUploading the packages."
-  upload_package --validate --feedstock-name="poppler-feedstock" ./ ./recipe ./.ci_support/${CONFIG}.yaml
+  upload_package --validate --feedstock-name="${FEEDSTOCK_NAME}" ./ ./recipe ./.ci_support/${CONFIG}.yaml
 fi

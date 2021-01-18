@@ -17,25 +17,40 @@ source:
     - strncasecmp_fix.patch  # [win]
 
 build:
-  number: 1
+  number: 2
   detect_binary_files_with_prefix: true
-  skip: true  # [(unix and (cxx_compiler == 'toolchain_cxx')) or (win and py27)]
 
 requirements:
   build:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - pkg-config  # [not win]
+    - pkg-config
+    - gobject-introspection 1.*  # [not win]
     - cmake
-    - make
-    - ninja  # [win]
-    - perl
+    - ninja
+    - perl 5
+    - cairo       # [build_platform != target_platform]
+    - curl        # [build_platform != target_platform]
+    - freetype    # [build_platform != target_platform]
+    - fontconfig  # [build_platform != target_platform]
+    - gettext     # [build_platform != target_platform]
+    - libcurl     # [build_platform != target_platform]
+    - libiconv    # [build_platform != target_platform]
+    - glib        # [build_platform != target_platform]
+    - jpeg        # [build_platform != target_platform]
+    - libpng      # [build_platform != target_platform]
+    - libtiff     # [build_platform != target_platform]
+    - openjpeg    # [build_platform != target_platform]
+    - zlib        # [build_platform != target_platform]
   host:
     - cairo
     - curl
     - freetype
+    - fontconfig
+    - gettext
+    - libcurl
+    - libiconv
     - glib
-    - gobject-introspection 1.*  # [not win]
     - jpeg
     - libpng
     - libtiff
@@ -43,15 +58,6 @@ requirements:
     - zlib
   run:
     - poppler-data
-    - cairo
-    - curl
-    - freetype
-    - glib
-    - jpeg
-    - libpng
-    - libtiff
-    - openjpeg
-    - zlib
 
 test:
   commands:
@@ -69,3 +75,4 @@ extra:
   recipe-maintainers:
     - pkgw
     - ocefpaf
+    - xhochy

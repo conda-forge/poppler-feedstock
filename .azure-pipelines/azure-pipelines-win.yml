@@ -8,10 +8,9 @@ jobs:
     vmImage: vs2017-win2016
   strategy:
     matrix:
-      win_:
-        CONFIG: win_
+      win_64_:
+        CONFIG: win_64_
         UPLOAD_PACKAGES: 'True'
-    maxParallel: 4
   timeoutInMinutes: 360
   variables:
     CONDA_BLD_PATH: D:\\bld\\
@@ -53,7 +52,7 @@ jobs:
 
     - task: CondaEnvironment@1
       inputs:
-        packageSpecs: 'python=3.6 conda-build conda conda-forge::conda-forge-ci-setup=3 pip' # Optional
+        packageSpecs: 'python=3.6 conda-build conda "conda-forge-ci-setup=3" pip' # Optional
         installOptions: "-c conda-forge"
         updateConda: true
       displayName: Install conda-build and activate environment
@@ -93,14 +92,16 @@ jobs:
         PYTHONUNBUFFERED: 1
       condition: not(contains(variables['CONFIG'], 'vs2008'))
     - script: |
+        set "FEEDSTOCK_NAME=%BUILD_REPOSITORY_NAME:*/=%"
         call activate base
-        validate_recipe_outputs "poppler-feedstock"
+        validate_recipe_outputs "%FEEDSTOCK_NAME%"
       displayName: Validate Recipe Outputs
 
     - script: |
         set "GIT_BRANCH=%BUILD_SOURCEBRANCHNAME%"
+        set "FEEDSTOCK_NAME=%BUILD_REPOSITORY_NAME:*/=%"
         call activate base
-        upload_package --validate --feedstock-name="poppler-feedstock" .\ ".\recipe" .ci_support\%CONFIG%.yaml
+        upload_package --validate --feedstock-name="%FEEDSTOCK_NAME%" .\ ".\recipe" .ci_support\%CONFIG%.yaml
       displayName: Upload package
       env:
         BINSTAR_TOKEN: $(BINSTAR_TOKEN)
