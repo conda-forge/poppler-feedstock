@@ -1,8 +1,18 @@
 diff --git a/utils/pdftocairo.cc b/utils/pdftocairo.cc
-index 1a0785d..f4b64cd 100644
+index 1a0785d..20397b3 100644
 --- a/utils/pdftocairo.cc
 +++ b/utils/pdftocairo.cc
-@@ -388,8 +388,10 @@ static void writePageImage(GooString *filename)
+@@ -50,6 +50,9 @@
+ #include <cmath>
+ #include <cstring>
+ #include <fcntl.h>
++#ifdef _WIN32
++#include <io.h>
++#endif
+ #include "parseargs.h"
+ #include "goo/gmem.h"
+ #include "goo/GooString.h"
+@@ -388,8 +391,10 @@ static void writePageImage(GooString *filename)
          return;
  
      if (filename->cmp("fd://0") == 0) {
