@@ -7,3 +7,5 @@ bot:
   abi_migration_branches:
     # required for texlive-core
     - "v0.65"
+    # Version used in c-f-pinning
+    - "0.89.x"
