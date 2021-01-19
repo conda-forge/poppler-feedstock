@@ -23,7 +23,7 @@ fontconfig:
 freetype:
 - '2'
 glib:
-- '2.58'
+- '2.66'
 jpeg:
 - '9'
 libcurl:
