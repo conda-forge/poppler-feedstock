@@ -18,6 +18,7 @@ source:
     - vs2015-no-for-loop-constexpr.win.patch  # [win]
     - strncasecmp_fix.patch  # [win]
     - windows-data.patch  # [win]
+    - windows-setmode.patch  # [win]
 
 build:
   number: 0 

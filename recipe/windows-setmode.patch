@@ -1,0 +1,16 @@
+diff --git a/utils/pdftocairo.cc b/utils/pdftocairo.cc
+index 1a0785d..f4b64cd 100644
+--- a/utils/pdftocairo.cc
++++ b/utils/pdftocairo.cc
+@@ -388,8 +388,10 @@ static void writePageImage(GooString *filename)
+         return;
+ 
+     if (filename->cmp("fd://0") == 0) {
+-#ifdef _WIN32
++#ifdef __CYGWIN__
+         setmode(fileno(stdout), O_BINARY);
++#elif _WIN32
++        _setmode(fileno(stdout), O_BINARY);
+ #endif
+         file = stdout;
+     } else
