@@ -1,0 +1,20 @@
+diff -Naur poppler-21.02.0_orig/goo/TiffWriter.cc poppler-21.02.0/goo/TiffWriter.cc
+--- poppler-21.02.0_orig/goo/TiffWriter.cc	2021-02-01 22:23:11.000000000 +0100
++++ poppler-21.02.0/goo/TiffWriter.cc	2021-02-03 15:20:15.820428600 +0100
+@@ -162,12 +162,12 @@
+         return false;
+     }
+ 
+-#    ifdef _WIN32
++//#    ifdef _WIN32
+     // Convert C Library handle to Win32 Handle
+-    priv->f = TIFFFdOpen(_get_osfhandle(fileno(openedFile)), "-", "w");
+-#    else
++//    priv->f = TIFFFdOpen(_get_osfhandle(fileno(openedFile)), "-", "w");
++//#    else
+     priv->f = TIFFFdOpen(fileno(openedFile), "-", "w");
+-#    endif
++//#    endif
+ 
+     if (!priv->f) {
+         return false;
