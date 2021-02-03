@@ -21,7 +21,7 @@ source:
     - windows-setmode.patch  # [win]
     # libtiff uses Unix I/O even on Windows
     # https://github.com/conda-forge/libtiff-feedstock/pull/51
-    - disable-libtiff-win32-io.patch # [win]
+    - disable-libtiff-win32-io.patch  # [win]
 
 build:
   number: 1
