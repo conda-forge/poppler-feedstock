@@ -27,7 +27,7 @@ fontconfig:
 freetype:
 - '2'
 glib:
-- '2.66'
+- '2'
 jpeg:
 - '9'
 libcurl:
@@ -37,7 +37,7 @@ libiconv:
 libpng:
 - '1.6'
 libtiff:
-- 4.1.0
+- '4'
 openjpeg:
 - '2.4'
 pin_run_as_build:
