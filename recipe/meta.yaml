@@ -1,4 +1,4 @@
-{% set version = "21.01.0" %}
+{% set version = "21.02.0" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://poppler.freedesktop.org/poppler-{{ version }}.tar.xz
-  sha256: 016dde34e5f868ea98a32ca99b643325a9682281500942b7113f4ec88d20e2f3 
+  sha256: 5c14759c99891e6e472aced6d5f0ff1dacf85d80cd9026d365c55c653edf792c 
   patches:
     - g-ir-scanner-libpath.patch
     - cmakelists.win.patch  # [win]
@@ -24,7 +24,7 @@ source:
     - disable-libtiff-win32-io.patch  # [win]
 
 build:
-  number: 1
+  number: 0
   detect_binary_files_with_prefix: true
 
 requirements:
