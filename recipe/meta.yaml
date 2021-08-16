@@ -47,6 +47,7 @@ requirements:
     - gettext     # [build_platform != target_platform]
     - glib        # [build_platform != target_platform]
     - jpeg        # [build_platform != target_platform]
+    - lcms2       # [build_platform != target_platform]
     - libcurl     # [build_platform != target_platform]
     - libiconv    # [build_platform != target_platform]
     - libpng      # [build_platform != target_platform]
@@ -62,6 +63,7 @@ requirements:
     - gettext
     - glib
     - jpeg
+    - lcms2
     - libcurl
     - libiconv
     - libpng
