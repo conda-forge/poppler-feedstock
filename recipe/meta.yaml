@@ -39,6 +39,7 @@ requirements:
     - {{ posix }}patch
     - perl 5
     - gobject-introspection 1.*  # [not win]
+    - boost-cpp {{ boost_cpp }}  # [build_platform != target_platform]
     - cairo       # [build_platform != target_platform]
     - curl        # [build_platform != target_platform]
     - fontconfig  # [build_platform != target_platform]
@@ -53,6 +54,7 @@ requirements:
     - openjpeg    # [build_platform != target_platform]
     - zlib        # [build_platform != target_platform]
   host:
+    - boost-cpp {{ boost_cpp }}
     - cairo
     - curl
     - fontconfig
@@ -67,6 +69,7 @@ requirements:
     - openjpeg
     - zlib
   run:
+    - {{ pin_compatible('boost-cpp') }}
     - poppler-data
 
 test:
