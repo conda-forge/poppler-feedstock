@@ -1,4 +1,4 @@
-{% set version = "21.03.0" %}
+{% set version = "21.08.0" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -8,14 +8,13 @@ package:
 
 source:
   url: https://poppler.freedesktop.org/poppler-{{ version }}.tar.xz
-  sha256: fd51ead4aac1d2f4684fa6e7b0ec06f0233ed21667e720a4e817e4455dd63d27 
+  sha256: e9cf5dc5964bce4bb0264d1c4f8122706c910588b421cfc30abc97d6b23e602d
   patches:
     - g-ir-scanner-libpath.patch
-    - cmakelists.win.patch  # [win]
+    - glib-mkenums-wrapped.win.patch  # [win]
     - exportsymbols.patch  # [win]
     # system headers must be included before jpeg on Windows
     - includesystembeforejpeg.patch  # [win]
-    - vs2015-no-for-loop-constexpr.win.patch  # [win]
     - strncasecmp_fix.patch  # [win]
     - windows-data.patch  # [win]
     - windows-setmode.patch  # [win]
@@ -39,6 +38,7 @@ requirements:
     - {{ posix }}patch
     - perl 5
     - gobject-introspection 1.*  # [not win]
+    - boost-cpp {{ boost_cpp }}  # [build_platform != target_platform]
     - cairo       # [build_platform != target_platform]
     - curl        # [build_platform != target_platform]
     - fontconfig  # [build_platform != target_platform]
@@ -46,6 +46,7 @@ requirements:
     - gettext     # [build_platform != target_platform]
     - glib        # [build_platform != target_platform]
     - jpeg        # [build_platform != target_platform]
+    - lcms2       # [build_platform != target_platform]
     - libcurl     # [build_platform != target_platform]
     - libiconv    # [build_platform != target_platform]
     - libpng      # [build_platform != target_platform]
@@ -53,6 +54,7 @@ requirements:
     - openjpeg    # [build_platform != target_platform]
     - zlib        # [build_platform != target_platform]
   host:
+    - boost-cpp {{ boost_cpp }}
     - cairo
     - curl
     - fontconfig
@@ -60,6 +62,7 @@ requirements:
     - gettext
     - glib
     - jpeg
+    - lcms2
     - libcurl
     - libiconv
     - libpng
@@ -67,6 +70,7 @@ requirements:
     - openjpeg
     - zlib
   run:
+    - {{ pin_compatible('boost-cpp') }}
     - poppler-data
 
 test:

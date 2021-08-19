@@ -1,5 +1,9 @@
 BUILD:
 - aarch64-conda_cos7-linux-gnu
+boost:
+- 1.74.0
+boost_cpp:
+- 1.74.0
 c_compiler:
 - gcc
 c_compiler_version:
@@ -41,6 +45,10 @@ libtiff:
 openjpeg:
 - '2.4'
 pin_run_as_build:
+  boost:
+    max_pin: x.x.x
+  boost-cpp:
+    max_pin: x.x.x
   cairo:
     max_pin: x.x
   curl:

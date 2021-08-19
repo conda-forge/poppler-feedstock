@@ -1,3 +1,7 @@
+boost:
+- 1.74.0
+boost_cpp:
+- 1.74.0
 c_compiler:
 - vs2017
 cairo:
@@ -29,6 +33,10 @@ libtiff:
 openjpeg:
 - '2.4'
 pin_run_as_build:
+  boost:
+    max_pin: x.x.x
+  boost-cpp:
+    max_pin: x.x.x
   cairo:
     max_pin: x.x
   curl:

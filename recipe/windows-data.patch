@@ -1,3 +1,33 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 36f6587..83470e9 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -292,21 +292,10 @@ if(ENABLE_SPLASH)
+   endif()
+ endif()
+ 
+-# Recent versions of poppler-data install a .pc file.
+-# Use it to determine the encoding data path, if available.
+-# Default to the same prefix otherwise.
+-pkg_check_modules(POPPLER_DATA poppler-data)
+-if(POPPLER_DATA_FOUND)
+-  execute_process(COMMAND "${PKG_CONFIG_EXECUTABLE}" --variable=poppler_datadir poppler-data
+-                  RESULT_VARIABLE _result_var
+-                  OUTPUT_VARIABLE _output_var OUTPUT_STRIP_TRAILING_WHITESPACE)
+-  if(_result_var STREQUAL "0" AND NOT _output_var STREQUAL "")
+-    set(POPPLER_DATADIR "${_output_var}")
+-  endif()
+-endif()
+-if(NOT DEFINED POPPLER_DATADIR)
+-  set(POPPLER_DATADIR "${CMAKE_INSTALL_PREFIX}/share/poppler")
+-endif()
++# poppler-data is a noarch package that installs in %PREFIX%
++# rather than %LIBRARY_PREFIX% so won't be found. Hardcode
++# location for now
++set(POPPLER_DATADIR "$ENV{PREFIX}/share/poppler")
+ 
+ if(EXTRA_WARN)
+   set(CMAKE_C_FLAGS "-Wall ${CMAKE_C_FLAGS}")
 diff --git a/poppler/GlobalParams.cc b/poppler/GlobalParams.cc
 index 5d1ef22..86e89bb 100644
 --- a/poppler/GlobalParams.cc
