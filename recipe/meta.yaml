@@ -11,7 +11,7 @@ source:
   sha256: e9cf5dc5964bce4bb0264d1c4f8122706c910588b421cfc30abc97d6b23e602d
   patches:
     - g-ir-scanner-libpath.patch
-    - cmakelists.win.patch  # [win]
+    - glib-mkenums-wrapped.win.patch  # [win]
     - exportsymbols.patch  # [win]
     # system headers must be included before jpeg on Windows
     - includesystembeforejpeg.patch  # [win]

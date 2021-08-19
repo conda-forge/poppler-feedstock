@@ -1,0 +1,28 @@
+diff --git a/glib/CMakeLists.txt b/glib/CMakeLists.txt
+index 75402cc..374ce69 100644
+--- a/glib/CMakeLists.txt
++++ b/glib/CMakeLists.txt
+@@ -43,9 +43,9 @@ find_program(GLIB2_MKENUMS glib-mkenums)
+ 
+ add_custom_command(
+   OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/poppler-enums.h
+-  COMMAND ${GLIB2_MKENUMS}
++  COMMAND $ENV{PREFIX}/python.exe
+   ARGS
+-    --template poppler-enums.h.template
++    ${GLIB2_MKENUMS} --template poppler-enums.h.template
+     ${poppler_glib_public_headers} > ${CMAKE_CURRENT_BINARY_DIR}/poppler-enums.h
+   WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+   DEPENDS ${poppler_glib_public_headers}
+@@ -54,9 +54,9 @@ add_custom_command(
+ 
+ add_custom_command(
+   OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/poppler-enums.c
+-  COMMAND ${GLIB2_MKENUMS}
++  COMMAND $ENV{PREFIX}/python.exe
+   ARGS
+-    --template poppler-enums.c.template
++    ${GLIB2_MKENUMS} --template poppler-enums.c.template
+     ${poppler_glib_public_headers} > ${CMAKE_CURRENT_BINARY_DIR}/poppler-enums.c
+   WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+   DEPENDS ${poppler_glib_public_headers} ${CMAKE_CURRENT_BINARY_DIR}/poppler-enums.h
