@@ -15,7 +15,6 @@ source:
     - exportsymbols.patch  # [win]
     # system headers must be included before jpeg on Windows
     - includesystembeforejpeg.patch  # [win]
-    - vs2015-no-for-loop-constexpr.win.patch  # [win]
     - strncasecmp_fix.patch  # [win]
     - windows-data.patch  # [win]
     - windows-setmode.patch  # [win]
