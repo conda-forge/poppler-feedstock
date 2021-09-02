@@ -14,7 +14,6 @@ source:
     - exportsymbols.patch  # [win]
     # system headers must be included before jpeg on Windows
     - windows-data.patch  # [win]
-    - windows-setmode.patch  # [win]
     # libtiff uses Unix I/O even on Windows
     # https://github.com/conda-forge/libtiff-feedstock/pull/51
     - disable-libtiff-win32-io.patch  # [win]
