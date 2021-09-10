@@ -2,7 +2,7 @@ diff --git a/CMakeLists.txt b/CMakeLists.txt
 index 36f6587..83470e9 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -292,21 +292,10 @@ if(ENABLE_SPLASH)
+@@ -347,21 +347,10 @@ if(ENABLE_SPLASH)
    endif()
  endif()
  
