@@ -1,9 +1,10 @@
 {% set version = "21.09.0" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
+{% set prefix = 'Library/' if win else '' %}
 
 package:
-  name: poppler
+  name: poppler-split
   version: {{ version }}
 
 source:
@@ -12,20 +13,28 @@ source:
   patches:
     - glib-mkenums-wrapped.win.patch  # [win]
     - exportsymbols.patch  # [win]
-    # system headers must be included before jpeg on Windows
     - windows-data.patch  # [win]
     # libtiff uses Unix I/O even on Windows
     # https://github.com/conda-forge/libtiff-feedstock/pull/51
     - disable-libtiff-win32-io.patch  # [win]
 
 build:
-  number: 1
+  number: 2
   detect_binary_files_with_prefix: true
 
 requirements:
   build:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
+    # Need these CDTs for Qt on Linux. Please keep them alphabetized!
+    - {{ cdt('libselinux-devel') }}     # [linux]
+    - {{ cdt('libxdamage') }}           # [linux]
+    - {{ cdt('libxfixes') }}            # [linux]
+    - {{ cdt('libxscrnsaver-devel') }}  # [linux]
+    - {{ cdt('libxtst-devel') }}        # [linux]
+    - {{ cdt('libxxf86vm') }}           # [linux]
+    - {{ cdt('mesa-libgl-devel') }}     # [linux]
+    - {{ cdt('mesa-libegl-devel') }}    # [linux]
     - m2-msys2-runtime  # [win]
     - {{ native }}pkg-config
     - cmake
@@ -64,16 +73,95 @@ requirements:
     - libpng
     - libtiff
     - openjpeg
+    - qt
     - zlib
-  run:
-    - {{ pin_compatible('boost-cpp') }}
-    - poppler-data
 
-test:
-  commands:
-    - pdfinfo -listenc
-    - pdfunite --help
-    - pdftocairo --help
+outputs:
+  - name: poppler
+    files:
+      - {{ prefix }}bin/pdfattach
+      - {{ prefix }}bin/pdfdetach
+      - {{ prefix }}bin/pdffonts
+      - {{ prefix }}bin/pdfimages
+      - {{ prefix }}bin/pdfinfo
+      - {{ prefix }}bin/pdfseparate
+      - {{ prefix }}bin/pdftocairo
+      - {{ prefix }}bin/pdftohtml
+      - {{ prefix }}bin/pdftoppm
+      - {{ prefix }}bin/pdftops
+      - {{ prefix }}bin/pdftotext
+      - {{ prefix }}bin/pdfunite
+      - {{ prefix }}include/poppler/*.h
+      - {{ prefix }}include/poppler/cpp
+      - {{ prefix }}include/poppler/fofi
+      - {{ prefix }}include/poppler/glib
+      - {{ prefix }}include/poppler/goo
+      - {{ prefix }}include/poppler/splash
+      - {{ prefix }}lib/girepository-1.0/Poppler-*.typelib
+      - {{ prefix }}lib/libpoppler.*
+      - {{ prefix }}lib/libpoppler-cpp.*
+      - {{ prefix }}lib/libpoppler-glib.*
+      - {{ prefix }}lib/pkgconfig/poppler.pc
+      - {{ prefix }}lib/pkgconfig/poppler-cpp.pc
+      - {{ prefix }}lib/pkgconfig/poppler-glib.pc
+      - {{ prefix }}share/gir-1.0/Poppler-*.gir
+      - {{ prefix }}share/man/man1/pdfattach.1
+      - {{ prefix }}share/man/man1/pdfdetach.1
+      - {{ prefix }}share/man/man1/pdffonts.1
+      - {{ prefix }}share/man/man1/pdfimages.1
+      - {{ prefix }}share/man/man1/pdfinfo.1
+      - {{ prefix }}share/man/man1/pdfseparate.1
+      - {{ prefix }}share/man/man1/pdftocairo.1
+      - {{ prefix }}share/man/man1/pdftohtml.1
+      - {{ prefix }}share/man/man1/pdftoppm.1
+      - {{ prefix }}share/man/man1/pdftops.1
+      - {{ prefix }}share/man/man1/pdftotext.1
+      - {{ prefix }}share/man/man1/pdfunite.1
+    requirements:
+      build:
+        - {{ compiler('c') }}
+        - {{ compiler('cxx') }}
+      host:
+        - boost-cpp {{ boost_cpp }}
+        - cairo
+        - curl
+        - fontconfig
+        - freetype
+        - gettext
+        - glib
+        - jpeg
+        - lcms2
+        - libcurl
+        - libiconv
+        - libpng
+        - libtiff
+        - openjpeg
+        - zlib
+      run:
+        - {{ pin_compatible('boost-cpp') }}
+        - poppler-data
+    test:
+      commands:
+        - pdfinfo -listenc
+        - pdfunite --help
+        - pdftocairo --help
+  - name: poppler-qt
+    files:
+      - {{ prefix }}include/poppler/qt5
+      - {{ prefix }}lib/libpoppler-qt5.*
+      - {{ prefix }}lib/pkgconfig/poppler-qt5.pc
+    requirements:
+      build:
+        - {{ compiler('c') }}
+        - {{ compiler('cxx') }}
+      host:
+        - qt
+        - {{ pin_subpackage('poppler', exact=True)}}
+      run:
+        - {{ pin_subpackage('poppler', exact=True)}}
+    test:
+      commands:
+        - 'true'
 
 about:
   home: https://poppler.freedesktop.org/
@@ -83,6 +171,7 @@ about:
   summary: The Poppler PDF manipulation library.
 
 extra:
+  feedstock-name: poppler
   recipe-maintainers:
     - pkgw
     - ocefpaf
