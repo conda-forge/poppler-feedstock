@@ -11,7 +11,7 @@ c_compiler_version:
 cairo:
 - '1.16'
 channel_sources:
-- conda-forge/label/rust_dev,conda-forge
+- conda-forge
 channel_targets:
 - conda-forge main
 curl:
@@ -65,8 +65,12 @@ pin_run_as_build:
     max_pin: x
   openjpeg:
     max_pin: x.x
+  qt:
+    max_pin: x.x
   zlib:
     max_pin: x.x
+qt:
+- '5.12'
 target_platform:
 - osx-arm64
 zip_keys:

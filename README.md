@@ -82,6 +82,7 @@ Current release info
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-poppler-green.svg)](https://anaconda.org/conda-forge/poppler) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/poppler.svg)](https://anaconda.org/conda-forge/poppler) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/poppler.svg)](https://anaconda.org/conda-forge/poppler) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/poppler.svg)](https://anaconda.org/conda-forge/poppler) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-poppler--qt-green.svg)](https://anaconda.org/conda-forge/poppler-qt) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/poppler-qt.svg)](https://anaconda.org/conda-forge/poppler-qt) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/poppler-qt.svg)](https://anaconda.org/conda-forge/poppler-qt) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/poppler-qt.svg)](https://anaconda.org/conda-forge/poppler-qt) |
 
 Installing poppler
 ==================
@@ -93,10 +94,10 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `poppler` can be installed with:
+Once the `conda-forge` channel has been enabled, `poppler, poppler-qt` can be installed with:
 
 ```
-conda install poppler
+conda install poppler poppler-qt
 ```
 
 It is possible to list all of the versions of `poppler` available on your platform with:
