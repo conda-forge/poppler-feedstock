@@ -58,6 +58,7 @@ requirements:
     - libtiff     # [build_platform != target_platform]
     - openjpeg    # [build_platform != target_platform]
     - zlib        # [build_platform != target_platform]
+    - nss         # [not win and build_platform != target_platform]
   host:
     - boost-cpp {{ boost_cpp }}
     - cairo
@@ -73,50 +74,33 @@ requirements:
     - libpng
     - libtiff
     - openjpeg
-    - qt
+    - qt  # [not (ppc64le or arm64)]
     - zlib
+    - nss  # [not win]
 
 outputs:
   - name: poppler
     files:
-      - {{ prefix }}bin/pdfattach
-      - {{ prefix }}bin/pdfdetach
-      - {{ prefix }}bin/pdffonts
-      - {{ prefix }}bin/pdfimages
-      - {{ prefix }}bin/pdfinfo
-      - {{ prefix }}bin/pdfseparate
-      - {{ prefix }}bin/pdftocairo
-      - {{ prefix }}bin/pdftohtml
-      - {{ prefix }}bin/pdftoppm
-      - {{ prefix }}bin/pdftops
-      - {{ prefix }}bin/pdftotext
-      - {{ prefix }}bin/pdfunite
+      - {{ prefix }}bin/pdf*
+      - {{ prefix }}bin/poppler*  # [win]
       - {{ prefix }}include/poppler/*.h
       - {{ prefix }}include/poppler/cpp
       - {{ prefix }}include/poppler/fofi
       - {{ prefix }}include/poppler/glib
       - {{ prefix }}include/poppler/goo
       - {{ prefix }}include/poppler/splash
-      - {{ prefix }}lib/girepository-1.0/Poppler-*.typelib
-      - {{ prefix }}lib/libpoppler.*
-      - {{ prefix }}lib/libpoppler-cpp.*
-      - {{ prefix }}lib/libpoppler-glib.*
+      - {{ prefix }}lib/girepository-1.0/Poppler-*.typelib  # [not win]
+      - {{ prefix }}lib/libpoppler.*  # [not win]
+      - {{ prefix }}lib/libpoppler-cpp.*  # [not win]
+      - {{ prefix }}lib/libpoppler-glib.*  # [not win]
+      - {{ prefix }}lib/poppler.lib  # [win]
+      - {{ prefix }}lib/poppler-cpp.lib  # [win]
+      - {{ prefix }}lib/poppler-glib.lib  # [win]      
       - {{ prefix }}lib/pkgconfig/poppler.pc
       - {{ prefix }}lib/pkgconfig/poppler-cpp.pc
       - {{ prefix }}lib/pkgconfig/poppler-glib.pc
-      - {{ prefix }}share/gir-1.0/Poppler-*.gir
-      - {{ prefix }}share/man/man1/pdfattach.1
-      - {{ prefix }}share/man/man1/pdfdetach.1
-      - {{ prefix }}share/man/man1/pdffonts.1
-      - {{ prefix }}share/man/man1/pdfimages.1
-      - {{ prefix }}share/man/man1/pdfinfo.1
-      - {{ prefix }}share/man/man1/pdfseparate.1
-      - {{ prefix }}share/man/man1/pdftocairo.1
-      - {{ prefix }}share/man/man1/pdftohtml.1
-      - {{ prefix }}share/man/man1/pdftoppm.1
-      - {{ prefix }}share/man/man1/pdftops.1
-      - {{ prefix }}share/man/man1/pdftotext.1
-      - {{ prefix }}share/man/man1/pdfunite.1
+      - {{ prefix }}share/gir-1.0/Poppler-*.gir  # [not win]
+      - {{ prefix }}share/man/man1/pdf*
     requirements:
       build:
         - {{ compiler('c') }}
@@ -137,6 +121,7 @@ outputs:
         - libtiff
         - openjpeg
         - zlib
+        - nss  # [not win]
       run:
         - {{ pin_compatible('boost-cpp') }}
         - poppler-data
@@ -146,9 +131,12 @@ outputs:
         - pdfunite --help
         - pdftocairo --help
   - name: poppler-qt
+    build:
+      skip: true  # [ppc64le or arm64]
     files:
       - {{ prefix }}include/poppler/qt5
-      - {{ prefix }}lib/libpoppler-qt5.*
+      - {{ prefix }}lib/libpoppler-qt5.*  # [not win]
+      - {{ prefix }}lib/poppler-qt5.*  # [win]      
       - {{ prefix }}lib/pkgconfig/poppler-qt5.pc
     requirements:
       build:
@@ -156,12 +144,13 @@ outputs:
         - {{ compiler('cxx') }}
       host:
         - qt
-        - {{ pin_subpackage('poppler', exact=True)}}
+        - {{ pin_subpackage('poppler', exact=True) }}
       run:
-        - {{ pin_subpackage('poppler', exact=True)}}
+        - {{ pin_subpackage('poppler', exact=True) }}
     test:
       commands:
-        - 'true'
+        - test -f ${PREFIX}/lib/pkgconfig/poppler-qt5.pc  # [not win]
+        - if not exist %LIBRARY_BIN%\\poppler.dll exit 1  # [win]
 
 about:
   home: https://poppler.freedesktop.org/

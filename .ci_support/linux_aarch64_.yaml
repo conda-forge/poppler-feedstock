@@ -42,6 +42,8 @@ libpng:
 - '1.6'
 libtiff:
 - '4'
+nss:
+- '3'
 openjpeg:
 - '2.4'
 pin_run_as_build:
@@ -66,6 +68,8 @@ pin_run_as_build:
   libpng:
     max_pin: x.x
   libtiff:
+    max_pin: x
+  nss:
     max_pin: x
   openjpeg:
     max_pin: x.x
