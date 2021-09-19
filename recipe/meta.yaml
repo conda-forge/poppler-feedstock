@@ -80,31 +80,45 @@ requirements:
 
 outputs:
   - name: poppler
-    files:
-      - {{ prefix }}bin/pdf*
-      - {{ prefix }}bin/poppler*  # [win]
-      - {{ prefix }}include/poppler/*.h
-      - {{ prefix }}include/poppler/cpp
-      - {{ prefix }}include/poppler/fofi
-      - {{ prefix }}include/poppler/glib
-      - {{ prefix }}include/poppler/goo
-      - {{ prefix }}include/poppler/splash
-      - {{ prefix }}lib/girepository-1.0/Poppler-*.typelib  # [not win]
-      - {{ prefix }}lib/libpoppler.*  # [not win]
-      - {{ prefix }}lib/libpoppler-cpp.*  # [not win]
-      - {{ prefix }}lib/libpoppler-glib.*  # [not win]
-      - {{ prefix }}lib/poppler.lib  # [win]
-      - {{ prefix }}lib/poppler-cpp.lib  # [win]
-      - {{ prefix }}lib/poppler-glib.lib  # [win]      
-      - {{ prefix }}lib/pkgconfig/poppler.pc
-      - {{ prefix }}lib/pkgconfig/poppler-cpp.pc
-      - {{ prefix }}lib/pkgconfig/poppler-glib.pc
-      - {{ prefix }}share/gir-1.0/Poppler-*.gir  # [not win]
-      - {{ prefix }}share/man/man1/pdf*
+    script: install.sh  # [unix]
+    script: install.bat  # [not unix]
     requirements:
       build:
         - {{ compiler('c') }}
         - {{ compiler('cxx') }}
+        # Need these CDTs for Qt on Linux. Please keep them alphabetized!
+        - {{ cdt('libselinux-devel') }}     # [linux]
+        - {{ cdt('libxdamage') }}           # [linux]
+        - {{ cdt('libxfixes') }}            # [linux]
+        - {{ cdt('libxscrnsaver-devel') }}  # [linux]
+        - {{ cdt('libxtst-devel') }}        # [linux]
+        - {{ cdt('libxxf86vm') }}           # [linux]
+        - {{ cdt('mesa-libgl-devel') }}     # [linux]
+        - {{ cdt('mesa-libegl-devel') }}    # [linux]
+        - m2-msys2-runtime  # [win]
+        - {{ native }}pkg-config
+        - cmake
+        - make
+        - ninja
+        - {{ posix }}patch
+        - perl 5
+        - gobject-introspection 1.*  # [not win]
+        - boost-cpp {{ boost_cpp }}  # [build_platform != target_platform]
+        - cairo       # [build_platform != target_platform]
+        - curl        # [build_platform != target_platform]
+        - fontconfig  # [build_platform != target_platform]
+        - freetype    # [build_platform != target_platform]
+        - gettext     # [build_platform != target_platform]
+        - glib        # [build_platform != target_platform]
+        - jpeg        # [build_platform != target_platform]
+        - lcms2       # [build_platform != target_platform]
+        - libcurl     # [build_platform != target_platform]
+        - libiconv    # [build_platform != target_platform]
+        - libpng      # [build_platform != target_platform]
+        - libtiff     # [build_platform != target_platform]
+        - openjpeg    # [build_platform != target_platform]
+        - zlib        # [build_platform != target_platform]
+        - nss         # [not win and build_platform != target_platform]
       host:
         - boost-cpp {{ boost_cpp }}
         - cairo
@@ -133,15 +147,45 @@ outputs:
   - name: poppler-qt
     build:
       skip: true  # [ppc64le or arm64]
-    files:
-      - {{ prefix }}include/poppler/qt5
-      - {{ prefix }}lib/libpoppler-qt5.*  # [not win]
-      - {{ prefix }}lib/poppler-qt5.*  # [win]      
-      - {{ prefix }}lib/pkgconfig/poppler-qt5.pc
+    script: install.sh  # [unix]
+    script: install.bat  # [not unix]
     requirements:
       build:
         - {{ compiler('c') }}
         - {{ compiler('cxx') }}
+        # Need these CDTs for Qt on Linux. Please keep them alphabetized!
+        - {{ cdt('libselinux-devel') }}     # [linux]
+        - {{ cdt('libxdamage') }}           # [linux]
+        - {{ cdt('libxfixes') }}            # [linux]
+        - {{ cdt('libxscrnsaver-devel') }}  # [linux]
+        - {{ cdt('libxtst-devel') }}        # [linux]
+        - {{ cdt('libxxf86vm') }}           # [linux]
+        - {{ cdt('mesa-libgl-devel') }}     # [linux]
+        - {{ cdt('mesa-libegl-devel') }}    # [linux]
+        - m2-msys2-runtime  # [win]
+        - {{ native }}pkg-config
+        - cmake
+        - make
+        - ninja
+        - {{ posix }}patch
+        - perl 5
+        - gobject-introspection 1.*  # [not win]
+        - boost-cpp {{ boost_cpp }}  # [build_platform != target_platform]
+        - cairo       # [build_platform != target_platform]
+        - curl        # [build_platform != target_platform]
+        - fontconfig  # [build_platform != target_platform]
+        - freetype    # [build_platform != target_platform]
+        - gettext     # [build_platform != target_platform]
+        - glib        # [build_platform != target_platform]
+        - jpeg        # [build_platform != target_platform]
+        - lcms2       # [build_platform != target_platform]
+        - libcurl     # [build_platform != target_platform]
+        - libiconv    # [build_platform != target_platform]
+        - libpng      # [build_platform != target_platform]
+        - libtiff     # [build_platform != target_platform]
+        - openjpeg    # [build_platform != target_platform]
+        - zlib        # [build_platform != target_platform]
+        - nss         # [not win and build_platform != target_platform]
       host:
         - qt
         - {{ pin_subpackage('poppler', exact=True) }}

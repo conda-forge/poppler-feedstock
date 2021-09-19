@@ -15,6 +15,3 @@ cmake -G "Ninja" ^
       -D ENABLE_LIBOPENJPEG=openjpeg2 ^
        %SRC_DIR%
 if errorlevel 1 exit 1	   
-
-cmake --build . --config Release --target install
-if errorlevel 1 exit 1
