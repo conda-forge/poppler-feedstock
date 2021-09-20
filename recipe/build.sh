@@ -41,6 +41,7 @@ if [ "${CONDA_BUILD_CROSS_COMPILATION}" = "1" ]; then
         # by glib are the same for the native and cross builds
         export GI_CROSS_LAUNCHER=$BUILD_PREFIX/libexec/gi-cross-launcher-save.sh
         ninja -j$CPU_COUNT -v
+        ninja install
         popd
     )
     export GI_CROSS_LAUNCHER=$BUILD_PREFIX/libexec/gi-cross-launcher-load.sh
@@ -58,3 +59,8 @@ cmake ${CMAKE_ARGS} ${EXTRA_CMAKE_ARGS} \
 
 ninja
 # ctest  # no tests were found :-/
+ninja install
+
+pushd ${PREFIX}
+  rm -rf lib/libpoppler*.la lib/libpoppler*.a share/gtk-doc
+popd
