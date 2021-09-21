@@ -56,9 +56,10 @@ requirements:
     - libiconv    # [build_platform != target_platform]
     - libpng      # [build_platform != target_platform]
     - libtiff     # [build_platform != target_platform]
-    - openjpeg    # [build_platform != target_platform]
-    - zlib        # [build_platform != target_platform]
     - nss         # [not win and build_platform != target_platform]
+    - openjpeg    # [build_platform != target_platform]
+    - qt          # [build_platform != target_platform]
+    - zlib        # [build_platform != target_platform]
   host:
     - boost-cpp {{ boost_cpp }}
     - cairo
@@ -73,10 +74,10 @@ requirements:
     - libiconv
     - libpng
     - libtiff
+    - nss  # [not win]
     - openjpeg
     - qt  # [not (ppc64le or arm64)]
     - zlib
-    - nss  # [not win]
 
 outputs:
   - name: poppler
@@ -116,9 +117,9 @@ outputs:
         - libiconv    # [build_platform != target_platform]
         - libpng      # [build_platform != target_platform]
         - libtiff     # [build_platform != target_platform]
+        - nss         # [not win and build_platform != target_platform]
         - openjpeg    # [build_platform != target_platform]
         - zlib        # [build_platform != target_platform]
-        - nss         # [not win and build_platform != target_platform]
       host:
         - boost-cpp {{ boost_cpp }}
         - cairo
@@ -133,9 +134,9 @@ outputs:
         - libiconv
         - libpng
         - libtiff
+        - nss  # [not win]
         - openjpeg
         - zlib
-        - nss  # [not win]
       run:
         - {{ pin_compatible('boost-cpp') }}
         - poppler-data
@@ -183,9 +184,10 @@ outputs:
         - libiconv    # [build_platform != target_platform]
         - libpng      # [build_platform != target_platform]
         - libtiff     # [build_platform != target_platform]
-        - openjpeg    # [build_platform != target_platform]
-        - zlib        # [build_platform != target_platform]
         - nss         # [not win and build_platform != target_platform]
+        - openjpeg    # [build_platform != target_platform]
+        - qt          # [build_platform != target_platform]
+        - zlib        # [build_platform != target_platform]
       host:
         - qt
         - {{ pin_subpackage('poppler', exact=True) }}

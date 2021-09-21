@@ -46,14 +46,15 @@ export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:$BUILD_PREFIX/lib/pkgconfig"
 cd build
 ninja install
 
-rm -rf ${PREFIX}/lib/libpoppler*.la lib/libpoppler*.a share/gtk-doc
+rm -rf ${PREFIX}/lib/libpoppler*.la ${PREFIX}/lib/libpoppler*.a ${PREFIX}/share/gtk-doc
 
 if [[ "$PKG_NAME" == poppler ]]
 then
+    rm -rf ${PREFIX}/include/poppler/qt5
     rm -rf ${PREFIX}/lib/libpoppler-qt5.*
     rm -rf ${PREFIX}/lib/pkgconfig/poppler-qt5.pc
-    rm -rf ${PREFIX}lib/libpoppler*.la lib/libpoppler*.a share/gtk-doc
 fi
+
 if [[ "$PKG_NAME" == poppler-qt ]]
 then
     rm -f ${PREFIX}/bin/pdf*
