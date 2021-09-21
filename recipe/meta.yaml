@@ -189,6 +189,7 @@ outputs:
         - qt          # [build_platform != target_platform]
         - zlib        # [build_platform != target_platform]
       host:
+        - glib
         - qt
         - {{ pin_subpackage('poppler', exact=True) }}
       run:
