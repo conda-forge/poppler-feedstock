@@ -58,7 +58,6 @@ requirements:
     - libtiff     # [build_platform != target_platform]
     - nss         # [not win and build_platform != target_platform]
     - openjpeg    # [build_platform != target_platform]
-    - qt          # [build_platform != target_platform]
     - zlib        # [build_platform != target_platform]
   host:
     - boost-cpp {{ boost_cpp }}
@@ -186,7 +185,6 @@ outputs:
         - libtiff     # [build_platform != target_platform]
         - nss         # [not win and build_platform != target_platform]
         - openjpeg    # [build_platform != target_platform]
-        - qt          # [build_platform != target_platform]
         - zlib        # [build_platform != target_platform]
       host:
         - glib
