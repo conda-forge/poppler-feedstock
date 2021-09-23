@@ -144,6 +144,7 @@ outputs:
         - pdfinfo -listenc
         - pdfunite --help
         - pdftocairo --help
+
   - name: poppler-qt
     build:
       skip: true  # [ppc64le or arm64]
@@ -187,8 +188,23 @@ outputs:
         - openjpeg    # [build_platform != target_platform]
         - zlib        # [build_platform != target_platform]
       host:
+        - boost-cpp {{ boost_cpp }}
+        - cairo
+        - curl
+        - fontconfig
+        - freetype
+        - gettext
         - glib
+        - jpeg
+        - lcms2
+        - libcurl
+        - libiconv
+        - libpng
+        - libtiff
+        - nss  # [not win]
+        - openjpeg
         - qt
+        - zlib
         - {{ pin_subpackage('poppler', exact=True) }}
       run:
         - {{ pin_subpackage('poppler', exact=True) }}
