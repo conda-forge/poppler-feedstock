@@ -17,7 +17,6 @@ fi
 if [ "${CONDA_BUILD_CROSS_COMPILATION}" = "1" ]; then
     unset _CONDA_PYTHON_SYSCONFIGDATA_NAME
     (
-        mkdir -p native-build
         pushd native-build
 
         export CC=$CC_FOR_BUILD
@@ -32,29 +31,46 @@ if [ "${CONDA_BUILD_CROSS_COMPILATION}" = "1" ]; then
         unset CPPFLAGS
         unset CXXFLAGS
 
-	cmake ${EXTRA_CMAKE_ARGS} \
-	    -DCMAKE_PREFIX_PATH=$BUILD_PREFIX \
-	    -DCMAKE_INSTALL_PREFIX=$BUILD_PREFIX \
-	    $SRC_DIR
         # This script would generate the functions.txt and dump.xml and save them
         # This is loaded in the native build. We assume that the functions exported
         # by glib are the same for the native and cross builds
         export GI_CROSS_LAUNCHER=$BUILD_PREFIX/libexec/gi-cross-launcher-save.sh
-        ninja -j$CPU_COUNT -v
+        ninja install
         popd
     )
     export GI_CROSS_LAUNCHER=$BUILD_PREFIX/libexec/gi-cross-launcher-load.sh
 fi
 
-mkdir build && cd build
-
 export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:$BUILD_PREFIX/lib/pkgconfig"
 
-cmake ${CMAKE_ARGS} ${EXTRA_CMAKE_ARGS} \
-    -GNinja \
-    -DCMAKE_PREFIX_PATH=$PREFIX \
-    -DCMAKE_INSTALL_PREFIX=$PREFIX \
-    $SRC_DIR
+cd build
+ninja install
 
-ninja
-# ctest  # no tests were found :-/
+rm -rf ${PREFIX}/lib/libpoppler*.la ${PREFIX}/lib/libpoppler*.a ${PREFIX}/share/gtk-doc
+
+if [[ "$PKG_NAME" == poppler ]]
+then
+    rm -rf ${PREFIX}/include/poppler/qt5
+    rm -rf ${PREFIX}/lib/libpoppler-qt5.*
+    rm -rf ${PREFIX}/lib/pkgconfig/poppler-qt5.pc
+fi
+
+if [[ "$PKG_NAME" == poppler-qt ]]
+then
+    rm -f ${PREFIX}/bin/pdf*
+    rm -f ${PREFIX}/include/poppler/*.h
+    rm -rf ${PREFIX}/include/poppler/cpp
+    rm -rf ${PREFIX}/include/poppler/fofi
+    rm -rf ${PREFIX}/include/poppler/glib
+    rm -rf ${PREFIX}/include/poppler/goo
+    rm -rf ${PREFIX}/include/poppler/splash
+    rm -f ${PREFIX}/lib/girepository-1.0/Poppler-*.typelib
+    rm -f ${PREFIX}/lib/libpoppler.*
+    rm -f ${PREFIX}/lib/libpoppler-cpp.*
+    rm -f ${PREFIX}/lib/libpoppler-glib.*
+    rm -f ${PREFIX}/lib/pkgconfig/poppler.pc
+    rm -f ${PREFIX}/lib/pkgconfig/poppler-cpp.pc
+    rm -f ${PREFIX}/lib/pkgconfig/poppler-glib.pc
+    rm -f ${PREFIX}/share/gir-1.0/Poppler-*.gir
+    rm -f ${PREFIX}/share/man/man1/pdf*
+fi

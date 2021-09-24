@@ -42,6 +42,8 @@ libpng:
 - '1.6'
 libtiff:
 - '4'
+nss:
+- '3'
 openjpeg:
 - '2.4'
 pin_run_as_build:
@@ -67,10 +69,16 @@ pin_run_as_build:
     max_pin: x.x
   libtiff:
     max_pin: x
+  nss:
+    max_pin: x
   openjpeg:
+    max_pin: x.x
+  qt:
     max_pin: x.x
   zlib:
     max_pin: x.x
+qt:
+- '5.12'
 target_platform:
 - linux-aarch64
 zip_keys:
