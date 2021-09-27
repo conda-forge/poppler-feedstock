@@ -19,7 +19,7 @@ source:
     - disable-libtiff-win32-io.patch  # [win]
 
 build:
-  number: 2
+  number: 3
   detect_binary_files_with_prefix: true
 
 requirements:
