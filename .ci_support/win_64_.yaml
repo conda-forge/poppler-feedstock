@@ -7,7 +7,7 @@ c_compiler:
 cairo:
 - '1.16'
 channel_sources:
-- conda-forge,defaults
+- conda-forge
 channel_targets:
 - conda-forge main
 curl:
