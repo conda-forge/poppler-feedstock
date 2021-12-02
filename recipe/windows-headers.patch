@@ -33,3 +33,16 @@ index 5c50f12..e017315 100644
  namespace ImageEmbeddingUtils {
  
  static const uint8_t PNG_MAGIC_NUM[] = { 0x89, 0x50, 0x4e, 0x47 };
+diff --git a/glib/poppler-document.cc b/glib/poppler-document.cc
+index 6d954dc..cd3e404 100644
+--- a/glib/poppler-document.cc
++++ b/glib/poppler-document.cc
+@@ -27,6 +27,8 @@
+ #include "config.h"
+ #include <cstring>
+ 
++#include <glib.h>
++
+ #ifndef G_OS_WIN32
+ #    include <fcntl.h>
+ #    include <sys/stat.h>
