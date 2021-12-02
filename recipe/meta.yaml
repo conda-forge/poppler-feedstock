@@ -17,6 +17,7 @@ source:
     # libtiff uses Unix I/O even on Windows
     # https://github.com/conda-forge/libtiff-feedstock/pull/51
     - disable-libtiff-win32-io.patch  # [win]
+    - windows-headers.patch  # [win]
 
 build:
   number: 0

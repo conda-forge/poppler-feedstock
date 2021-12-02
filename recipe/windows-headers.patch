@@ -1,0 +1,35 @@
+diff --git a/poppler/ImageEmbeddingUtils.cc b/poppler/ImageEmbeddingUtils.cc
+index 5c50f12..e017315 100644
+--- a/poppler/ImageEmbeddingUtils.cc
++++ b/poppler/ImageEmbeddingUtils.cc
+@@ -12,14 +12,6 @@
+ #include <config.h>
+ 
+ #include <memory>
+-#ifdef ENABLE_LIBJPEG
+-extern "C" {
+-#    include <jpeglib.h>
+-}
+-#endif
+-#ifdef ENABLE_LIBPNG
+-#    include <png.h>
+-#endif
+ 
+ #include "ImageEmbeddingUtils.h"
+ #include "goo/gmem.h"
+@@ -29,6 +21,15 @@ extern "C" {
+ #include "Error.h"
+ #include "PDFDoc.h"
+ 
++#ifdef ENABLE_LIBJPEG
++extern "C" {
++#    include <jpeglib.h>
++}
++#endif
++#ifdef ENABLE_LIBPNG
++#    include <png.h>
++#endif
++
+ namespace ImageEmbeddingUtils {
+ 
+ static const uint8_t PNG_MAGIC_NUM[] = { 0x89, 0x50, 0x4e, 0x47 };
