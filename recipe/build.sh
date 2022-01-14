@@ -12,6 +12,9 @@ if [ -n "$OSX_ARCH" ] ; then
     # libraries to shared libraries: poppler".
     export LDFLAGS="$(echo $LDFLAGS |sed -e "s/-Wl,-dead_strip_dylibs//g")"
     export LDFLAGS_LD="$(echo $LDFLAGS_LD |sed -e "s/-dead_strip_dylibs//g")"
+
+    # See: https://conda-forge.org/docs/maintainer/knowledge_base.html#newer-c-features-with-old-sdk
+    export CXXFLAGS="${CXXFLAGS} -D_LIBCPP_DISABLE_AVAILABILITY"
 fi
 
 if [ "${CONDA_BUILD_CROSS_COMPILATION}" = "1" ]; then
