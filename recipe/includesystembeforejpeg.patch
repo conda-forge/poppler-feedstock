@@ -1,0 +1,22 @@
+diff --git a/poppler/ImageEmbeddingUtils.cc b/poppler/ImageEmbeddingUtils.cc
+index 723c7dc..834e7c8 100644
+--- a/poppler/ImageEmbeddingUtils.cc
++++ b/poppler/ImageEmbeddingUtils.cc
+@@ -12,6 +12,9 @@
+ 
+ #include <config.h>
+ 
++// conda-forge patch: have to include system headers before JPEG to avoid INT32 redefinitions
++#include "Error.h"
++
+ #include <memory>
+ #ifdef ENABLE_LIBJPEG
+ extern "C" {
+@@ -28,7 +31,6 @@ extern "C" {
+ #include "goo/GooCheckedOps.h"
+ #include "Object.h"
+ #include "Array.h"
+-#include "Error.h"
+ #include "PDFDoc.h"
+ 
+ namespace ImageEmbeddingUtils {
