@@ -1,9 +1,9 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 36f6587..83470e9 100644
+index 275aef1..b39dd58 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -347,21 +347,10 @@ if(ENABLE_SPLASH)
-   endif()
+@@ -345,21 +345,10 @@ if(LCMS2_FOUND)
+   include_directories(SYSTEM ${LCMS2_INCLUDE_DIR})
  endif()
  
 -# Recent versions of poppler-data install a .pc file.
@@ -29,10 +29,10 @@ index 36f6587..83470e9 100644
  if(EXTRA_WARN)
    set(CMAKE_C_FLAGS "-Wall ${CMAKE_C_FLAGS}")
 diff --git a/poppler/GlobalParams.cc b/poppler/GlobalParams.cc
-index 5d1ef22..86e89bb 100644
+index 70c05e7..1a40fa4 100644
 --- a/poppler/GlobalParams.cc
 +++ b/poppler/GlobalParams.cc
-@@ -140,6 +140,10 @@ static const char *get_poppler_datadir(void)
+@@ -138,6 +138,10 @@ static void get_poppler_localdir(char *retval, const char *suffix)
          if (stricmp((const char *)(p + 1), "bin") == 0)
              *p = '\0';
      }
@@ -40,6 +40,6 @@ index 5d1ef22..86e89bb 100644
 +    if (p) {
 +        *p = '\0';
 +    }
-     strcat(retval, "\\share\\poppler");
+     strcat(retval, suffix);
+ }
  
-     beenhere = 1;

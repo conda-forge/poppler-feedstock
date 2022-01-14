@@ -1,8 +1,8 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 36f6587..83470e9 100644
+index 645560d..275aef1 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -493,7 +482,10 @@ endif()
+@@ -586,7 +586,10 @@ ADD_GPERF_FILE(ZapfDingbatsWidths)
  
  if(MSVC)
  add_definitions(-D_CRT_SECURE_NO_WARNINGS)
@@ -14,7 +14,6 @@ index 36f6587..83470e9 100644
  else()
  add_library(poppler ${poppler_SRCS})
  endif()
-
 diff --git a/cpp/CMakeLists.txt b/cpp/CMakeLists.txt
 index c37936b..c0a80ea 100644
 --- a/cpp/CMakeLists.txt
@@ -34,14 +33,13 @@ index c37936b..c0a80ea 100644
  add_library(poppler-cpp ${poppler_cpp_SRCS})
  generate_export_header(poppler-cpp BASE_NAME poppler-cpp EXPORT_FILE_NAME "${CMAKE_CURRENT_BINARY_DIR}/poppler_cpp_export.h")
  set_target_properties(poppler-cpp PROPERTIES VERSION 0.9.0 SOVERSION 0)
-
 diff --git a/poppler/GlobalParams.h b/poppler/GlobalParams.h
-index 980dc87..1b90301 100644
+index 6a19d68..a63971e 100644
 --- a/poppler/GlobalParams.h
 +++ b/poppler/GlobalParams.h
 @@ -65,7 +65,14 @@ class SysFontList;
  //------------------------------------------------------------------------
-
+ 
  // The global parameters object.
 -extern std::unique_ptr<GlobalParams> POPPLER_PRIVATE_EXPORT globalParams;
 +#ifdef _COMPILING_POPPLER
@@ -52,22 +50,23 @@ index 980dc87..1b90301 100644
 +extern __declspec(dllimport) std::unique_ptr<GlobalParams> globalParams;
 +#endif
 +
-
+ 
  //------------------------------------------------------------------------
-
+ 
 diff --git a/poppler/PDFDocEncoding.h b/poppler/PDFDocEncoding.h
 index 01f3815..278a910 100644
 --- a/poppler/PDFDocEncoding.h
 +++ b/poppler/PDFDocEncoding.h
 @@ -32,7 +32,11 @@
-
+ 
  class GooString;
-
+ 
 -extern const Unicode POPPLER_PRIVATE_EXPORT pdfDocEncoding[256];
 +#ifdef _COMPILING_POPPLER
 +extern __declspec(dllexport) const Unicode pdfDocEncoding[256];
 +#else
 +extern __declspec(dllimport) const Unicode pdfDocEncoding[256];
 +#endif
-
+ 
  char POPPLER_PRIVATE_EXPORT *pdfDocEncodingToUTF16(const std::string &orig, int *length);
+ 
