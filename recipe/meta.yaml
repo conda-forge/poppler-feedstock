@@ -1,4 +1,4 @@
-{% set version = "21.11.0" %}
+{% set version = "22.01.0" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 {% set prefix = 'Library/' if win else '' %}
@@ -9,7 +9,7 @@ package:
 
 source:
   url: https://poppler.freedesktop.org/poppler-{{ version }}.tar.xz
-  sha256: 31b76b5cac0a48612fdd154c02d9eca01fd38fb8eaa77c1196840ecdeb53a584
+  sha256: 7d3493056b5b86413e5c693c2cae02c5c06cd8e618d14c2c31e2c84b67b2313e
   patches:
     - glib-mkenums-wrapped.win.patch  # [win]
     - exportsymbols.patch  # [win]
@@ -17,6 +17,7 @@ source:
     # libtiff uses Unix I/O even on Windows
     # https://github.com/conda-forge/libtiff-feedstock/pull/51
     - disable-libtiff-win32-io.patch  # [win]
+    - includesystembeforejpeg.patch  # [win]
 
 build:
   number: 0

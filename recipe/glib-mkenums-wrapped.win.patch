@@ -1,8 +1,8 @@
 diff --git a/glib/CMakeLists.txt b/glib/CMakeLists.txt
-index 75402cc..374ce69 100644
+index 45b275c..95e1b33 100644
 --- a/glib/CMakeLists.txt
 +++ b/glib/CMakeLists.txt
-@@ -43,9 +43,9 @@ find_program(GLIB2_MKENUMS glib-mkenums)
+@@ -42,9 +42,9 @@ find_program(GLIB2_MKENUMS glib-mkenums)
  
  add_custom_command(
    OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/poppler-enums.h
@@ -14,7 +14,7 @@ index 75402cc..374ce69 100644
      ${poppler_glib_public_headers} > ${CMAKE_CURRENT_BINARY_DIR}/poppler-enums.h
    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
    DEPENDS ${poppler_glib_public_headers}
-@@ -54,9 +54,9 @@ add_custom_command(
+@@ -53,9 +53,9 @@ add_custom_command(
  
  add_custom_command(
    OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/poppler-enums.c
