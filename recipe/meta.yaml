@@ -76,7 +76,8 @@ requirements:
     - libtiff
     - nss  # [not win]
     - openjpeg
-    - qt-main  # [not (ppc64le or arm64)]
+    - qt-main  # [not (ppc64le or arm64 or aarch64)]
+    - qt  # [aarch64]
     - zlib
 
 outputs:
