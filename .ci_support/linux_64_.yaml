@@ -5,7 +5,7 @@ boost_cpp:
 c_compiler:
 - gcc
 c_compiler_version:
-- '9'
+- '10'
 cairo:
 - '1.16'
 cdt_name:
@@ -19,7 +19,7 @@ curl:
 cxx_compiler:
 - gxx
 cxx_compiler_version:
-- '9'
+- '10'
 docker_image:
 - quay.io/condaforge/linux-anvil-cos7-x86_64
 fontconfig:

@@ -20,7 +20,7 @@ source:
     - includesystembeforejpeg.patch  # [win]
 
 build:
-  number: 0
+  number: 1
   detect_binary_files_with_prefix: true
 
 requirements:
@@ -227,3 +227,4 @@ extra:
     - pkgw
     - ocefpaf
     - xhochy
+    - xylar
