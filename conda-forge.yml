@@ -6,6 +6,9 @@ test_on_native_only: true
 bot:
   abi_migration_branches:
     # required for texlive-core
-    - "v0.65"
+  - v0.65
     # Version used in c-f-pinning
-    - "0.89.x"
+  - 0.89.x
+github:
+  branch_name: main
+  tooling_branch_name: main
