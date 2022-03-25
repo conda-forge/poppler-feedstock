@@ -1,0 +1,90 @@
+diff --git a/goo/GooString.h b/goo/GooString.h
+index aa68635c..01a2a7c3 100644
+--- a/goo/GooString.h
++++ b/goo/GooString.h
+@@ -49,7 +49,25 @@
+ #    define GOOSTRING_FORMAT
+ #endif
+ 
+-class POPPLER_PRIVATE_EXPORT GooString : private std::string
++
++// VC++ implicitly applies __declspec(dllexport) to template base classes
++// of classes marked with __declspec(dllexport).
++// Hence, if marked with POPPLER_PRIVATE_EXPORT, VC++ would export symbols for the specialization
++// of std::basic_string<char>, since it is a base class of GooString.
++// As a result, if an application linked both poppler and a static library that
++// (implicitly) instantiates std::string (almost all do!), then the linker would
++// emit an error concerning duplicate symbols for std::string.
++// The least intrusive solution is to not mark the whole class with
++// __declspec(dllexport) for VC++, but only its non-inline methods.
++#ifdef _MSC_VER
++#define POPPLER_PRIVATE_EXPORT_CLASS
++#define POPPLER_PRIVATE_EXPORT_METHOD POPPLER_PRIVATE_EXPORT
++#else
++#define POPPLER_PRIVATE_EXPORT_CLASS POPPLER_PRIVATE_EXPORT
++#define POPPLER_PRIVATE_EXPORT_METHOD
++#endif
++
++class POPPLER_PRIVATE_EXPORT_CLASS GooString : private std::string
+ {
+ public:
+     // Create an empty string.
+@@ -138,8 +156,8 @@ public:
+     //     t -- GooString *
+     //     w -- blank space; arg determines width
+     // To get literal curly braces, use {{ or }}.
+-    static GooString *format(const char *fmt, ...) GOOSTRING_FORMAT;
+-    static GooString *formatv(const char *fmt, va_list argList);
++    POPPLER_PRIVATE_EXPORT_METHOD static GooString *format(const char *fmt, ...) GOOSTRING_FORMAT;
++    POPPLER_PRIVATE_EXPORT_METHOD static GooString *formatv(const char *fmt, va_list argList);
+ 
+     // Get length.
+     int getLength() const { return size(); }
+@@ -188,8 +206,8 @@ public:
+     }
+ 
+     // Append a formatted string.
+-    GooString *appendf(const char *fmt, ...) GOOSTRING_FORMAT;
+-    GooString *appendfv(const char *fmt, va_list argList);
++    POPPLER_PRIVATE_EXPORT_METHOD GooString *appendf(const char *fmt, ...) GOOSTRING_FORMAT;
++    POPPLER_PRIVATE_EXPORT_METHOD GooString *appendfv(const char *fmt, va_list argList);
+ 
+     // Insert a character or string.
+     GooString *insert(int i, char c)
+@@ -221,7 +239,7 @@ public:
+     }
+ 
+     // Convert string to all-lower case.
+-    GooString *lowerCase();
++    POPPLER_PRIVATE_EXPORT_METHOD GooString *lowerCase();
+ 
+     // Compare two strings:  -1:<  0:=  +1:>
+     int cmp(const GooString *str) const { return compare(*str); }
+@@ -231,9 +249,9 @@ public:
+     int cmpN(const char *sA, int n) const { return compare(0, n, sA); }
+ 
+     // Return true if strings starts with prefix
+-    bool startsWith(const char *prefix) const;
++    POPPLER_PRIVATE_EXPORT_METHOD bool startsWith(const char *prefix) const;
+     // Return true if string ends with suffix
+-    bool endsWith(const char *suffix) const;
++    POPPLER_PRIVATE_EXPORT_METHOD bool endsWith(const char *suffix) const;
+ 
+     bool hasUnicodeMarker() const { return hasUnicodeMarker(*this); }
+     static bool hasUnicodeMarker(const std::string &s) { return s.size() >= 2 && s[0] == '\xfe' && s[1] == '\xff'; }
+@@ -241,13 +259,13 @@ public:
+     static bool hasUnicodeMarkerLE(const std::string &s) { return s.size() >= 2 && s[0] == '\xff' && s[1] == '\xfe'; }
+     bool hasJustUnicodeMarker() const { return size() == 2 && hasUnicodeMarker(); }
+ 
+-    void prependUnicodeMarker();
++    POPPLER_PRIVATE_EXPORT_METHOD void prependUnicodeMarker();
+ 
+     // Sanitizes the string so that it does
+     // not contain any ( ) < > [ ] { } / %
+     // The postscript mode also has some more strict checks
+     // The caller owns the return value
+-    GooString *sanitizedName(bool psmode) const;
++    POPPLER_PRIVATE_EXPORT_METHOD GooString *sanitizedName(bool psmode) const;
+ };
+ 
+ #endif
