@@ -18,9 +18,12 @@ source:
     # https://github.com/conda-forge/libtiff-feedstock/pull/51
     - disable-libtiff-win32-io.patch  # [win]
     - includesystembeforejpeg.patch  # [win]
+    # Poppler GooString.h extends std::string and exports the class, which
+    # cause duplicated symbols and build errors in downstream projects like GDAL
+    - goostring_22_01.patch  # [win]
 
 build:
-  number: 1
+  number: 2
   detect_binary_files_with_prefix: true
 
 requirements:
