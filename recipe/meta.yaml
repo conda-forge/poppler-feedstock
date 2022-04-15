@@ -1,4 +1,4 @@
-{% set version = "22.01.0" %}
+{% set version = "22.04.0" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 {% set prefix = 'Library/' if win else '' %}
@@ -9,7 +9,7 @@ package:
 
 source:
   url: https://poppler.freedesktop.org/poppler-{{ version }}.tar.xz
-  sha256: 7d3493056b5b86413e5c693c2cae02c5c06cd8e618d14c2c31e2c84b67b2313e
+  sha256: 813fb4b90e7bda63df53205c548602bae728887a60f4048aae4dbd9b1927deff
   patches:
     - glib-mkenums-wrapped.win.patch  # [win]
     - exportsymbols.patch  # [win]
@@ -23,7 +23,7 @@ source:
     - goostring_22_01.patch  # [win]
 
 build:
-  number: 2
+  number: 0
   detect_binary_files_with_prefix: true
 
 requirements:
