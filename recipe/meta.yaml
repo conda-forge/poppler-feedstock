@@ -11,16 +11,12 @@ source:
   url: https://poppler.freedesktop.org/poppler-{{ version }}.tar.xz
   sha256: 813fb4b90e7bda63df53205c548602bae728887a60f4048aae4dbd9b1927deff
   patches:
-    - glib-mkenums-wrapped.win.patch  # [win]
     - exportsymbols.patch  # [win]
     - windows-data.patch  # [win]
     # libtiff uses Unix I/O even on Windows
     # https://github.com/conda-forge/libtiff-feedstock/pull/51
     - disable-libtiff-win32-io.patch  # [win]
     - includesystembeforejpeg.patch  # [win]
-    # Poppler GooString.h extends std::string and exports the class, which
-    # cause duplicated symbols and build errors in downstream projects like GDAL
-    - goostring_22_01.patch  # [win]
 
 build:
   number: 0
