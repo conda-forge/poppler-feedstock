@@ -38,9 +38,9 @@ index 4ed4a87..b492671 100644
      }
 +
 +    // conda-forge: conda's package layout requires a custom tweak:
-+    const std::string::size_type p = retval.rfind('\\');
-+    if (p != std::string::npos) {
-+        retval.erase(p);
++    const std::string::size_type p2 = retval.rfind('\\');
++    if (p2 != std::string::npos) {
++        retval.erase(p2);
 +    }
 +
      retval += suffix;
