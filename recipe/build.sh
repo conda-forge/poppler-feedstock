@@ -35,10 +35,10 @@ if [ "${CONDA_BUILD_CROSS_COMPILATION}" = "1" ]; then
         unset CPPFLAGS
         unset CXXFLAGS
 
-	cmake ${EXTRA_CMAKE_ARGS} \
-	    -DCMAKE_PREFIX_PATH=$BUILD_PREFIX \
-	    -DCMAKE_INSTALL_PREFIX=$BUILD_PREFIX \
-	    $SRC_DIR
+        cmake ${EXTRA_CMAKE_ARGS} \
+            -DCMAKE_PREFIX_PATH=$BUILD_PREFIX \
+            -DCMAKE_INSTALL_PREFIX=$BUILD_PREFIX \
+            $SRC_DIR
         # This script would generate the functions.txt and dump.xml and save them
         # This is loaded in the native build. We assume that the functions exported
         # by glib are the same for the native and cross builds
@@ -46,7 +46,11 @@ if [ "${CONDA_BUILD_CROSS_COMPILATION}" = "1" ]; then
         ninja -j$CPU_COUNT -v
         popd
     )
+
     export GI_CROSS_LAUNCHER=$BUILD_PREFIX/libexec/gi-cross-launcher-load.sh
+
+    # Make sure to get build-platform tools:
+    export EXTRA_CMAKE_ARGS="$EXTRA_CMAKE_ARGS -DGLIB2_MKENUMS=$BUILD_PREFIX/bin/glib-mkenums -DGLIB2_MKENUMS_PYTHON=$BUILD_PREFIX/bin/python"
 fi
 
 mkdir build && cd build

@@ -29,17 +29,20 @@ index 275aef1..b39dd58 100644
  if(EXTRA_WARN)
    set(CMAKE_C_FLAGS "-Wall ${CMAKE_C_FLAGS}")
 diff --git a/poppler/GlobalParams.cc b/poppler/GlobalParams.cc
-index 70c05e7..1a40fa4 100644
+index 4ed4a87..b492671 100644
 --- a/poppler/GlobalParams.cc
 +++ b/poppler/GlobalParams.cc
-@@ -138,6 +138,10 @@ static void get_poppler_localdir(char *retval, const char *suffix)
-         if (stricmp((const char *)(p + 1), "bin") == 0)
-             *p = '\0';
+@@ -139,6 +139,13 @@ static std::string get_poppler_localdir(const std::string &suffix)
+             retval.erase(p - binSuffix.size());
+         }
      }
-+    p = _mbsrchr((unsigned char *)retval, '\\');
-+    if (p) {
-+        *p = '\0';
++
++    // conda-forge: conda's package layout requires a custom tweak:
++    const std::string::size_type p2 = retval.rfind('\\');
++    if (p2 != std::string::npos) {
++        retval.erase(p2);
 +    }
-     strcat(retval, suffix);
- }
- 
++
+     retval += suffix;
+     retval.shrink_to_fit();
+     return retval;

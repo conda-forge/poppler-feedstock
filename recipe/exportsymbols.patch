@@ -1,19 +1,22 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 645560d..275aef1 100644
+index 187a7d1..2a13959 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -586,7 +586,10 @@ ADD_GPERF_FILE(ZapfDingbatsWidths)
+@@ -573,8 +573,13 @@ ADD_GPERF_FILE(ZapfDingbatsWidths)
  
  if(MSVC)
  add_definitions(-D_CRT_SECURE_NO_WARNINGS)
--add_library(poppler STATIC ${poppler_SRCS})
+-endif()
 +add_library(poppler SHARED ${poppler_SRCS})
 +# so we can determine if to import/export symbols
 +target_compile_definitions(poppler PRIVATE _COMPILING_POPPLER=1)
 +set_target_properties(poppler PROPERTIES WINDOWS_EXPORT_ALL_SYMBOLS true)
- else()
++else()
  add_library(poppler ${poppler_SRCS})
- endif()
++endif()
+ generate_export_header(poppler BASE_NAME poppler-private EXPORT_FILE_NAME "${CMAKE_CURRENT_BINARY_DIR}/poppler_private_export.h")
+ set_target_properties(poppler PROPERTIES VERSION 120.0.0 SOVERSION 120)
+ if(MINGW AND BUILD_SHARED_LIBS)
 diff --git a/cpp/CMakeLists.txt b/cpp/CMakeLists.txt
 index c37936b..c0a80ea 100644
 --- a/cpp/CMakeLists.txt
