@@ -77,7 +77,6 @@ requirements:
     - nss  # [not win]
     - openjpeg
     - qt-main  # [not ppc64le]
-    - qt  # [ppc64le]
     - zlib
 
 outputs:
@@ -206,7 +205,6 @@ outputs:
         - nss  # [not win]
         - openjpeg
         - qt-main  # [not ppc64le]
-        - qt  # [ppc64le]
         - zlib
         - {{ pin_subpackage('poppler', exact=True) }}
       run:
