@@ -7,7 +7,7 @@ boost_cpp:
 c_compiler:
 - clang
 c_compiler_version:
-- '12'
+- '13'
 cairo:
 - '1.16'
 channel_sources:
@@ -19,7 +19,7 @@ curl:
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
-- '12'
+- '13'
 fontconfig:
 - '2.13'
 freetype:
@@ -69,12 +69,8 @@ pin_run_as_build:
     max_pin: x
   openjpeg:
     max_pin: x.x
-  qt:
-    max_pin: x.x
   zlib:
     max_pin: x.x
-qt:
-- '5.12'
 target_platform:
 - osx-64
 zip_keys:
