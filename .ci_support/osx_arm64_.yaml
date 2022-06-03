@@ -7,7 +7,7 @@ boost_cpp:
 c_compiler:
 - clang
 c_compiler_version:
-- '12'
+- '13'
 cairo:
 - '1.16'
 channel_sources:
@@ -19,7 +19,7 @@ curl:
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
-- '12'
+- '13'
 fontconfig:
 - '2.13'
 freetype:

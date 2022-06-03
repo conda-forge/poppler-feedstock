@@ -69,12 +69,10 @@ pin_run_as_build:
     max_pin: x
   openjpeg:
     max_pin: x.x
-  qt:
-    max_pin: x.x
   zlib:
     max_pin: x.x
-qt:
-- '5.12'
+qt_main:
+- '5.15'
 target_platform:
 - linux-64
 zip_keys:
