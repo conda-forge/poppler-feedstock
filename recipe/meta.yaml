@@ -19,7 +19,7 @@ source:
     - includesystembeforejpeg.patch  # [win]
 
 build:
-  number: 0
+  number: 1
   detect_binary_files_with_prefix: true
 
 requirements:
@@ -75,7 +75,7 @@ requirements:
     - libtiff
     - nss  # [not win]
     - openjpeg
-    - qt  # [not (ppc64le or arm64)]
+    - qt-main  # [not (ppc64le or arm64)]
     - zlib
 
 outputs:
@@ -203,7 +203,7 @@ outputs:
         - libtiff
         - nss  # [not win]
         - openjpeg
-        - qt
+        - qt-main
         - zlib
         - {{ pin_subpackage('poppler', exact=True) }}
       run:
