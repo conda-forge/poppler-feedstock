@@ -1,14 +1,15 @@
+bot:
+  abi_migration_branches:
+  - v0.65
+  - 0.89.x
 build_platform:
   osx_arm64: osx_64
 conda_forge_output_validation: true
-provider: {linux_aarch64: azure, linux_ppc64le: azure, win: azure}
-test_on_native_only: true
-bot:
-  abi_migration_branches:
-    # required for texlive-core
-  - v0.65
-    # Version used in c-f-pinning
-  - 0.89.x
 github:
   branch_name: main
   tooling_branch_name: main
+provider:
+  linux_aarch64: azure
+  linux_ppc64le: azure
+  win: azure
+test_on_native_only: true
