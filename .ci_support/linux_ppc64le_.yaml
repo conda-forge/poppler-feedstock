@@ -1,13 +1,13 @@
 c_compiler:
 - gcc
 c_compiler_version:
-- '9'
+- '10'
 cairo:
 - '1.16'
 cdt_name:
 - cos7
 channel_sources:
-- conda-forge,defaults
+- conda-forge
 channel_targets:
 - conda-forge main
 curl:
@@ -15,15 +15,15 @@ curl:
 cxx_compiler:
 - gxx
 cxx_compiler_version:
-- '9'
+- '10'
 docker_image:
-- quay.io/condaforge/linux-anvil-ppc64le
+- quay.io/condaforge/linux-anvil-cos7-x86_64
 fontconfig:
 - '2.13'
 freetype:
 - '2'
 glib:
-- '2.66'
+- '2'
 jpeg:
 - '9'
 libcurl:
@@ -33,7 +33,7 @@ libiconv:
 libpng:
 - '1.6'
 libtiff:
-- 4.1.0
+- '4'
 openjpeg:
 - '2.4'
 pin_run_as_build:
