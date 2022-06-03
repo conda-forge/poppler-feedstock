@@ -3,7 +3,7 @@ c_compiler:
 cairo:
 - '1.16'
 channel_sources:
-- conda-forge,defaults
+- conda-forge
 channel_targets:
 - conda-forge main
 curl:
@@ -15,7 +15,7 @@ fontconfig:
 freetype:
 - '2'
 glib:
-- '2.66'
+- '2'
 jpeg:
 - '9'
 libcurl:

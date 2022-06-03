@@ -3,7 +3,7 @@ BUILD:
 c_compiler:
 - gcc
 c_compiler_version:
-- '9'
+- '10'
 cairo:
 - '1.16'
 cdt_arch:
@@ -19,15 +19,15 @@ curl:
 cxx_compiler:
 - gxx
 cxx_compiler_version:
-- '9'
+- '10'
 docker_image:
-- quay.io/condaforge/linux-anvil-aarch64
+- quay.io/condaforge/linux-anvil-cos7-x86_64
 fontconfig:
 - '2.13'
 freetype:
 - '2'
 glib:
-- '2.66'
+- '2'
 jpeg:
 - '9'
 libcurl:
