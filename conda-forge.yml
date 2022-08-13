@@ -1,7 +1,3 @@
-bot:
-  abi_migration_branches:
-  - v0.65
-  - 0.89.x
 build_platform:
   osx_arm64: osx_64
 conda_forge_output_validation: true
