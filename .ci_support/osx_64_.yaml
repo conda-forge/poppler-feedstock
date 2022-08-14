@@ -41,7 +41,7 @@ macos_machine:
 nss:
 - '3'
 openjpeg:
-- '2.4'
+- '2.5'
 pin_run_as_build:
   boost:
     max_pin: x.x.x
