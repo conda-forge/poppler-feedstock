@@ -1,13 +1,13 @@
 MACOSX_DEPLOYMENT_TARGET:
 - '10.9'
 boost:
-- 1.74.0
+- 1.78.0
 boost_cpp:
-- 1.74.0
+- 1.78.0
 c_compiler:
 - clang
 c_compiler_version:
-- '13'
+- '14'
 cairo:
 - '1.16'
 channel_sources:
@@ -19,7 +19,7 @@ curl:
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
-- '13'
+- '14'
 fontconfig:
 - '2.13'
 freetype:

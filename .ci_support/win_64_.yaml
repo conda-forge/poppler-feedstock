@@ -1,9 +1,9 @@
 boost:
-- 1.74.0
+- 1.78.0
 boost_cpp:
-- 1.74.0
+- 1.78.0
 c_compiler:
-- vs2017
+- vs2019
 cairo:
 - '1.16'
 channel_sources:
@@ -13,7 +13,7 @@ channel_targets:
 curl:
 - '7'
 cxx_compiler:
-- vs2017
+- vs2019
 fontconfig:
 - '2.13'
 freetype:
