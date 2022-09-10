@@ -1,9 +1,9 @@
 BUILD:
 - aarch64-conda_cos7-linux-gnu
 boost:
-- 1.74.0
+- 1.78.0
 boost_cpp:
-- 1.74.0
+- 1.78.0
 c_compiler:
 - gcc
 c_compiler_version:
