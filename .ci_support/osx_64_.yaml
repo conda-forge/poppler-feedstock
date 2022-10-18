@@ -9,7 +9,7 @@ c_compiler:
 c_compiler_version:
 - '14'
 cairo:
-- '1.16'
+- '1'
 channel_sources:
 - conda-forge
 channel_targets:
@@ -21,7 +21,7 @@ cxx_compiler:
 cxx_compiler_version:
 - '14'
 fontconfig:
-- '2.13'
+- '2'
 freetype:
 - '2'
 glib:
@@ -31,7 +31,7 @@ jpeg:
 libcurl:
 - '7'
 libiconv:
-- '1.16'
+- '1'
 libpng:
 - '1.6'
 libtiff:
@@ -41,36 +41,12 @@ macos_machine:
 nss:
 - '3'
 openjpeg:
-- '2.5'
+- '2'
 pin_run_as_build:
   boost:
     max_pin: x.x.x
   boost-cpp:
     max_pin: x.x.x
-  cairo:
-    max_pin: x.x
-  curl:
-    max_pin: x
-  fontconfig:
-    max_pin: x
-  freetype:
-    max_pin: x
-  jpeg:
-    max_pin: x
-  libcurl:
-    max_pin: x
-  libiconv:
-    max_pin: x.x
-  libpng:
-    max_pin: x.x
-  libtiff:
-    max_pin: x
-  nss:
-    max_pin: x
-  openjpeg:
-    max_pin: x.x
-  zlib:
-    max_pin: x.x
 qt_main:
 - '5.15'
 target_platform:
