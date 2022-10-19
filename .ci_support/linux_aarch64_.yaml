@@ -9,7 +9,7 @@ c_compiler:
 c_compiler_version:
 - '10'
 cairo:
-- '1.16'
+- '1'
 cdt_arch:
 - aarch64
 cdt_name:
@@ -27,7 +27,7 @@ cxx_compiler_version:
 docker_image:
 - quay.io/condaforge/linux-anvil-aarch64
 fontconfig:
-- '2.13'
+- '2'
 freetype:
 - '2'
 glib:
@@ -37,7 +37,7 @@ jpeg:
 libcurl:
 - '7'
 libiconv:
-- '1.16'
+- '1'
 libpng:
 - '1.6'
 libtiff:
@@ -45,36 +45,12 @@ libtiff:
 nss:
 - '3'
 openjpeg:
-- '2.5'
+- '2'
 pin_run_as_build:
   boost:
     max_pin: x.x.x
   boost-cpp:
     max_pin: x.x.x
-  cairo:
-    max_pin: x.x
-  curl:
-    max_pin: x
-  fontconfig:
-    max_pin: x
-  freetype:
-    max_pin: x
-  jpeg:
-    max_pin: x
-  libcurl:
-    max_pin: x
-  libiconv:
-    max_pin: x.x
-  libpng:
-    max_pin: x.x
-  libtiff:
-    max_pin: x
-  nss:
-    max_pin: x
-  openjpeg:
-    max_pin: x.x
-  zlib:
-    max_pin: x.x
 qt_main:
 - '5.15'
 target_platform:

@@ -5,7 +5,7 @@ boost_cpp:
 c_compiler:
 - vs2019
 cairo:
-- '1.16'
+- '1'
 channel_sources:
 - conda-forge
 channel_targets:
@@ -15,7 +15,7 @@ curl:
 cxx_compiler:
 - vs2019
 fontconfig:
-- '2.13'
+- '2'
 freetype:
 - '2'
 glib:
@@ -25,40 +25,18 @@ jpeg:
 libcurl:
 - '7'
 libiconv:
-- '1.16'
+- '1'
 libpng:
 - '1.6'
 libtiff:
 - '4'
 openjpeg:
-- '2.5'
+- '2'
 pin_run_as_build:
   boost:
     max_pin: x.x.x
   boost-cpp:
     max_pin: x.x.x
-  cairo:
-    max_pin: x.x
-  curl:
-    max_pin: x
-  fontconfig:
-    max_pin: x
-  freetype:
-    max_pin: x
-  jpeg:
-    max_pin: x
-  libcurl:
-    max_pin: x
-  libiconv:
-    max_pin: x.x
-  libpng:
-    max_pin: x.x
-  libtiff:
-    max_pin: x
-  openjpeg:
-    max_pin: x.x
-  zlib:
-    max_pin: x.x
 qt_main:
 - '5.15'
 target_platform:
