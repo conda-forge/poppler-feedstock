@@ -1,5 +1,7 @@
 build_platform:
   osx_arm64: osx_64
+conda_build:
+  pkg_format: '2'
 conda_forge_output_validation: true
 github:
   branch_name: main
@@ -9,5 +11,3 @@ provider:
   linux_ppc64le: azure
   win: azure
 test_on_native_only: true
-conda_build:
-  pkg_format: '2'
