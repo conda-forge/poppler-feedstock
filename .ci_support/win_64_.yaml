@@ -29,7 +29,7 @@ libiconv:
 libpng:
 - '1.6'
 libtiff:
-- '4'
+- '4.5'
 openjpeg:
 - '2'
 pin_run_as_build:
