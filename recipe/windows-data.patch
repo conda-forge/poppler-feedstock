@@ -1,9 +1,9 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 275aef1..b39dd58 100644
+index b9b8102..10a3462 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -345,21 +345,10 @@ if(LCMS2_FOUND)
-   include_directories(SYSTEM ${LCMS2_INCLUDE_DIR})
+@@ -358,21 +358,10 @@ if(TIFF_FOUND)
+   set(ENABLE_LIBTIFF ON)
  endif()
  
 -# Recent versions of poppler-data install a .pc file.
@@ -29,10 +29,10 @@ index 275aef1..b39dd58 100644
  if(EXTRA_WARN)
    set(CMAKE_C_FLAGS "-Wall ${CMAKE_C_FLAGS}")
 diff --git a/poppler/GlobalParams.cc b/poppler/GlobalParams.cc
-index 4ed4a87..b492671 100644
+index a1fd897..9d20ba3 100644
 --- a/poppler/GlobalParams.cc
 +++ b/poppler/GlobalParams.cc
-@@ -139,6 +139,13 @@ static std::string get_poppler_localdir(const std::string &suffix)
+@@ -142,6 +142,13 @@ static std::string get_poppler_localdir(const std::string &suffix)
              retval.erase(p - binSuffix.size());
          }
      }
