@@ -19,7 +19,7 @@ source:
     - includesystembeforejpeg.patch  # [win]
 
 build:
-  number: 0
+  number: 1
   detect_binary_files_with_prefix: true
 
 requirements:
@@ -50,7 +50,7 @@ requirements:
     - freetype    # [build_platform != target_platform]
     - gettext     # [build_platform != target_platform]
     - glib        # [build_platform != target_platform]
-    - jpeg        # [build_platform != target_platform]
+    - libjpeg-turbo         # [build_platform != target_platform]
     - lcms2       # [build_platform != target_platform]
     - libcurl     # [build_platform != target_platform]
     - libiconv    # [build_platform != target_platform]
@@ -67,7 +67,7 @@ requirements:
     - freetype
     - gettext
     - glib
-    - jpeg
+    - libjpeg-turbo
     - lcms2
     - libcurl
     - libiconv
@@ -110,7 +110,7 @@ outputs:
         - freetype    # [build_platform != target_platform]
         - gettext     # [build_platform != target_platform]
         - glib        # [build_platform != target_platform]
-        - jpeg        # [build_platform != target_platform]
+        - libjpeg-turbo         # [build_platform != target_platform]
         - lcms2       # [build_platform != target_platform]
         - libcurl     # [build_platform != target_platform]
         - libiconv    # [build_platform != target_platform]
@@ -127,7 +127,7 @@ outputs:
         - freetype
         - gettext
         - glib
-        - jpeg
+        - libjpeg-turbo
         - lcms2
         - libcurl
         - libiconv
@@ -178,7 +178,7 @@ outputs:
         - freetype    # [build_platform != target_platform]
         - gettext     # [build_platform != target_platform]
         - glib        # [build_platform != target_platform]
-        - jpeg        # [build_platform != target_platform]
+        - libjpeg-turbo         # [build_platform != target_platform]
         - lcms2       # [build_platform != target_platform]
         - libcurl     # [build_platform != target_platform]
         - libiconv    # [build_platform != target_platform]
@@ -195,7 +195,7 @@ outputs:
         - freetype
         - gettext
         - glib
-        - jpeg
+        - libjpeg-turbo
         - lcms2
         - libcurl
         - libiconv
