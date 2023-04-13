@@ -19,7 +19,7 @@ channel_sources:
 channel_targets:
 - conda-forge main
 curl:
-- '7'
+- '8'
 cxx_compiler:
 - gxx
 cxx_compiler_version:
@@ -33,7 +33,7 @@ freetype:
 glib:
 - '2'
 libcurl:
-- '7'
+- '8'
 libiconv:
 - '1'
 libjpeg_turbo:
