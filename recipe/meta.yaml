@@ -1,4 +1,4 @@
-{% set version = "23.04.0" %}
+{% set version = "23.05.0" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 {% set prefix = 'Library/' if win else '' %}
@@ -9,7 +9,7 @@ package:
 
 source:
   url: https://poppler.freedesktop.org/poppler-{{ version }}.tar.xz
-  sha256: b6d893dc7dcd4138b9e9df59a13c59695e50e80dc5c2cacee0674670693951a1
+  sha256: 38294de7149ebe458191a6e6d0e2837da7dba8683900a635252f6d0ee235f990
   patches:
     - exportsymbols.patch  # [win]
     - windows-data.patch  # [win]
