@@ -5,7 +5,7 @@ boost_cpp:
 c_compiler:
 - gcc
 c_compiler_version:
-- '11'
+- '12'
 cairo:
 - '1'
 cdt_name:
@@ -15,11 +15,11 @@ channel_sources:
 channel_targets:
 - conda-forge main
 curl:
-- '7'
+- '8'
 cxx_compiler:
 - gxx
 cxx_compiler_version:
-- '11'
+- '12'
 docker_image:
 - quay.io/condaforge/linux-anvil-ppc64le
 fontconfig:
@@ -29,7 +29,7 @@ freetype:
 glib:
 - '2'
 libcurl:
-- '7'
+- '8'
 libiconv:
 - '1'
 libjpeg_turbo:
