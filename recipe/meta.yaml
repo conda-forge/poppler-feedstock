@@ -19,7 +19,7 @@ source:
     - includesystembeforejpeg.patch  # [win]
 
 build:
-  number: 1
+  number: 0
   detect_binary_files_with_prefix: true
 
 requirements:
