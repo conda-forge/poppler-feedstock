@@ -1,18 +1,18 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 4768ac8..b9b8102 100644
+index f0887a8..a4098ea 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -598,8 +598,13 @@ ADD_GPERF_FILE(ZapfDingbatsWidths)
+@@ -625,8 +625,13 @@ configure_file(
  
  if(MSVC)
  add_definitions(-D_CRT_SECURE_NO_WARNINGS)
 -endif()
-+add_library(poppler SHARED ${poppler_SRCS})
++add_library(poppler SHARED ${poppler_SRCS} ${LINKER_SCRIPT})
 +# so we can determine if to import/export symbols
 +target_compile_definitions(poppler PRIVATE _COMPILING_POPPLER=1)
 +set_target_properties(poppler PROPERTIES WINDOWS_EXPORT_ALL_SYMBOLS true)
 +else()
- add_library(poppler ${poppler_SRCS})
+ add_library(poppler ${poppler_SRCS} ${LINKER_SCRIPT})
 +endif()
  if (OpenJPEG_FOUND)
    # check if we can remove this when we depend on newer openjpeg versions, 2.5 seems fixed
@@ -37,7 +37,7 @@ index 4885145..c410304 100644
  generate_export_header(poppler-cpp BASE_NAME poppler-cpp EXPORT_FILE_NAME "${CMAKE_CURRENT_BINARY_DIR}/poppler_cpp_export.h")
  set_target_properties(poppler-cpp PROPERTIES VERSION 0.11.0 SOVERSION 0)
 diff --git a/poppler/GlobalParams.h b/poppler/GlobalParams.h
-index 6a19d68..a63971e 100644
+index 7cdd371..6f012d0 100644
 --- a/poppler/GlobalParams.h
 +++ b/poppler/GlobalParams.h
 @@ -65,7 +65,14 @@ class SysFontList;
