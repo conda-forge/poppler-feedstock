@@ -35,7 +35,7 @@ libjpeg_turbo:
 libpng:
 - '1.6'
 libtiff:
-- '4.5'
+- '4.6'
 macos_machine:
 - x86_64-apple-darwin13.4.0
 nss:
