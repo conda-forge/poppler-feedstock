@@ -28,8 +28,6 @@ freetype:
 - '2'
 glib:
 - '2'
-libboost_devel:
-- '1.82'
 libcurl:
 - '8'
 libiconv:
@@ -40,6 +38,8 @@ libpng:
 - '1.6'
 libtiff:
 - '4.6'
+nspr:
+- '4'
 nss:
 - '3'
 openjpeg:

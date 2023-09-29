@@ -22,8 +22,6 @@ freetype:
 - '2'
 glib:
 - '2'
-libboost_devel:
-- '1.82'
 libcurl:
 - '8'
 libiconv:
@@ -36,6 +34,8 @@ libtiff:
 - '4.6'
 macos_machine:
 - arm64-apple-darwin20.0.0
+nspr:
+- '4'
 nss:
 - '3'
 openjpeg:
