@@ -43,7 +43,7 @@ requirements:
     - {{ posix }}patch
     - perl 5
     - gobject-introspection 1.*  # [not win]
-    - libboost-devel             # [build_platform != target_platform]
+    - libboost-headers           # [build_platform != target_platform]
     - cairo       # [build_platform != target_platform]
     - curl        # [build_platform != target_platform]
     - fontconfig  # [build_platform != target_platform]
@@ -66,7 +66,7 @@ requirements:
     - freetype
     - gettext
     - glib
-    - libboost-devel
+    - libboost-headers
     - libjpeg-turbo
     - lcms2
     - libcurl
@@ -103,7 +103,7 @@ outputs:
         - {{ posix }}patch
         - perl 5
         - gobject-introspection 1.*  # [not win]
-        - libboost-devel             # [build_platform != target_platform]
+        - libboost-headers           # [build_platform != target_platform]
         - cairo       # [build_platform != target_platform]
         - curl        # [build_platform != target_platform]
         - fontconfig  # [build_platform != target_platform]
@@ -126,7 +126,7 @@ outputs:
         - freetype
         - gettext
         - glib
-        - libboost-devel
+        - libboost-headers
         - libjpeg-turbo
         - lcms2
         - libcurl
