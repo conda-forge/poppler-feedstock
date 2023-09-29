@@ -1,9 +1,5 @@
 MACOSX_DEPLOYMENT_TARGET:
 - '11.0'
-boost:
-- 1.78.0
-boost_cpp:
-- 1.78.0
 c_compiler:
 - clang
 c_compiler_version:
@@ -26,6 +22,8 @@ freetype:
 - '2'
 glib:
 - '2'
+libboost_devel:
+- '1.82'
 libcurl:
 - '8'
 libiconv:
@@ -42,11 +40,6 @@ nss:
 - '3'
 openjpeg:
 - '2'
-pin_run_as_build:
-  boost:
-    max_pin: x.x.x
-  boost-cpp:
-    max_pin: x.x.x
 target_platform:
 - osx-arm64
 zip_keys:

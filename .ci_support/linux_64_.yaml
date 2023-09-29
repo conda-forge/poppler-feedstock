@@ -1,7 +1,3 @@
-boost:
-- 1.78.0
-boost_cpp:
-- 1.78.0
 c_compiler:
 - gcc
 c_compiler_version:
@@ -28,6 +24,8 @@ freetype:
 - '2'
 glib:
 - '2'
+libboost_devel:
+- '1.82'
 libcurl:
 - '8'
 libiconv:
@@ -42,11 +40,6 @@ nss:
 - '3'
 openjpeg:
 - '2'
-pin_run_as_build:
-  boost:
-    max_pin: x.x.x
-  boost-cpp:
-    max_pin: x.x.x
 qt_main:
 - '5.15'
 target_platform:
