@@ -122,9 +122,9 @@ outputs:
       host:
         - cairo
         - curl
-        - fontconfig
+        - fontconfig  # [unix]
         - freetype
-        - gettext
+        - gettext     # [osx]
         - glib
         - libboost-headers
         - libjpeg-turbo
@@ -133,7 +133,8 @@ outputs:
         - libiconv
         - libpng
         - libtiff
-        - nss  # [not win]
+        - nspr        # [unix]
+        - nss         # [unix]
         - openjpeg
         - zlib
       run:
@@ -187,23 +188,10 @@ outputs:
         - openjpeg    # [build_platform != target_platform]
         - zlib        # [build_platform != target_platform]
       host:
-        - cairo
-        - curl
-        - fontconfig
         - freetype
-        - gettext
-        - glib
         - libboost-headers
-        - libjpeg-turbo
         - lcms2
-        - libcurl
-        - libiconv
-        - libpng
-        - libtiff
-        - nss  # [not win]
-        - openjpeg
         - qt-main
-        - zlib
         - {{ pin_subpackage('poppler', exact=True) }}
       run:
         - {{ pin_subpackage('poppler', exact=True) }}
