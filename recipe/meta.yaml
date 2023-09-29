@@ -19,7 +19,7 @@ source:
     - includesystembeforejpeg.patch  # [win]
 
 build:
-  number: 1
+  number: 2
   detect_binary_files_with_prefix: true
 
 requirements:
@@ -43,7 +43,7 @@ requirements:
     - {{ posix }}patch
     - perl 5
     - gobject-introspection 1.*  # [not win]
-    - boost-cpp {{ boost_cpp }}  # [build_platform != target_platform]
+    - libboost-headers           # [build_platform != target_platform]
     - cairo       # [build_platform != target_platform]
     - curl        # [build_platform != target_platform]
     - fontconfig  # [build_platform != target_platform]
@@ -60,13 +60,13 @@ requirements:
     - openjpeg    # [build_platform != target_platform]
     - zlib        # [build_platform != target_platform]
   host:
-    - boost-cpp {{ boost_cpp }}
     - cairo
     - curl
     - fontconfig
     - freetype
     - gettext
     - glib
+    - libboost-headers
     - libjpeg-turbo
     - lcms2
     - libcurl
@@ -103,7 +103,7 @@ outputs:
         - {{ posix }}patch
         - perl 5
         - gobject-introspection 1.*  # [not win]
-        - boost-cpp {{ boost_cpp }}  # [build_platform != target_platform]
+        - libboost-headers           # [build_platform != target_platform]
         - cairo       # [build_platform != target_platform]
         - curl        # [build_platform != target_platform]
         - fontconfig  # [build_platform != target_platform]
@@ -120,24 +120,24 @@ outputs:
         - openjpeg    # [build_platform != target_platform]
         - zlib        # [build_platform != target_platform]
       host:
-        - boost-cpp {{ boost_cpp }}
         - cairo
         - curl
-        - fontconfig
+        - fontconfig  # [unix]
         - freetype
-        - gettext
+        - gettext     # [osx]
         - glib
+        - libboost-headers
         - libjpeg-turbo
         - lcms2
         - libcurl
         - libiconv
         - libpng
         - libtiff
-        - nss  # [not win]
+        - nspr        # [unix]
+        - nss         # [unix]
         - openjpeg
         - zlib
       run:
-        - {{ pin_compatible('boost-cpp') }}
         - poppler-data
     test:
       commands:
@@ -171,7 +171,7 @@ outputs:
         - {{ posix }}patch
         - perl 5
         - gobject-introspection 1.*  # [not win]
-        - boost-cpp {{ boost_cpp }}  # [build_platform != target_platform]
+        - libboost-headers           # [build_platform != target_platform]
         - cairo       # [build_platform != target_platform]
         - curl        # [build_platform != target_platform]
         - fontconfig  # [build_platform != target_platform]
@@ -188,23 +188,10 @@ outputs:
         - openjpeg    # [build_platform != target_platform]
         - zlib        # [build_platform != target_platform]
       host:
-        - boost-cpp {{ boost_cpp }}
-        - cairo
-        - curl
-        - fontconfig
         - freetype
-        - gettext
-        - glib
-        - libjpeg-turbo
+        - libboost-headers
         - lcms2
-        - libcurl
-        - libiconv
-        - libpng
-        - libtiff
-        - nss  # [not win]
-        - openjpeg
         - qt-main
-        - zlib
         - {{ pin_subpackage('poppler', exact=True) }}
       run:
         - {{ pin_subpackage('poppler', exact=True) }}

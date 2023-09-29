@@ -1,7 +1,3 @@
-boost:
-- 1.78.0
-boost_cpp:
-- 1.78.0
 c_compiler:
 - vs2019
 cairo:
@@ -32,11 +28,6 @@ libtiff:
 - '4.6'
 openjpeg:
 - '2'
-pin_run_as_build:
-  boost:
-    max_pin: x.x.x
-  boost-cpp:
-    max_pin: x.x.x
 qt_main:
 - '5.15'
 target_platform:
