@@ -1,4 +1,4 @@
-{% set version = "23.08.0" %}
+{% set version = "23.10.0" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 {% set prefix = 'Library/' if win else '' %}
@@ -9,7 +9,7 @@ package:
 
 source:
   url: https://poppler.freedesktop.org/poppler-{{ version }}.tar.xz
-  sha256: 4a4bf7fc903b9f1a2ab7d04b7c5d8220db9bc6261cc73fdb9a826dc272f49aa8
+  sha256: 31a3dfdea79f4922402d313737415a44d44dc14d6b317f959a77c5bba0647dd9
   patches:
     - exportsymbols.patch  # [win]
     - windows-data.patch  # [win]
@@ -19,7 +19,7 @@ source:
     - includesystembeforejpeg.patch  # [win]
 
 build:
-  number: 3
+  number: 0
   detect_binary_files_with_prefix: true
 
 requirements:
