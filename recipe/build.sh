@@ -1,8 +1,8 @@
 #! /bin/bash
 
-set -e
+set -exo pipefail
 
-export EXTRA_CMAKE_ARGS="-GNinja -DCMAKE_INSTALL_LIBDIR=lib -DENABLE_UNSTABLE_API_ABI_HEADERS=ON -DENABLE_LIBCURL=ON -DENABLE_LIBOPENJPEG=openjpeg2"
+export EXTRA_CMAKE_ARGS="-GNinja -DCMAKE_INSTALL_LIBDIR=lib -DENABLE_UNSTABLE_API_ABI_HEADERS=ON -DENABLE_GPGME=OFF -DENABLE_LIBCURL=ON -DENABLE_LIBOPENJPEG=openjpeg2 -DENABLE_QT6=OFF"
 
 if [ -n "$OSX_ARCH" ] ; then
     # The -dead_strip_dylibs option breaks g-ir-scanner in this package: the

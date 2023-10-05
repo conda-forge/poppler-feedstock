@@ -21,6 +21,8 @@ source:
 build:
   number: 0
   detect_binary_files_with_prefix: true
+  ignore_run_exports:
+    - qt-main
 
 requirements:
   build:
@@ -136,6 +138,7 @@ outputs:
         - nspr        # [unix]
         - nss         # [unix]
         - openjpeg
+        - qt-main     # [not (ppc64le or arm64)]
         - zlib
       run:
         - poppler-data
