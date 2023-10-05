@@ -21,6 +21,8 @@ source:
 build:
   number: 0
   detect_binary_files_with_prefix: true
+  # We need to have `qt-main` as a host dep for the `poppler` package to satisfy
+  # the build system, so we need to prevent it from becoming a runtime dep.
   ignore_run_exports:
     - qt-main
 
@@ -138,6 +140,8 @@ outputs:
         - nspr        # [unix]
         - nss         # [unix]
         - openjpeg
+        # As noted above, we need this dep to make the build system happy,
+        # even though the whole point is that this package doesn't use it.
         - qt-main     # [not (ppc64le or arm64)]
         - zlib
       run:
@@ -197,6 +201,8 @@ outputs:
         - qt-main
         - {{ pin_subpackage('poppler', exact=True) }}
       run:
+        # For unclear reasons, we don't need to add qt-main as a dep here? The
+        # proper dep shows up in the package metadata as-is.
         - {{ pin_subpackage('poppler', exact=True) }}
     test:
       commands:
