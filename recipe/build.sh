@@ -12,6 +12,15 @@ extra_cmake_args=(
     -DENABLE_QT6=OFF
 )
 
+# For now, we're not building the Qt subpackage in some cross scenarios, and the
+# build system requires us to explicitly disable it. The filter here needs to
+# say synchronized with the subpackage `skip` logic in `meta.yaml`.
+case "${target_platform}" in
+    linux-ppc64le|osx-arm64)
+        extra_cmake_args+=(-DENABLE_QT5=OFF)
+        ;;
+esac
+
 if [ -n "$OSX_ARCH" ] ; then
     # The -dead_strip_dylibs option breaks g-ir-scanner in this package: the
     # scanner uses the linker to find paths to dylibs, and it wants to find

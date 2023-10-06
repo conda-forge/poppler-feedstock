@@ -154,6 +154,7 @@ outputs:
 
   - name: poppler-qt
     build:
+      # Keep the ENABLE_QT5 logic in build.sh synced with this:
       skip: true  # [ppc64le or arm64]
     script: install.sh  # [unix]
     script: install.bat  # [not unix]
