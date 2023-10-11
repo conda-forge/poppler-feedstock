@@ -40,6 +40,8 @@ nss:
 - '3'
 openjpeg:
 - '2'
+qt_main:
+- '5.15'
 target_platform:
 - osx-arm64
 zip_keys:
