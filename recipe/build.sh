@@ -55,6 +55,7 @@ if [ "${CONDA_BUILD_CROSS_COMPILATION}" = "1" ]; then
         cmake "${extra_cmake_args[@]}" \
             -DCMAKE_PREFIX_PATH=$BUILD_PREFIX \
             -DCMAKE_INSTALL_PREFIX=$BUILD_PREFIX \
+            -DTIFF_INCLUDE_DIR=$BUILD_PREFIX/include \
             $SRC_DIR
         # This script would generate the functions.txt and dump.xml and save them
         # This is loaded in the native build. We assume that the functions exported
@@ -80,6 +81,7 @@ export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:$BUILD_PREFIX/lib/pkgconfig"
 cmake ${CMAKE_ARGS} "${extra_cmake_args[@]}" \
     -DCMAKE_PREFIX_PATH=$PREFIX \
     -DCMAKE_INSTALL_PREFIX=$PREFIX \
+    -DTIFF_INCLUDE_DIR=$PREFIX/include \
     $SRC_DIR
 
 ninja
