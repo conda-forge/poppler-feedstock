@@ -3,7 +3,7 @@ MACOSX_DEPLOYMENT_TARGET:
 c_compiler:
 - clang
 c_compiler_version:
-- '15'
+- '16'
 cairo:
 - '1'
 channel_sources:
@@ -15,7 +15,7 @@ curl:
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
-- '15'
+- '16'
 fontconfig:
 - '2'
 freetype:
@@ -27,7 +27,7 @@ libcurl:
 libiconv:
 - '1'
 libjpeg_turbo:
-- 2.1.5
+- '3'
 libpng:
 - '1.6'
 libtiff:
