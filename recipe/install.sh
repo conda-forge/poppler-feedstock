@@ -1,8 +1,12 @@
 #! /bin/bash
 
-set -e
+set -exo pipefail
 
-export EXTRA_CMAKE_ARGS="-GNinja -DCMAKE_INSTALL_LIBDIR=lib -DENABLE_UNSTABLE_API_ABI_HEADERS=ON -DENABLE_LIBCURL=ON -DENABLE_LIBOPENJPEG=openjpeg2"
+# Below, the `ninja` commands will reinvoke CMake's configuration stage, because
+# the Ninja files have logic to do that if the environment seems to have changed
+# -- and our multi-output recipe structure causes conda-build to reinstall the
+# build/host environments. So, this script needs to set up its environment in
+# the same way as `build.sh` to keep everything consistent.
 
 if [ -n "$OSX_ARCH" ] ; then
     # The -dead_strip_dylibs option breaks g-ir-scanner in this package: the

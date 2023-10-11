@@ -11,8 +11,11 @@ cmake -G "Ninja" ^
       -D CMAKE_INSTALL_LIBDIR:PATH=%LIBRARY_LIB% ^
       -D CMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% ^
       -D ENABLE_UNSTABLE_API_ABI_HEADERS=True ^
+      -D ENABLE_GPGME=OFF ^
       -D ENABLE_LIBCURL=True ^
       -D ENABLE_LIBOPENJPEG=openjpeg2 ^
-	  -D GLIB2_MKENUMS_PYTHON=%PREFIX%\python.exe ^
-       %SRC_DIR%
+      -D ENABLE_NSS3=OFF ^
+      -D ENABLE_QT6=OFF ^
+      -D GLIB2_MKENUMS_PYTHON=%PREFIX%\python.exe ^
+      %SRC_DIR%
 if errorlevel 1 exit 1	   

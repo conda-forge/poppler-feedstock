@@ -1,8 +1,25 @@
 #! /bin/bash
 
-set -e
+set -exo pipefail
 
-export EXTRA_CMAKE_ARGS="-GNinja -DCMAKE_INSTALL_LIBDIR=lib -DENABLE_UNSTABLE_API_ABI_HEADERS=ON -DENABLE_LIBCURL=ON -DENABLE_LIBOPENJPEG=openjpeg2"
+extra_cmake_args=(
+    -GNinja
+    -DCMAKE_INSTALL_LIBDIR=lib
+    -DENABLE_UNSTABLE_API_ABI_HEADERS=ON
+    -DENABLE_GPGME=OFF
+    -DENABLE_LIBCURL=ON
+    -DENABLE_LIBOPENJPEG=openjpeg2
+    -DENABLE_QT6=OFF
+)
+
+# For now, we're not building the Qt subpackage in some cross scenarios, and the
+# build system requires us to explicitly disable it. The filter here needs to
+# say synchronized with the subpackage `skip` logic in `meta.yaml`.
+case "${target_platform}" in
+    linux-ppc64le|osx-arm64)
+        extra_cmake_args+=(-DENABLE_QT5=OFF)
+        ;;
+esac
 
 if [ -n "$OSX_ARCH" ] ; then
     # The -dead_strip_dylibs option breaks g-ir-scanner in this package: the
@@ -35,9 +52,10 @@ if [ "${CONDA_BUILD_CROSS_COMPILATION}" = "1" ]; then
         unset CPPFLAGS
         unset CXXFLAGS
 
-        cmake ${EXTRA_CMAKE_ARGS} \
+        cmake "${extra_cmake_args[@]}" \
             -DCMAKE_PREFIX_PATH=$BUILD_PREFIX \
             -DCMAKE_INSTALL_PREFIX=$BUILD_PREFIX \
+            -DTIFF_INCLUDE_DIR=$BUILD_PREFIX/include \
             $SRC_DIR
         # This script would generate the functions.txt and dump.xml and save them
         # This is loaded in the native build. We assume that the functions exported
@@ -50,17 +68,20 @@ if [ "${CONDA_BUILD_CROSS_COMPILATION}" = "1" ]; then
     export GI_CROSS_LAUNCHER=$BUILD_PREFIX/libexec/gi-cross-launcher-load.sh
 
     # Make sure to get build-platform tools:
-    export EXTRA_CMAKE_ARGS="$EXTRA_CMAKE_ARGS -DGLIB2_MKENUMS=$BUILD_PREFIX/bin/glib-mkenums -DGLIB2_MKENUMS_PYTHON=$BUILD_PREFIX/bin/python"
+    extra_cmake_args+=(
+        -DGLIB2_MKENUMS=$BUILD_PREFIX/bin/glib-mkenums
+        -DGLIB2_MKENUMS_PYTHON=$BUILD_PREFIX/bin/python
+    )
 fi
 
 mkdir build && cd build
 
 export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:$BUILD_PREFIX/lib/pkgconfig"
 
-cmake ${CMAKE_ARGS} ${EXTRA_CMAKE_ARGS} \
-    -GNinja \
+cmake ${CMAKE_ARGS} "${extra_cmake_args[@]}" \
     -DCMAKE_PREFIX_PATH=$PREFIX \
     -DCMAKE_INSTALL_PREFIX=$PREFIX \
+    -DTIFF_INCLUDE_DIR=$PREFIX/include \
     $SRC_DIR
 
 ninja
