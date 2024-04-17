@@ -1,5 +1,9 @@
 c_compiler:
 - vs2019
+c_stdlib:
+- vs
+c_stdlib_version:
+- '2019'
 cairo:
 - '1'
 channel_sources:
@@ -15,6 +19,8 @@ fontconfig:
 freetype:
 - '2'
 glib:
+- '2'
+lcms2:
 - '2'
 libcurl:
 - '8'

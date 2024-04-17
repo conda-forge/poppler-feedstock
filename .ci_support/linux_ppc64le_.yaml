@@ -2,6 +2,10 @@ c_compiler:
 - gcc
 c_compiler_version:
 - '12'
+c_stdlib:
+- sysroot
+c_stdlib_version:
+- '2.17'
 cairo:
 - '1'
 cdt_name:
@@ -23,6 +27,8 @@ fontconfig:
 freetype:
 - '2'
 glib:
+- '2'
+lcms2:
 - '2'
 libcurl:
 - '8'
@@ -47,5 +53,7 @@ target_platform:
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
+- - c_stdlib_version
+  - cdt_name
 zlib:
 - '1.2'

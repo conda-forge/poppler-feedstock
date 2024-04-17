@@ -2,6 +2,9 @@
 
 set -exo pipefail
 
+# Ensure we look in the correct directory for gir files
+export XDG_DATA_DIRS="$PREFIX/share"
+
 extra_cmake_args=(
     -GNinja
     -DCMAKE_INSTALL_LIBDIR=lib

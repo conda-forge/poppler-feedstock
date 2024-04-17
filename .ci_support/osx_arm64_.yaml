@@ -4,6 +4,10 @@ c_compiler:
 - clang
 c_compiler_version:
 - '16'
+c_stdlib:
+- macosx_deployment_target
+c_stdlib_version:
+- '11.0'
 cairo:
 - '1'
 channel_sources:
@@ -21,6 +25,8 @@ fontconfig:
 freetype:
 - '2'
 glib:
+- '2'
+lcms2:
 - '2'
 libcurl:
 - '8'
