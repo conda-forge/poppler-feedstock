@@ -46,13 +46,14 @@ requirements:
     - ninja
     - {{ posix }}patch
     - perl 5
+    - gettext-tools
     - gobject-introspection 1.*  # [not win]
     - libboost-headers           # [build_platform != target_platform]
     - cairo       # [build_platform != target_platform]
     - curl        # [build_platform != target_platform]
     - fontconfig  # [build_platform != target_platform]
     - freetype    # [build_platform != target_platform]
-    - gettext     # [build_platform != target_platform]
+    - libintl-devel    # [build_platform != target_platform]
     - glib        # [build_platform != target_platform]
     - libjpeg-turbo         # [build_platform != target_platform]
     - lcms2       # [build_platform != target_platform]
@@ -68,7 +69,7 @@ requirements:
     - curl
     - fontconfig
     - freetype
-    - gettext
+    - libintl-devel  # [not linux]
     - glib
     - libboost-headers
     - libjpeg-turbo
