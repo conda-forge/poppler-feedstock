@@ -2,6 +2,9 @@
 
 set -exo pipefail
 
+# Ensure we look in the correct directory for gir files
+export XDG_DATA_DIRS="$PREFIX/share"
+
 # Below, the `ninja` commands will reinvoke CMake's configuration stage, because
 # the Ninja files have logic to do that if the environment seems to have changed
 # -- and our multi-output recipe structure causes conda-build to reinstall the
