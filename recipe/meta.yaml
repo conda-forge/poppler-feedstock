@@ -28,6 +28,7 @@ build:
 
 requirements:
   build:
+    - {{ stdlib('c') }}
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     # Need these CDTs for Qt on Linux. Please keep them alphabetized!
@@ -89,6 +90,7 @@ outputs:
     script: install.bat  # [not unix]
     requirements:
       build:
+        - {{ stdlib('c') }}
         - {{ compiler('c') }}
         - {{ compiler('cxx') }}
         # Need these CDTs for Qt on Linux. Please keep them alphabetized!
@@ -163,6 +165,7 @@ outputs:
     script: install.bat  # [not unix]
     requirements:
       build:
+        - {{ stdlib('c') }}
         - {{ compiler('c') }}
         - {{ compiler('cxx') }}
         # Need these CDTs for Qt on Linux. Please keep them alphabetized!
