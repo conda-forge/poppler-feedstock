@@ -2,8 +2,6 @@ c_compiler:
 - vs2019
 c_stdlib:
 - vs
-c_stdlib_version:
-- '2019'
 cairo:
 - '1'
 channel_sources:
@@ -39,4 +37,4 @@ qt_main:
 target_platform:
 - win-64
 zlib:
-- '1.2'
+- '1'
