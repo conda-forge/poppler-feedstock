@@ -1,4 +1,4 @@
-{% set version = "24.08.0" %}
+{% set version = "24.10.0" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 {% set prefix = 'Library/' if win else '' %}
@@ -9,7 +9,7 @@ package:
 
 source:
   url: https://poppler.freedesktop.org/poppler-{{ version }}.tar.xz
-  sha256: 97453fbddf0c9a9eafa0ea45ac710d3d49bcf23a62e864585385d3c0b4403174
+  sha256: 58ed1849810f04a10b37c7ff6f3e411845c8a57d731d599d0045acc7a7fff09d
   patches:
     - exportsymbols.patch  # [win]
     - windows-data.patch  # [win]
@@ -19,7 +19,7 @@ source:
     - includesystembeforejpeg.patch  # [win]
 
 build:
-  number: 1
+  number: 0
   detect_binary_files_with_prefix: true
   # We need to have `qt-main` as a host dep for the `poppler` package to satisfy
   # the build system, so we need to prevent it from becoming a runtime dep.
