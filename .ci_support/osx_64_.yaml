@@ -41,7 +41,7 @@ libjpeg_turbo:
 libpng:
 - '1.6'
 libtiff:
-- '4.6'
+- '4.7'
 macos_machine:
 - x86_64-apple-darwin13.4.0
 nspr:
