@@ -25,6 +25,7 @@ build:
   # the build system, so we need to prevent it from becoming a runtime dep.
   ignore_run_exports:
     - qt-main
+    - libboost-devel
 
 requirements:
   build:
@@ -49,7 +50,7 @@ requirements:
     - perl 5
     - gettext-tools
     - gobject-introspection 1.*  # [not win]
-    - libboost-headers           # [build_platform != target_platform]
+    - libboost-devel           # [build_platform != target_platform]
     - cairo       # [build_platform != target_platform]
     - curl        # [build_platform != target_platform]
     - fontconfig  # [build_platform != target_platform]
@@ -72,7 +73,7 @@ requirements:
     - freetype
     - libintl-devel  # [not linux]
     - glib
-    - libboost-headers
+    - libboost-devel
     - libjpeg-turbo
     - lcms2
     - libcurl
@@ -88,6 +89,9 @@ outputs:
   - name: poppler
     script: install.sh  # [unix]
     script: install.bat  # [not unix]
+    build:
+      ignore_run_exports_from:
+        - libboost-devel
     requirements:
       build:
         - {{ stdlib('c') }}
@@ -111,7 +115,7 @@ outputs:
         - perl 5
         - gettext-tools
         - gobject-introspection 1.*  # [not win]
-        - libboost-headers           # [build_platform != target_platform]
+        - libboost-devel          # [build_platform != target_platform]
         - cairo       # [build_platform != target_platform]
         - curl        # [build_platform != target_platform]
         - fontconfig  # [build_platform != target_platform]
@@ -135,7 +139,7 @@ outputs:
         - freetype
         - libintl-devel  # [not linux]
         - glib
-        - libboost-headers
+        - libboost-devel
         - libjpeg-turbo
         - lcms2
         - libcurl
@@ -161,6 +165,8 @@ outputs:
     build:
       # Keep the ENABLE_QT5 logic in build.sh synced with this:
       skip: true  # [ppc64le or arm64]
+      ignore_run_exports_from:
+        - libboost-devel
     script: install.sh  # [unix]
     script: install.bat  # [not unix]
     requirements:
@@ -186,7 +192,7 @@ outputs:
         - perl 5
         - gettext-tools
         - gobject-introspection 1.*  # [not win]
-        - libboost-headers           # [build_platform != target_platform]
+        - libboost-devel           # [build_platform != target_platform]
         - cairo       # [build_platform != target_platform]
         - curl        # [build_platform != target_platform]
         - fontconfig  # [build_platform != target_platform]
@@ -204,7 +210,7 @@ outputs:
         - zlib        # [build_platform != target_platform]
       host:
         - freetype
-        - libboost-headers
+        - libboost-devel
         - lcms2
         - qt-main
         - {{ pin_subpackage('poppler', exact=True) }}
