@@ -77,11 +77,12 @@ if [ "${CONDA_BUILD_CROSS_COMPILATION}" = "1" ]; then
     )
 fi
 
-mkdir build && cd build
+mkdir -p build && cd build
 
 export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:$BUILD_PREFIX/lib/pkgconfig"
 
 cmake ${CMAKE_ARGS} "${extra_cmake_args[@]}" \
+    -DBoost_DIR=$PREFIX \
     -DCMAKE_PREFIX_PATH=$PREFIX \
     -DCMAKE_INSTALL_PREFIX=$PREFIX \
     -DTIFF_INCLUDE_DIR=$PREFIX/include \
