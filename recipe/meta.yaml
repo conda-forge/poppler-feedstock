@@ -69,6 +69,7 @@ requirements:
   host:
     - cairo
     - curl
+    - expat
     - fontconfig
     - freetype
     - libintl-devel  # [not linux]
