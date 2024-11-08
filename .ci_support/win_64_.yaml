@@ -12,6 +12,8 @@ curl:
 - '8'
 cxx_compiler:
 - vs2019
+expat:
+- '2'
 fontconfig:
 - '2'
 freetype:
