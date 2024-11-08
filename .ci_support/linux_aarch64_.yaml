@@ -34,7 +34,7 @@ glib:
 - '2'
 lcms2:
 - '2'
-libboost_headers:
+libboost_devel:
 - '1.86'
 libcurl:
 - '8'
