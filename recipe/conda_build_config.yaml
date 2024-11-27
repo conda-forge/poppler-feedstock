@@ -1,0 +1,2 @@
+MACOS_SDK_VERSION:  # [osx]
+  -  "13.3"         # [osx]
