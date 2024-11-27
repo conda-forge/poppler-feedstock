@@ -36,6 +36,8 @@ libtiff:
 - '4.7'
 openjpeg:
 - '2'
+poppler:
+- '24.08'
 qt_main:
 - '5.15'
 target_platform:
