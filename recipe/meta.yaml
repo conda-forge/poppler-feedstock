@@ -1,4 +1,4 @@
-{% set version = "24.08.0" %}
+{% set version = "24.11.0" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 {% set prefix = 'Library/' if win else '' %}
@@ -9,7 +9,7 @@ package:
 
 source:
   url: https://poppler.freedesktop.org/poppler-{{ version }}.tar.xz
-  sha256: 97453fbddf0c9a9eafa0ea45ac710d3d49bcf23a62e864585385d3c0b4403174
+  sha256: 7723d880565211740c13649d24a300257b86ddd7fa2d208187ff7e5cc8dfbd58
   patches:
     - exportsymbols.patch  # [win]
     - windows-data.patch  # [win]
@@ -19,12 +19,13 @@ source:
     - includesystembeforejpeg.patch  # [win]
 
 build:
-  number: 1
+  number: 0
   detect_binary_files_with_prefix: true
   # We need to have `qt-main` as a host dep for the `poppler` package to satisfy
   # the build system, so we need to prevent it from becoming a runtime dep.
   ignore_run_exports:
     - qt-main
+    - libboost-devel
 
 requirements:
   build:
@@ -49,7 +50,7 @@ requirements:
     - perl 5
     - gettext-tools
     - gobject-introspection 1.*  # [not win]
-    - libboost-headers           # [build_platform != target_platform]
+    - libboost-devel           # [build_platform != target_platform]
     - cairo       # [build_platform != target_platform]
     - curl        # [build_platform != target_platform]
     - fontconfig  # [build_platform != target_platform]
@@ -65,14 +66,16 @@ requirements:
     - nss         # [not win and build_platform != target_platform]
     - openjpeg    # [build_platform != target_platform]
     - zlib        # [build_platform != target_platform]
+    - gperf       # [unix]
   host:
     - cairo
     - curl
+    - expat
     - fontconfig
     - freetype
     - libintl-devel  # [not linux]
     - glib
-    - libboost-headers
+    - libboost-devel
     - libjpeg-turbo
     - lcms2
     - libcurl
@@ -88,6 +91,9 @@ outputs:
   - name: poppler
     script: install.sh  # [unix]
     script: install.bat  # [not unix]
+    build:
+      ignore_run_exports_from:
+        - libboost-devel
     requirements:
       build:
         - {{ stdlib('c') }}
@@ -111,7 +117,7 @@ outputs:
         - perl 5
         - gettext-tools
         - gobject-introspection 1.*  # [not win]
-        - libboost-headers           # [build_platform != target_platform]
+        - libboost-devel          # [build_platform != target_platform]
         - cairo       # [build_platform != target_platform]
         - curl        # [build_platform != target_platform]
         - fontconfig  # [build_platform != target_platform]
@@ -135,7 +141,7 @@ outputs:
         - freetype
         - libintl-devel  # [not linux]
         - glib
-        - libboost-headers
+        - libboost-devel
         - libjpeg-turbo
         - lcms2
         - libcurl
@@ -161,6 +167,8 @@ outputs:
     build:
       # Keep the ENABLE_QT5 logic in build.sh synced with this:
       skip: true  # [ppc64le or arm64]
+      ignore_run_exports_from:
+        - libboost-devel
     script: install.sh  # [unix]
     script: install.bat  # [not unix]
     requirements:
@@ -186,7 +194,7 @@ outputs:
         - perl 5
         - gettext-tools
         - gobject-introspection 1.*  # [not win]
-        - libboost-headers           # [build_platform != target_platform]
+        - libboost-devel           # [build_platform != target_platform]
         - cairo       # [build_platform != target_platform]
         - curl        # [build_platform != target_platform]
         - fontconfig  # [build_platform != target_platform]
@@ -204,7 +212,7 @@ outputs:
         - zlib        # [build_platform != target_platform]
       host:
         - freetype
-        - libboost-headers
+        - libboost-devel
         - lcms2
         - qt-main
         - {{ pin_subpackage('poppler', exact=True) }}

@@ -12,6 +12,8 @@ curl:
 - '8'
 cxx_compiler:
 - vs2019
+expat:
+- '2'
 fontconfig:
 - '2'
 freetype:
@@ -20,7 +22,7 @@ glib:
 - '2'
 lcms2:
 - '2'
-libboost_headers:
+libboost_devel:
 - '1.86'
 libcurl:
 - '8'
@@ -31,9 +33,11 @@ libjpeg_turbo:
 libpng:
 - '1.6'
 libtiff:
-- '4.6'
+- '4.7'
 openjpeg:
 - '2'
+poppler:
+- '24.08'
 qt_main:
 - '5.15'
 target_platform:
