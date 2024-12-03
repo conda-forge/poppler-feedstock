@@ -22,6 +22,8 @@ cxx_compiler:
 - clangxx
 cxx_compiler_version:
 - '18'
+expat:
+- '2'
 fontconfig:
 - '2'
 freetype:

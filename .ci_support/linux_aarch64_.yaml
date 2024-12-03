@@ -22,6 +22,8 @@ cxx_compiler_version:
 - '13'
 docker_image:
 - quay.io/condaforge/linux-anvil-aarch64:alma9
+expat:
+- '2'
 fontconfig:
 - '2'
 freetype:
