@@ -52,6 +52,8 @@ requirements:
     - libboost-headers           # [build_platform != target_platform]
     - cairo       # [build_platform != target_platform]
     - curl        # [build_platform != target_platform]
+    # needed to make CMake happy with fontconfig (for OSX at least)
+    - expat       # [build_platform != target_platform]
     - fontconfig  # [build_platform != target_platform]
     - freetype    # [build_platform != target_platform]
     - libintl-devel    # [build_platform != target_platform and (not linux)]
@@ -68,6 +70,8 @@ requirements:
   host:
     - cairo
     - curl
+    # needed to make CMake happy with fontconfig (for OSX at least)
+    - expat
     - fontconfig
     - freetype
     - libintl-devel  # [not linux]
