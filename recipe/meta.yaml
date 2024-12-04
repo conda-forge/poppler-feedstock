@@ -19,7 +19,7 @@ source:
     - includesystembeforejpeg.patch  # [win]
 
 build:
-  number: 1
+  number: 2
   detect_binary_files_with_prefix: true
   # We need to have `qt-main` as a host dep for the `poppler` package to satisfy
   # the build system, so we need to prevent it from becoming a runtime dep.
@@ -94,6 +94,7 @@ outputs:
     build:
       ignore_run_exports_from:
         - libboost-devel
+        - qt-main
       run_exports:
         - {{ pin_subpackage('poppler', max_pin='x.x') }}
     requirements:
