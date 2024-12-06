@@ -1,11 +1,12 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index f0887a8..a4098ea 100644
+index e2fe268..d85e83b 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -625,8 +625,13 @@ configure_file(
+@@ -616,9 +616,13 @@ configure_file(
+     ${LINKER_SCRIPT})
  
  if(MSVC)
- add_definitions(-D_CRT_SECURE_NO_WARNINGS)
+-add_definitions(-D_CRT_SECURE_NO_WARNINGS)
 -endif()
 +add_library(poppler SHARED ${poppler_SRCS} ${LINKER_SCRIPT})
 +# so we can determine if to import/export symbols
@@ -14,11 +15,11 @@ index f0887a8..a4098ea 100644
 +else()
  add_library(poppler ${poppler_SRCS} ${LINKER_SCRIPT})
 +endif()
+ target_include_directories(poppler PUBLIC poppler ${CMAKE_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_CURRENT_BINARY_DIR}/poppler)
  if (OpenJPEG_FOUND)
    # check if we can remove this when we depend on newer openjpeg versions, 2.5 seems fixed
-   # target openjp2 may lack interface include directories
 diff --git a/cpp/CMakeLists.txt b/cpp/CMakeLists.txt
-index 4885145..c410304 100644
+index 450846d..6d411e1 100644
 --- a/cpp/CMakeLists.txt
 +++ b/cpp/CMakeLists.txt
 @@ -23,6 +23,14 @@ set(poppler_cpp_SRCS
@@ -35,12 +36,12 @@ index 4885145..c410304 100644
 +
  add_library(poppler-cpp ${poppler_cpp_SRCS})
  generate_export_header(poppler-cpp BASE_NAME poppler-cpp EXPORT_FILE_NAME "${CMAKE_CURRENT_BINARY_DIR}/poppler_cpp_export.h")
- set_target_properties(poppler-cpp PROPERTIES VERSION 0.11.0 SOVERSION 0)
+ set_target_properties(poppler-cpp PROPERTIES VERSION 1.0.0 SOVERSION 1)
 diff --git a/poppler/GlobalParams.h b/poppler/GlobalParams.h
-index 7cdd371..6f012d0 100644
+index 31715c6..fedc846 100644
 --- a/poppler/GlobalParams.h
 +++ b/poppler/GlobalParams.h
-@@ -65,7 +65,14 @@ class SysFontList;
+@@ -68,7 +68,14 @@ class SysFontList;
  //------------------------------------------------------------------------
  
  // The global parameters object.
