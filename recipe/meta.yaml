@@ -1,4 +1,4 @@
-{% set version = "24.12.0" %}
+{% set version = "25.02.0" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 {% set prefix = 'Library/' if win else '' %}
@@ -9,7 +9,7 @@ package:
 
 source:
   url: https://poppler.freedesktop.org/poppler-{{ version }}.tar.xz
-  sha256: 1cf374c3146f3f685d9257701bf0c2866c61d6c202c14d1f5c01a1f3a089028a
+  sha256: 21234cb2a9647d73c752ce4031e65a79d11a511a835f2798284c2497b8701dee
   patches:
     - exportsymbols.patch  # [win]
     - windows-data.patch  # [win]
@@ -65,6 +65,7 @@ requirements:
     - libtiff     # [build_platform != target_platform]
     - nss         # [not win and build_platform != target_platform]
     - openjpeg    # [build_platform != target_platform]
+    - xorg-xorgproto        # [build_platform != target_platform]
     - zlib        # [build_platform != target_platform]
     - gperf       # [unix]
   host:
@@ -85,6 +86,7 @@ requirements:
     - nss  # [not win]
     - openjpeg
     - qt-main  # [not (ppc64le or arm64)]
+    - xorg-xorgproto
     - zlib
 
 outputs:
@@ -136,6 +138,7 @@ outputs:
         - libtiff     # [build_platform != target_platform]
         - nss         # [not win and build_platform != target_platform]
         - openjpeg    # [build_platform != target_platform]
+        - xorg-xorgproto        # [build_platform != target_platform]
         - zlib        # [build_platform != target_platform]
       host:
         - cairo
@@ -157,6 +160,7 @@ outputs:
         # As noted above, we need this dep to make the build system happy,
         # even though the whole point is that this package doesn't use it.
         - qt-main     # [not (ppc64le or arm64)]
+        - xorg-xorgproto
         - zlib
       run:
         - poppler-data
@@ -212,12 +216,15 @@ outputs:
         - libtiff     # [build_platform != target_platform]
         - nss         # [not win and build_platform != target_platform]
         - openjpeg    # [build_platform != target_platform]
+        - xorg-xorgproto        # [build_platform != target_platform]
         - zlib        # [build_platform != target_platform]
       host:
         - freetype
         - libboost-devel
         - lcms2
         - qt-main
+        - xorg-xorgproto
+        - zlib
         - {{ pin_subpackage('poppler', exact=True) }}
       run:
         # For unclear reasons, we don't need to add qt-main as a dep here? The
