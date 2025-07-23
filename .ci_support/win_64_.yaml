@@ -1,5 +1,5 @@
 c_compiler:
-- vs2019
+- vs2022
 c_stdlib:
 - vs
 cairo:
@@ -11,7 +11,7 @@ channel_targets:
 curl:
 - '8'
 cxx_compiler:
-- vs2019
+- vs2022
 expat:
 - '2'
 fontconfig:
