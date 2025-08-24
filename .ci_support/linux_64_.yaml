@@ -33,7 +33,7 @@ glib:
 lcms2:
 - '2'
 libboost_devel:
-- '1.86'
+- '1.88'
 libcurl:
 - '8'
 libiconv:
