@@ -53,7 +53,7 @@ nss:
 openjpeg:
 - '2'
 poppler:
-- '24.12'
+- '25.07'
 qt_main:
 - '5.15'
 target_platform:
