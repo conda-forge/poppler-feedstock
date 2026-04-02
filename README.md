@@ -5,7 +5,7 @@ Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/poppler-feedsto
 
 Home: https://poppler.freedesktop.org/
 
-Package license: GPL-2.0-only
+Package license: GPL-2.0-or-later
 
 Summary: The Poppler PDF manipulation library.
 
