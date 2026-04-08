@@ -19,7 +19,7 @@ source:
     - includesystembeforejpeg.patch  # [win]
 
 build:
-  number: 1
+  number: 2
   detect_binary_files_with_prefix: true
   # We need to have `qt-main` as a host dep for the `poppler` package to satisfy
   # the build system, so we need to prevent it from becoming a runtime dep.
@@ -225,7 +225,7 @@ outputs:
 
 about:
   home: https://poppler.freedesktop.org/
-  license: GPL-2.0-only
+  license: GPL-2.0-or-later
   license_family: GPL
   license_file: COPYING
   summary: The Poppler PDF manipulation library.
