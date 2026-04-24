@@ -12,10 +12,12 @@ jobs:
         CONFIG: linux_aarch64_
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-aarch64:alma9
+        store_build_artifacts: false
       linux_ppc64le_:
         CONFIG: linux_ppc64le_
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-ppc64le:alma9
+        store_build_artifacts: false
   timeoutInMinutes: 360
   variables: {}
 
