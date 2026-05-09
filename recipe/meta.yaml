@@ -35,6 +35,8 @@ requirements:
     # Need these CDTs for Qt on Linux. Please keep them alphabetized!
     - m2-msys2-runtime  # [win]
     - {{ native }}pkg-config
+    - clang-format
+    - clang-scan-deps  # [osx]
     - cmake
     - make
     - ninja
