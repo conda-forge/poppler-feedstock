@@ -74,6 +74,7 @@ if [ "${CONDA_BUILD_CROSS_COMPILATION}" = "1" ]; then
     extra_cmake_args+=(
         -DGLIB2_MKENUMS=$BUILD_PREFIX/bin/glib-mkenums
         -DGLIB2_MKENUMS_PYTHON=$BUILD_PREFIX/bin/python
+        -DCMAKE_CXX_COMPILER_CLANG_SCAN_DEPS="${CC_FOR_BUILD}-scan-deps"
     )
 fi
 
