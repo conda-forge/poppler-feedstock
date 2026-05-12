@@ -1,4 +1,4 @@
-{% set version = "26.02.0" %}
+{% set version = "26.05.0" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 {% set prefix = 'Library/' if win else '' %}
@@ -9,7 +9,7 @@ package:
 
 source:
   url: https://poppler.freedesktop.org/poppler-{{ version }}.tar.xz
-  sha256: dded8621f7b2f695c91063aab1558691c8418374cd583501e89ed39487e7ab77
+  sha256: 6fef27ff04f37db43054c86bcdff6128c9fb1f6af4ef3c8b369a7e9abd68d0bb
   patches:
     - exportsymbols.patch  # [win]
     - windows-data.patch  # [win]
@@ -35,6 +35,8 @@ requirements:
     # Need these CDTs for Qt on Linux. Please keep them alphabetized!
     - m2-msys2-runtime  # [win]
     - {{ native }}pkg-config
+    - clang-format
+    - clang-scan-deps  # [osx]
     - cmake
     - make
     - ninja
@@ -103,6 +105,8 @@ outputs:
         # Need these CDTs for Qt on Linux. Please keep them alphabetized!
         - m2-msys2-runtime  # [win]
         - {{ native }}pkg-config
+        - clang-format
+        - clang-scan-deps  # [osx]
         - cmake
         - make
         - ninja
@@ -178,6 +182,8 @@ outputs:
         # Need these CDTs for Qt on Linux. Please keep them alphabetized!
         - m2-msys2-runtime  # [win]
         - {{ native }}pkg-config
+        - clang-format
+        - clang-scan-deps  # [osx]
         - cmake
         - make
         - ninja
