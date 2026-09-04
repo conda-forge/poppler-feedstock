@@ -232,7 +232,7 @@ outputs:
     test:
       commands:
         - test -f ${PREFIX}/lib/pkgconfig/poppler-qt5.pc  # [not win]
-        - if not exist %LIBRARY_BIN%\\poppler.dll exit 1  # [win]
+        - if not exist %LIBRARY_BIN%\\poppler-qt.dll exit 1  # [win]
 
 about:
   home: https://poppler.freedesktop.org/
