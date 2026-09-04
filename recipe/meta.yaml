@@ -215,6 +215,7 @@ outputs:
         - zlib        # [build_platform != target_platform]
       host:
         - freetype
+        - harfbuzz
         - libboost-devel
         - lcms2
         - qt-main
@@ -232,7 +233,7 @@ outputs:
     test:
       commands:
         - test -f ${PREFIX}/lib/pkgconfig/poppler-qt5.pc  # [not win]
-        - if not exist %LIBRARY_BIN%\\poppler-qt.dll exit 1  # [win]
+        - if not exist %LIBRARY_BIN%\\poppler-qt5.dll exit 1  # [win]
 
 about:
   home: https://poppler.freedesktop.org/
