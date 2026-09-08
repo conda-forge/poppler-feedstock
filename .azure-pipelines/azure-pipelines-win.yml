@@ -11,6 +11,7 @@ jobs:
       win_64_:
         CONFIG: win_64_
         UPLOAD_PACKAGES: 'True'
+        build_platform: win-64
         build_workspace_dir: D:\\bld\\
         free_disk_space: skip
         pagefile_size: 0
@@ -33,6 +34,7 @@ jobs:
         PYTHONUNBUFFERED: 1
         UPLOAD_PACKAGES: $(UPLOAD_PACKAGES)
         UPLOAD_TEMP: $(UPLOAD_TEMP)
+        build_platform: $(build_platform)
         flow_run_id: azure_$(Build.BuildNumber).$(System.JobAttempt)
         remote_url: $(Build.Repository.Uri)
         sha: $(Build.SourceVersion)

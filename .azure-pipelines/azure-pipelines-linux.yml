@@ -11,7 +11,7 @@ jobs:
       linux_aarch64_:
         CONFIG: linux_aarch64_
         UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-aarch64:alma9
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-aarch64:alma10
         docker_run_args: ''
         build_workspace_dir: build_artifacts
         free_disk_space: skip
@@ -22,7 +22,7 @@ jobs:
       linux_ppc64le_:
         CONFIG: linux_ppc64le_
         UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-ppc64le:alma9
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-ppc64le:alma10
         docker_run_args: ''
         build_workspace_dir: build_artifacts
         free_disk_space: skip

@@ -1,7 +1,7 @@
 c_compiler:
 - gcc
 c_compiler_version:
-- '14'
+- '15'
 c_stdlib:
 - sysroot
 c_stdlib_version:
@@ -17,9 +17,9 @@ curl:
 cxx_compiler:
 - gxx
 cxx_compiler_version:
-- '14'
+- '15'
 docker_image:
-- quay.io/condaforge/linux-anvil-x86_64:alma9
+- quay.io/condaforge/linux-anvil-x86_64:alma10
 expat:
 - '2'
 fontconfig:
@@ -49,7 +49,7 @@ nss:
 openjpeg:
 - '2'
 poppler:
-- '26.05'
+- '26.07'
 qt_main:
 - '5.15'
 target_platform:
