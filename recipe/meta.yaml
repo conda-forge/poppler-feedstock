@@ -9,7 +9,7 @@ package:
 
 source:
   url: https://poppler.freedesktop.org/poppler-{{ version }}.tar.xz
-  sha256: 8059eadb6805340768f138c465b57f8164c92b4a0773c37ef031ea6c0d987b2e
+  sha256: 6792cb7c69205007ad87d2e936cecc5b3a31fac29ab54ffc3175fdb6b2a6ce35
   patches:
     - exportsymbols.patch  # [win]
     - windows-data.patch  # [win]
