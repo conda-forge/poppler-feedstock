@@ -100,6 +100,8 @@ outputs:
       ignore_run_exports_from:
         - libboost-devel
         - qt-main
+      ignore_run_exports:
+        - libbrotlienc
       run_exports:
         - {{ pin_subpackage('poppler', max_pin='x.x') }}
     requirements:
@@ -119,6 +121,7 @@ outputs:
         - perl 5
         - gettext-tools
         - gobject-introspection 1.*  # [not win]
+        - brotli      # [build_platform != target_platform]
         - cairo       # [build_platform != target_platform]
         - curl        # [build_platform != target_platform]
         - fontconfig  # [build_platform != target_platform]
@@ -139,6 +142,7 @@ outputs:
         - xorg-xorgproto        # [build_platform != target_platform]
         - zlib        # [build_platform != target_platform]
       host:
+        - brotli
         - cairo
         - curl
         - fontconfig  # [unix]
@@ -179,6 +183,8 @@ outputs:
       skip: true  # [ppc64le or arm64]
       ignore_run_exports_from:
         - libboost-devel
+      ignore_run_exports:
+        - libbrotlienc
     script: install.sh  # [unix]
     script: install.bat  # [not unix]
     requirements:
@@ -198,6 +204,7 @@ outputs:
         - perl 5
         - gettext-tools
         - gobject-introspection 1.*  # [not win]
+        - brotli      # [build_platform != target_platform]
         - cairo       # [build_platform != target_platform]
         - curl        # [build_platform != target_platform]
         - fontconfig  # [build_platform != target_platform]
@@ -217,6 +224,7 @@ outputs:
         - xorg-xorgproto        # [build_platform != target_platform]
         - zlib        # [build_platform != target_platform]
       host:
+        - brotli
         - freetype
         - harfbuzz
         - libboost-devel
