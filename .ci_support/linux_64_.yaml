@@ -1,3 +1,5 @@
+DOCKER_PLATFORM:
+- linux/amd64
 brotli:
 - '1.2'
 c_compiler:
