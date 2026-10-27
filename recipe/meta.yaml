@@ -1,4 +1,4 @@
-{% set version = "26.09.0" %}
+{% set version = "26.10.0" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 {% set prefix = 'Library/' if win else '' %}
@@ -9,7 +9,7 @@ package:
 
 source:
   url: https://poppler.freedesktop.org/poppler-{{ version }}.tar.xz
-  sha256: 8059eadb6805340768f138c465b57f8164c92b4a0773c37ef031ea6c0d987b2e
+  sha256: 6792cb7c69205007ad87d2e936cecc5b3a31fac29ab54ffc3175fdb6b2a6ce35
   patches:
     - exportsymbols.patch  # [win]
     - windows-data.patch  # [win]
@@ -26,6 +26,7 @@ build:
   ignore_run_exports:
     - qt-main
     - libboost-devel
+    - libbrotlienc
 
 requirements:
   build:
@@ -44,6 +45,7 @@ requirements:
     - perl 5
     - gettext-tools
     - gobject-introspection 1.*  # [not win]
+    - brotli      # [build_platform != target_platform]
     - cairo       # [build_platform != target_platform]
     - curl        # [build_platform != target_platform]
     - fontconfig  # [build_platform != target_platform]
@@ -64,6 +66,7 @@ requirements:
     - zlib        # [build_platform != target_platform]
     - gperf       # [unix]
   host:
+    - brotli
     - cairo
     - curl
     - expat
@@ -97,6 +100,8 @@ outputs:
       ignore_run_exports_from:
         - libboost-devel
         - qt-main
+      ignore_run_exports:
+        - libbrotlienc
       run_exports:
         - {{ pin_subpackage('poppler', max_pin='x.x') }}
     requirements:
@@ -116,6 +121,7 @@ outputs:
         - perl 5
         - gettext-tools
         - gobject-introspection 1.*  # [not win]
+        - brotli      # [build_platform != target_platform]
         - cairo       # [build_platform != target_platform]
         - curl        # [build_platform != target_platform]
         - fontconfig  # [build_platform != target_platform]
@@ -136,6 +142,7 @@ outputs:
         - xorg-xorgproto        # [build_platform != target_platform]
         - zlib        # [build_platform != target_platform]
       host:
+        - brotli
         - cairo
         - curl
         - fontconfig  # [unix]
@@ -176,6 +183,8 @@ outputs:
       skip: true  # [ppc64le or arm64]
       ignore_run_exports_from:
         - libboost-devel
+      ignore_run_exports:
+        - libbrotlienc
     script: install.sh  # [unix]
     script: install.bat  # [not unix]
     requirements:
@@ -195,6 +204,7 @@ outputs:
         - perl 5
         - gettext-tools
         - gobject-introspection 1.*  # [not win]
+        - brotli      # [build_platform != target_platform]
         - cairo       # [build_platform != target_platform]
         - curl        # [build_platform != target_platform]
         - fontconfig  # [build_platform != target_platform]
@@ -214,6 +224,7 @@ outputs:
         - xorg-xorgproto        # [build_platform != target_platform]
         - zlib        # [build_platform != target_platform]
       host:
+        - brotli
         - freetype
         - harfbuzz
         - libboost-devel

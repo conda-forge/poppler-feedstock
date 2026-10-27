@@ -1,3 +1,5 @@
+brotli:
+- '1.2'
 c_compiler:
 - vs2022
 c_stdlib:
@@ -24,6 +26,8 @@ lcms2:
 - '2'
 libboost_devel:
 - '1.90'
+libbrotlienc:
+- '1.2'
 libcurl:
 - '8'
 libiconv:
