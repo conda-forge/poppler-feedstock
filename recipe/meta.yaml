@@ -56,7 +56,7 @@ requirements:
     - libboost-devel           # [build_platform != target_platform]
     - libcurl     # [build_platform != target_platform]
     - libiconv    # [build_platform != target_platform]
-    - libintl-devel    # [build_platform != target_platform and (not linux)]
+    - libintl-devel >=1   # [build_platform != target_platform and (not linux)]
     - libjpeg-turbo         # [build_platform != target_platform]
     - libpng      # [build_platform != target_platform]
     - libtiff     # [build_platform != target_platform]
@@ -78,7 +78,7 @@ requirements:
     - libboost-devel
     - libcurl
     - libiconv
-    - libintl-devel  # [not linux]
+    - libintl-devel >=1  # [not linux]
     - libjpeg-turbo
     - libpng
     - libtiff
