@@ -1,7 +1,9 @@
 brotli:
 - '1.2'
 c_compiler:
-- vs2022
+- vs
+c_compiler_version:
+- '2022'
 c_stdlib:
 - vs
 cairo:
@@ -13,7 +15,9 @@ channel_targets:
 curl:
 - '8'
 cxx_compiler:
-- vs2022
+- vs
+cxx_compiler_version:
+- '2022'
 expat:
 - '2'
 fontconfig:
@@ -32,6 +36,8 @@ libcurl:
 - '8'
 libiconv:
 - '1'
+libintl_devel:
+- '0.22'
 libjpeg_turbo:
 - '3'
 libpng:

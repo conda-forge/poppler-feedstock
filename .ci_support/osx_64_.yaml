@@ -40,6 +40,8 @@ libcurl:
 - '8'
 libiconv:
 - '1'
+libintl_devel:
+- '1'
 libjpeg_turbo:
 - '3'
 libpng:
